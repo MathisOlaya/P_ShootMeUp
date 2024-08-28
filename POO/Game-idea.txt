@@ -1,0 +1,14 @@
+Idées pour la réalisation du jeu vidéo.
+
+	- Abilités à utiliser tous les laps de temps durant une certaine durée (invincibilité, tir rapide, freeze des ennemis etc...)
+	- Dash sur le côté.
+	- Obstacles protegeant le joueur et pouvant être détruit (PV).
+	- Vie pouvant être récupérée.
+	- BOSS (personnage avec + de vie, et plus fort, se trouvant a la fin du deuxieme LVL).
+	- Obstacles + faibles, mais pouvant être placé par le joueur ou il le souhaite.
+	- Pause entre les niveaux pour acheter du meilleur matériel.
+Themes : 
+	- Ennemi : Tank
+	- Missile ennemi : Missile envoyé par les tank
+	- Joueur : Militaire 
+	- Arme joueur : arme standart tirant des balles classiques.
