@@ -1,0 +1,17 @@
+1) SELECT idJoueur FROM t_joueur ORDER BY jouNombrePoints DESC LIMIT 5;
+
+2) SELECT MIN(armPrix) as PrixMinimum, AVG(armPrix) as PrixMoyen ,Max(armPrix) as PrixMaximum FROM t_arme;
+
+3) SELECT fkJoueur as idJoueur, COUNT(idCommande) as NombreCommandes FROM t_commande GROUP BY idJoueur ORDER BY NombreCommandes DESC;
+
+4) SELECT fkJoueur as idJoueur, COUNT(idCommande) as NombreCommandes FROM t_commande GROUP BY idJoueur HAVING NombreCommandes > 2;
+
+5) SELECT jouPseudo, armNom FROM t_joueur, t_commande co, t_detail_commande dc, t_arme arm WHERE idJoueur = co.fkJoueur AND co.idCommande = dc.fkCommande AND dc.fKArme = arm.idArme;
+
+6) SELECT idJoueur, SUM(armPrix * dc.detQuantiteCommande) as PrixTotalDepense from t_joueur, t_commande co, t_detail_commande dc, t_arme arm WHERE idJoueur = co.fkJoueur AND co.idCommande = dc.fkCommande AND dc.fkArme = arm.idArme GROUP BY idJoueur ORDER BY PrixTotalDepense DESC LIMIT 10;
+
+7) SELECT jou.*, co.* FROM t_joueur jou LEFT JOIN t_commande co ON jou.idJoueur = co.fkJoueur LEFT JOIN t_detail_commande dc ON co.idCommande = dc.fkCommande;
+
+8) SELECT co.*, jou.* FROM t_commande co LEFT JOIN t_joueur jou ON co.fkJoueur = jou.idJoueur;
+
+9) 
