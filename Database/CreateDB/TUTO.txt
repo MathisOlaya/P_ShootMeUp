@@ -1,6 +1,0 @@
-Voici comment importer le fichier SQL pour créer la DB depuis la ligne de commande.
-
-Ouvrir docker
-Copier l'ID du container 
-Ouvrir le CM (Win + R | cmd)
-Copier : docker exec -i *id_copié* mysql -u root -proot < path_file.sql
