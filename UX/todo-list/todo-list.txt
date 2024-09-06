@@ -1,7 +1,7 @@
 Fichier texte contenant la ToDo-List du projet UX.
 
 	Analyse : 
-	▢ Création de deux "Personas".
+	⊠ Création de deux "Personas".
 	▢ Choix d'une palette graphique.
 	▢ Faire une interface plus eco-friendly
 	▢ Rendre l'interface plus accessible.
