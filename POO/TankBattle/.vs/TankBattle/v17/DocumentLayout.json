@@ -11,6 +11,14 @@
       "RelativeMoniker": "D:0:0:{125F5504-03FB-438F-B5E5-A4FD60D8F0E7}|TankBattle\\TankBattle.csproj|solutionrelative:tankbattle\\gameroot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{125F5504-03FB-438F-B5E5-A4FD60D8F0E7}|TankBattle\\TankBattle.csproj|c:\\users\\pg24muu\\documents\\github\\p_shootmeup\\poo\\tankbattle\\tankbattle\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{125F5504-03FB-438F-B5E5-A4FD60D8F0E7}|TankBattle\\TankBattle.csproj|solutionrelative:tankbattle\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{125F5504-03FB-438F-B5E5-A4FD60D8F0E7}|TankBattle\\TankBattle.csproj|c:\\users\\pg24muu\\documents\\github\\p_shootmeup\\poo\\tankbattle\\tankbattle\\content\\font.spritefont||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{125F5504-03FB-438F-B5E5-A4FD60D8F0E7}|TankBattle\\TankBattle.csproj|solutionrelative:tankbattle\\content\\font.spritefont||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{125F5504-03FB-438F-B5E5-A4FD60D8F0E7}|TankBattle\\TankBattle.csproj|c:\\users\\pg24muu\\documents\\github\\p_shootmeup\\poo\\tankbattle\\tankbattle\\input.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{125F5504-03FB-438F-B5E5-A4FD60D8F0E7}|TankBattle\\TankBattle.csproj|solutionrelative:tankbattle\\input.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -22,11 +30,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattle\\TankBattle\\Program.cs",
+              "RelativeDocumentMoniker": "TankBattle\\Program.cs",
+              "ToolTip": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattle\\TankBattle\\Program.cs",
+              "RelativeToolTip": "TankBattle\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-13T09:56:31.42Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Font.spritefont",
+              "DocumentMoniker": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattle\\TankBattle\\Content\\Font.spritefont",
+              "RelativeDocumentMoniker": "TankBattle\\Content\\Font.spritefont",
+              "ToolTip": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattle\\TankBattle\\Content\\Font.spritefont",
+              "RelativeToolTip": "TankBattle\\Content\\Font.spritefont",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-09-13T09:56:24.004Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Input.cs",
               "DocumentMoniker": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattle\\TankBattle\\Input.cs",
               "RelativeDocumentMoniker": "TankBattle\\Input.cs",
@@ -34,8 +68,7 @@
               "RelativeToolTip": "TankBattle\\Input.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T13:16:03.514Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-11T13:16:03.514Z"
             },
             {
               "$type": "Document",
@@ -45,7 +78,7 @@
               "RelativeDocumentMoniker": "TankBattle\\Player.cs",
               "ToolTip": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattle\\TankBattle\\Player.cs",
               "RelativeToolTip": "TankBattle\\Player.cs",
-              "ViewState": "AQIAABkAAAAAAAAAAAAgwBsAAAAeAAAA",
+              "ViewState": "AQIAACQAAAAAAAAAAAAwwD0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-11T12:41:58.651Z",
               "EditorCaption": ""
@@ -58,7 +91,7 @@
               "RelativeDocumentMoniker": "TankBattle\\GameRoot.cs",
               "ToolTip": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattle\\TankBattle\\GameRoot.cs",
               "RelativeToolTip": "TankBattle\\GameRoot.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAABGAAAA",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAowBUAAABBAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-11T12:36:09.22Z",
               "EditorCaption": ""
