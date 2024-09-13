@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TankBattle")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fe3073eef995aa8e2950cbd2df56f7995e157d07")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+69d46b86fa3c38972b237afbe6f595dceb68b992")]
 [assembly: System.Reflection.AssemblyProductAttribute("TankBattle")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TankBattle")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

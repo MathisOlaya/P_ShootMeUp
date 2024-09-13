@@ -1,4 +1,4 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
 "C:/Users/pg24muu/Documents/GitHub/P_ShootMeUp/POO/TankBattle/TankBattle/Content/Font.spritefont","C:/Users/pg24muu/Documents/GitHub/P_ShootMeUp/POO/TankBattle/TankBattle/Content/bin/Windows/Content/Font.xnb","FontDescriptionProcessor","SpriteFontContent",2068,37919,0.1810368
-"C:/Users/pg24muu/Documents/GitHub/P_ShootMeUp/POO/TankBattle/TankBattle/Content/player.png","C:/Users/pg24muu/Documents/GitHub/P_ShootMeUp/POO/TankBattle/TankBattle/Content/bin/Windows/Content/player.xnb","TextureProcessor","Texture2DContent",3187,1000085,0.1076381
+"C:/Users/pg24muu/Documents/GitHub/P_ShootMeUp/POO/TankBattle/TankBattle/Content/player.png","C:/Users/pg24muu/Documents/GitHub/P_ShootMeUp/POO/TankBattle/TankBattle/Content/bin/Windows/Content/player.xnb","TextureProcessor","Texture2DContent",2101,99949,0.0985622
 "C:/Users/pg24muu/Documents/GitHub/P_ShootMeUp/POO/TankBattle/TankBattle/Content/tank.png","C:/Users/pg24muu/Documents/GitHub/P_ShootMeUp/POO/TankBattle/TankBattle/Content/bin/Windows/Content/tank.xnb","TextureProcessor","Texture2DContent",31827,23872253,0.5073275

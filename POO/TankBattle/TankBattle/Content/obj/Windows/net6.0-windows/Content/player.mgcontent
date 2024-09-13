@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>C:/Users/pg24muu/Documents/GitHub/P_ShootMeUp/POO/TankBattle/TankBattle/Content/player.png</SourceFile>
-  <SourceTime>2024-09-13T12:09:04.3365432+02:00</SourceTime>
+  <SourceTime>2024-09-13T15:42:49.6647012+02:00</SourceTime>
   <DestFile>C:/Users/pg24muu/Documents/GitHub/P_ShootMeUp/POO/TankBattle/TankBattle/Content/bin/Windows/Content/player.xnb</DestFile>
-  <DestTime>2024-09-13T12:10:00.1013762+02:00</DestTime>
+  <DestTime>2024-09-13T15:43:31.8879155+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

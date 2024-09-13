@@ -42,8 +42,7 @@
               "RelativeToolTip": "TankBattle\\Program.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-13T09:56:31.42Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-13T09:56:31.42Z"
             },
             {
               "$type": "Document",
@@ -55,8 +54,7 @@
               "RelativeToolTip": "TankBattle\\Content\\Font.spritefont",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-09-13T09:56:24.004Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-13T09:56:24.004Z"
             },
             {
               "$type": "Document",
@@ -78,7 +76,7 @@
               "RelativeDocumentMoniker": "TankBattle\\Player.cs",
               "ToolTip": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattle\\TankBattle\\Player.cs",
               "RelativeToolTip": "TankBattle\\Player.cs",
-              "ViewState": "AQIAACQAAAAAAAAAAAAwwD0AAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-11T12:41:58.651Z",
               "EditorCaption": ""
@@ -91,10 +89,9 @@
               "RelativeDocumentMoniker": "TankBattle\\GameRoot.cs",
               "ToolTip": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattle\\TankBattle\\GameRoot.cs",
               "RelativeToolTip": "TankBattle\\GameRoot.cs",
-              "ViewState": "AQIAAB4AAAAAAAAAAAAowBUAAABBAAAA",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAQwBUAAABBAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T12:36:09.22Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-11T12:36:09.22Z"
             }
           ]
         }
