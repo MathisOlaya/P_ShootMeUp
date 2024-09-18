@@ -31,8 +31,8 @@ namespace TankBattle
             Components.Add(player);
 
             //Ajtouer et créer le tank
-            //Ennemy tank = new Ennemy(this);
-            //Components.Add(tank);
+            Ennemy tank = new Ennemy(this);
+            Components.Add(tank);
 
             base.Initialize();
         }

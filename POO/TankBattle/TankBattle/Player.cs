@@ -14,7 +14,7 @@ namespace TankBattle
 
         //Constantes
         private readonly Vector2 DEFAULT_POS = new(0, 0);
-        private Vector2 Position = new(0, 0);
+        public static Vector2 Position { get; private set; }
 
         //variables
         private Vector2 Velocity;
@@ -89,9 +89,18 @@ namespace TankBattle
         }
         public override void Draw(GameTime gameTime)
         {
+            //Lancer le dessin.
             _spriteBatch.Begin();
+            //Dessiner le joueur selon certains critères.
             _spriteBatch.Draw(texture, Position, null, Color.White, 0f, new Vector2(texture.Width / 2, texture.Height / 2), 0.5f, SpriteEffects.None, 0f);
-            //isReloading = false ? _spriteBatch.DrawString(spriteFont, Ammo.ToString(), new Vector2(Config.WindowWidth - 50, Config.WindowHeight - 50), Color.White) : _spriteBatch.DrawString(spriteFont, Ammo.ToString(), new Vector2(Config.WindowWidth - 50, Config.WindowHeight - 50), Color.Red);
+
+            //Ecrire le nombre de munitions, en rouge s'il recharge.
+            if (isReloading)
+                _spriteBatch.DrawString(spriteFont, Ammo.ToString(), new Vector2(Config.WindowWidth - 50, Config.WindowHeight - 50), Color.Red);
+            else
+                _spriteBatch.DrawString(spriteFont, Ammo.ToString(), new Vector2(Config.WindowWidth - 50, Config.WindowHeight - 50), Color.White);
+
+            //Finir le dessin.
             _spriteBatch.End();
             base.Draw(gameTime);
         }
