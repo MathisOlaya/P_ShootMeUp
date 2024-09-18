@@ -23,12 +23,7 @@ namespace TankBattle
             //retourner la direction
             return direction;
         }
-        public static bool GetShootStatement()
-        {
-            if (Mouse.GetState().LeftButton == ButtonState.Pressed)
-                return true;
-            else
-                return false;
-        }
+        public static bool IsShooting() => Mouse.GetState().LeftButton == ButtonState.Pressed;
+        public static bool IsReloading() => Keyboard.GetState().IsKeyDown(Keys.R);
     }
 }

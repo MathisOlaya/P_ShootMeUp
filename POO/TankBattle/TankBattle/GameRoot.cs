@@ -9,9 +9,6 @@ namespace TankBattle
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-        private int WindowWidth;
-        private int WindowHeight;
-
         public GameRoot()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -19,17 +16,23 @@ namespace TankBattle
             IsMouseVisible = true;
 
             //Changer la taille de la fenêtre 
-            WindowWidth = _graphics.PreferredBackBufferWidth = 1280;
-            WindowHeight = _graphics.PreferredBackBufferHeight = 720;
+            _graphics.PreferredBackBufferWidth = 1280;
+            _graphics.PreferredBackBufferHeight = 720;
         }
 
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            //Initialiser la classe Config afin d'attribuer certaines valeurs.
+            Config.Initialize(_graphics);
 
             //Ajouter et créer le joueur
-            Player player = new Player(this, WindowWidth, WindowHeight);
+            Player player = new Player(this);
             Components.Add(player);
+
+            //Ajtouer et créer le tank
+            //Ennemy tank = new Ennemy(this);
+            //Components.Add(tank);
 
             base.Initialize();
         }

@@ -7,24 +7,12 @@
       "RelativeMoniker": "D:0:0:{125F5504-03FB-438F-B5E5-A4FD60D8F0E7}|TankBattle\\TankBattle.csproj|solutionrelative:tankbattle\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{125F5504-03FB-438F-B5E5-A4FD60D8F0E7}|TankBattle\\TankBattle.csproj|c:\\users\\pg24muu\\documents\\github\\p_shootmeup\\poo\\tankbattle\\tankbattle\\playerbullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{125F5504-03FB-438F-B5E5-A4FD60D8F0E7}|TankBattle\\TankBattle.csproj|solutionrelative:tankbattle\\playerbullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{125F5504-03FB-438F-B5E5-A4FD60D8F0E7}|TankBattle\\TankBattle.csproj|c:\\users\\pg24muu\\documents\\github\\p_shootmeup\\poo\\tankbattle\\tankbattle\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{125F5504-03FB-438F-B5E5-A4FD60D8F0E7}|TankBattle\\TankBattle.csproj|solutionrelative:tankbattle\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{125F5504-03FB-438F-B5E5-A4FD60D8F0E7}|TankBattle\\TankBattle.csproj|c:\\users\\pg24muu\\documents\\github\\p_shootmeup\\poo\\tankbattle\\tankbattle\\input.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{125F5504-03FB-438F-B5E5-A4FD60D8F0E7}|TankBattle\\TankBattle.csproj|solutionrelative:tankbattle\\input.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{125F5504-03FB-438F-B5E5-A4FD60D8F0E7}|TankBattle\\TankBattle.csproj|c:\\users\\pg24muu\\documents\\github\\p_shootmeup\\poo\\tankbattle\\tankbattle\\gameroot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{125F5504-03FB-438F-B5E5-A4FD60D8F0E7}|TankBattle\\TankBattle.csproj|solutionrelative:tankbattle\\gameroot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{125F5504-03FB-438F-B5E5-A4FD60D8F0E7}|TankBattle\\TankBattle.csproj|c:\\users\\pg24muu\\documents\\github\\p_shootmeup\\poo\\tankbattle\\tankbattle\\content\\font.spritefont||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{125F5504-03FB-438F-B5E5-A4FD60D8F0E7}|TankBattle\\TankBattle.csproj|solutionrelative:tankbattle\\content\\font.spritefont||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+      "AbsoluteMoniker": "D:0:0:{125F5504-03FB-438F-B5E5-A4FD60D8F0E7}|TankBattle\\TankBattle.csproj|c:\\users\\pg24muu\\documents\\github\\p_shootmeup\\poo\\tankbattle\\tankbattle\\ennemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{125F5504-03FB-438F-B5E5-A4FD60D8F0E7}|TankBattle\\TankBattle.csproj|solutionrelative:tankbattle\\ennemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,59 +22,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PlayerBullet.cs",
-              "DocumentMoniker": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattle\\TankBattle\\PlayerBullet.cs",
-              "RelativeDocumentMoniker": "TankBattle\\PlayerBullet.cs",
-              "ToolTip": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattle\\TankBattle\\PlayerBullet.cs",
-              "RelativeToolTip": "TankBattle\\PlayerBullet.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-18T11:32:15.799Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattle\\TankBattle\\Program.cs",
-              "RelativeDocumentMoniker": "TankBattle\\Program.cs",
-              "ToolTip": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattle\\TankBattle\\Program.cs",
-              "RelativeToolTip": "TankBattle\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-13T09:56:31.42Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Font.spritefont",
-              "DocumentMoniker": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattle\\TankBattle\\Content\\Font.spritefont",
-              "RelativeDocumentMoniker": "TankBattle\\Content\\Font.spritefont",
-              "ToolTip": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattle\\TankBattle\\Content\\Font.spritefont",
-              "RelativeToolTip": "TankBattle\\Content\\Font.spritefont",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-09-13T09:56:24.004Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Input.cs",
-              "DocumentMoniker": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattle\\TankBattle\\Input.cs",
-              "RelativeDocumentMoniker": "TankBattle\\Input.cs",
-              "ToolTip": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattle\\TankBattle\\Input.cs",
-              "RelativeToolTip": "TankBattle\\Input.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAALAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T13:16:03.514Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -95,22 +32,36 @@
               "RelativeDocumentMoniker": "TankBattle\\Player.cs",
               "ToolTip": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattle\\TankBattle\\Player.cs",
               "RelativeToolTip": "TankBattle\\Player.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAQwBgAAAAuAAAA",
+              "ViewState": "AQIAACUAAAAAAAAAAAAYwF0AAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T12:41:58.651Z",
+              "WhenOpened": "2024-09-18T13:21:05.704Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
+              "Title": "Ennemy.cs",
+              "DocumentMoniker": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattle\\TankBattle\\Ennemy.cs",
+              "RelativeDocumentMoniker": "TankBattle\\Ennemy.cs",
+              "ToolTip": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattle\\TankBattle\\Ennemy.cs",
+              "RelativeToolTip": "TankBattle\\Ennemy.cs",
+              "ViewState": "AQIAACAAAAAAAAAAAAAwwDwAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T13:21:00.161Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "GameRoot.cs",
               "DocumentMoniker": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattle\\TankBattle\\GameRoot.cs",
               "RelativeDocumentMoniker": "TankBattle\\GameRoot.cs",
               "ToolTip": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattle\\TankBattle\\GameRoot.cs",
               "RelativeToolTip": "TankBattle\\GameRoot.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAQwBUAAABBAAAA",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAxwCIAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T12:36:09.22Z"
+              "WhenOpened": "2024-09-11T12:36:09.22Z",
+              "EditorCaption": ""
             }
           ]
         }

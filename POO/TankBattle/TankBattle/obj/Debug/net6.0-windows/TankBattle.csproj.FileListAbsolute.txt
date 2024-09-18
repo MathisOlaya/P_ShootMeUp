@@ -39,3 +39,5 @@ C:\Users\pg24muu\Documents\GitHub\P_ShootMeUp\POO\TankBattle\TankBattle\obj\Debu
 C:\Users\pg24muu\Documents\GitHub\P_ShootMeUp\POO\TankBattle\TankBattle\bin\Debug\net6.0-windows\Content\player.xnb
 C:\Users\pg24muu\Documents\GitHub\P_ShootMeUp\POO\TankBattle\TankBattle\bin\Debug\net6.0-windows\Content\tank.xnb
 C:\Users\pg24muu\Documents\GitHub\P_ShootMeUp\POO\TankBattle\TankBattle\bin\Debug\net6.0-windows\Content\Font.xnb
+C:\Users\pg24muu\Documents\GitHub\P_ShootMeUp\POO\TankBattle\TankBattle\bin\Debug\net6.0-windows\Content\PlayerBullet.xnb
+C:\Users\pg24muu\Documents\GitHub\P_ShootMeUp\POO\TankBattle\TankBattle\bin\Debug\net6.0-windows\Content\TankBullet.xnb
