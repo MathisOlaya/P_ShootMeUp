@@ -7,7 +7,7 @@ Fichier texte contenant la ToDo-List du projet UX.
 	▢ Rendre l'interface plus accessible.
 
 	Conception : 
-	▢ Créer tous les écrans (maquettes) en base-fidelité.
+	⊠ Créer tous les écrans (maquettes) en base-fidelité.
 	▢ Créer l'éditeur de niveau en maquette haute-fidelité.
 	▢ Expliquer les choix effectués.
 
