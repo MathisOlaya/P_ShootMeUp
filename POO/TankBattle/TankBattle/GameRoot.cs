@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
+using System.Collections.Generic;
 
 namespace TankBattle
 {
@@ -8,6 +10,9 @@ namespace TankBattle
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+
+        //Liste de tous les tanks
+        public static List<Ennemy> Tanks = new List<Ennemy>();
 
         public GameRoot()
         {
@@ -30,9 +35,12 @@ namespace TankBattle
             Player player = new Player(this);
             Components.Add(player);
 
-            //Ajtouer et créer le tank
-            Ennemy tank = new Ennemy(this);
-            Components.Add(tank);
+            Tanks.Add(new Ennemy(this));
+            
+            foreach(Ennemy tank in Tanks)
+            {
+                Components.Add(tank);
+            }
 
             base.Initialize();
         }

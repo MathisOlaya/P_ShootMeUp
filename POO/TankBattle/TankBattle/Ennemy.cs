@@ -10,12 +10,12 @@ namespace TankBattle
 {
     public class Ennemy : DrawableGameComponent
     {
-        private Texture2D texture; //Texture du joueur
+        public Texture2D texture; //Texture du joueur
         private SpriteFont spriteFont;
         private SpriteBatch _spriteBatch;
 
         //Variables 
-        private Vector2 _EnnemyPosition;
+        public Vector2 EnnemyPosition { get; private set; }
         private const int _EnnemyPositionY = 100; //Position finale en Y du tank.
         private bool IsTankReadyToShoot = false;
 
@@ -32,7 +32,7 @@ namespace TankBattle
             base.Initialize();
 
             //Calculer la position de départ, le faire apparaitre en dehors de l'écran, et le faire avancer pour une animation.
-            _EnnemyPosition = new Vector2(RandomNumber.Generate(50, Config.WindowWidth - 50), -150);
+            EnnemyPosition = new Vector2(RandomNumber.Generate(50, Config.WindowWidth - 50), -150);
         }
         protected override void LoadContent()
         {
@@ -60,7 +60,7 @@ namespace TankBattle
             if(_timerCoolDownShoot >= _interval)
             {
                 //Lancer un missile depuis le tank.
-                Shell shell = new Shell(Game, _EnnemyPosition);
+                Shell shell = new Shell(Game, EnnemyPosition);
                 Game.Components.Add(shell);
                 //Réinitialiser le chrono
                 _timerCoolDownShoot = 0;
@@ -71,14 +71,14 @@ namespace TankBattle
             base.Draw(gameTime);
 
             _spriteBatch.Begin();
-            _spriteBatch.Draw(texture, _EnnemyPosition, null, Color.White, MathF.PI, new Vector2(texture.Width / 2, texture.Height / 2), 1f, SpriteEffects.None, 0f);
+            _spriteBatch.Draw(texture, EnnemyPosition, null, Color.White, MathF.PI, new Vector2(texture.Width / 2, texture.Height / 2), 1f, SpriteEffects.None, 0f);
             _spriteBatch.End();
         }
         private void MoveToScene()
         {
-            if (_EnnemyPosition.Y != _EnnemyPositionY)
+            if (EnnemyPosition.Y != _EnnemyPositionY)
             {
-                _EnnemyPosition.Y += 1;
+                EnnemyPosition  = new Vector2(EnnemyPosition.X, EnnemyPosition.Y + 1);
             }
             else
                 IsTankReadyToShoot = true;

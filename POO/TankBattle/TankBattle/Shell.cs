@@ -60,5 +60,6 @@ namespace TankBattle
             _spriteBatch.Draw(texture, _ShellPosition, null, Color.White, 0f, new Vector2(texture.Width / 2, texture.Height / 2), 0.15f, SpriteEffects.None, 0f);
             _spriteBatch.End();
         }
+        
     }
 }
