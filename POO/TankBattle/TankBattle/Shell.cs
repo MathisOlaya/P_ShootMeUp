@@ -10,7 +10,7 @@ namespace TankBattle
 {
     public class Shell : DrawableGameComponent
     {
-        private Texture2D texture; //Texture du joueur
+        private Texture2D texture; //Texture de la munition.
         private SpriteFont spriteFont;
         private SpriteBatch _spriteBatch;
 
@@ -32,7 +32,7 @@ namespace TankBattle
             base.Initialize();
 
             //Calculer la direction du joueur depuis le tank : posJoueur - posTank .Normaliser afin d'avoir une valeur entre 0 et 1.
-            _Direction = (Player.Position - _ShellPosition);
+            _Direction = (GameRoot.Player.Position - _ShellPosition);
             _Direction.Normalize();
         }
         protected override void LoadContent()
@@ -51,6 +51,9 @@ namespace TankBattle
             //Calculer la vélocité 
             _Velocity = _Direction * _SPEED;
             _ShellPosition += _Velocity;
+
+            //Regarder si la "shell" rentre en collision avec le joueur.
+            CheckCollisions();
         }
         public override void Draw(GameTime gameTime)
         {
@@ -61,5 +64,16 @@ namespace TankBattle
             _spriteBatch.End();
         }
         
+        private void CheckCollisions()
+        {
+            if(CollisionHelpers.IsCollidingWith(_ShellPosition, GameRoot.Player))
+            {
+                //Supprimer le joueur
+                Game.Components.Remove(GameRoot.Player);
+
+                //Supprimer la munition
+                Game.Components.Remove(this);
+            }
+        }
     }
 }

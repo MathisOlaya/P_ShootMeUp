@@ -13,6 +13,8 @@ namespace TankBattle
 
         //Liste de tous les tanks
         public static List<Ennemy> Tanks = new List<Ennemy>();
+        //Créer une instance du joueur globale qui sera accessible partout.
+        public static Player Player;
 
         public GameRoot()
         {
@@ -32,9 +34,10 @@ namespace TankBattle
             Config.Initialize(_graphics);
 
             //Ajouter et créer le joueur
-            Player player = new Player(this);
-            Components.Add(player);
+            Player = new Player(this);
+            Components.Add(Player);
 
+            //Ajouter un nouveau tank à la liste.
             Tanks.Add(new Ennemy(this));
             
             foreach(Ennemy tank in Tanks)

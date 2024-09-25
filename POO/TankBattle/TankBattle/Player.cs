@@ -8,13 +8,13 @@ namespace TankBattle
 {
     public class Player : DrawableGameComponent
     {
-        private Texture2D texture; //Texture du joueur
+        public static Texture2D texture; //Texture du joueur
         private SpriteFont spriteFont;
         private SpriteBatch _spriteBatch;
 
         //Constantes
         private readonly Vector2 DEFAULT_POS = new(0, 0);
-        public static Vector2 Position { get; private set; }
+        public Vector2 Position { get; private set; }
 
         //variables
         private Vector2 Velocity;
