@@ -11,6 +11,8 @@ namespace TankBattle
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
+        //Nombres de tanks
+        public const int TANK_NUMBERS = 2;
         //Liste de tous les tanks
         public static List<Ennemy> Tanks = new List<Ennemy>();
         //Créer une instance du joueur globale qui sera accessible partout.
@@ -38,7 +40,7 @@ namespace TankBattle
             Components.Add(Player);
 
             //Ajouter un nouveau tank à la liste.
-            for(int i = 0; i < 2; i++)
+            for(int i = 0; i < TANK_NUMBERS; i++)
             {
                 Tanks.Add(new Ennemy(this));
             }
