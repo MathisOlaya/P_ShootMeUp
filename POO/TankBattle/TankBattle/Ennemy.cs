@@ -32,7 +32,7 @@ namespace TankBattle
             base.Initialize();
 
             //Calculer la position de départ, le faire apparaitre en dehors de l'écran, et le faire avancer pour une animation.
-            EnnemyPosition = new Vector2(RandomNumber.Generate(50, Config.WindowWidth - 50), -150);
+            EnnemyPosition = new Vector2(GlobalHelpers.GenerateRandom(50, Config.WindowWidth - 50), -150);
         }
         protected override void LoadContent()
         {

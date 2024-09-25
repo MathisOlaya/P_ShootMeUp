@@ -66,10 +66,7 @@ namespace TankBattle
 
             foreach (Ennemy tank in GameRoot.Tanks)
             {
-                if (_BulletPosition.Y < tank.EnnemyPosition.Y + (tank.texture.Height * 1f) / 2 &&
-                    _BulletPosition.Y > tank.EnnemyPosition.Y - (tank.texture.Height * 1f) / 2 &&
-                    _BulletPosition.X > tank.EnnemyPosition.X - (tank.texture.Width * 1f) / 2 &&
-                    _BulletPosition.X < tank.EnnemyPosition.X + (tank.texture.Width * 1f) / 2)
+                if(CollisionHelpers.IsCollidingWith(_BulletPosition, tank))
                 {
                     //Supprimer le tank
                     Game.Components.Remove(tank);
