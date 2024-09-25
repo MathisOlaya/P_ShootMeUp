@@ -72,6 +72,8 @@ namespace TankBattle
                     Game.Components.Remove(tank);
                     //Ajouter le tank à la liste de suppression
                     TankToRemove.Add(tank);
+                    //Supprimer la munition
+                    Game.Components.Remove(this);
                 }
             }
             foreach(Ennemy DeadTank in TankToRemove)
