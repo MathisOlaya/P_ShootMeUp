@@ -31,8 +31,26 @@ namespace TankBattle
         {
             base.Initialize();
 
+
             //Calculer la position de départ, le faire apparaitre en dehors de l'écran, et le faire avancer pour une animation.
             Position = new Vector2(GlobalHelpers.GenerateRandom(50, Config.WindowWidth - 50), -150);
+
+            if (GameRoot.Tanks[1].Position.X != 0)
+            {
+                for (int i = 0; i < GameRoot.Tanks.Count; i++)
+                {
+                    if (GameRoot.Tanks[i].GetHashCode() != this.GetHashCode())
+                    {
+                        //Console.WriteLine("\nTank : " + this.GetHashCode() + " Position " + Position + "\nTank : " + GameRoot.Tanks[i].GetHashCode() + " Position " + GameRoot.Tanks[i].Position);
+                        if (this.Position.X <= GameRoot.Tanks[i].Position.X + GameRoot.Tanks[i].texture.Width && this.Position.X >= GameRoot.Tanks[i].Position.X - GameRoot.Tanks[i].texture.Width)
+                        {
+                            Console.Write("Same position between the tanks ");
+                        }
+                    }
+                }
+            }
+     
+            
         }
         protected override void LoadContent()
         {
@@ -57,7 +75,7 @@ namespace TankBattle
             }
 
             //Vérifier si le CoolDown est fini et si le joueur est vivant, si oui tirer et le réinitialiser
-            if(_timerCoolDownShoot >= _interval && GameRoot.Player.IsAlive)
+            if(_timerCoolDownShoot >= _interval && GameRoot.Player != null)
             {
                 //Lancer un missile depuis le tank.
                 Shell shell = new Shell(Game, Position);

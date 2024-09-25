@@ -44,7 +44,6 @@ namespace TankBattle
             //Charger le sprite.
             texture = Game.Content.Load<Texture2D>("TankBullet");
 
-            Console.Write("Player : " + GameRoot.Player.Position.ToString() + "\n" + "Shell : " + _ShellPosition); 
         }
         public override void Update(GameTime gameTime)
         {
@@ -55,7 +54,8 @@ namespace TankBattle
             _ShellPosition += _Velocity;
 
             //Regarder si la "shell" rentre en collision avec le joueur.
-            CheckCollisions();
+            if(GameRoot.Player != null)
+                CheckCollisions();
         }
         public override void Draw(GameTime gameTime)
         {
@@ -70,11 +70,9 @@ namespace TankBattle
         {
             if(CollisionHelpers.IsCollidingWith(_ShellPosition, GameRoot.Player))
             {
-                //Afficher le joueur comme mort
-                GameRoot.Player.IsAlive = false;
-
                 //Supprimer le joueur
                 Game.Components.Remove(GameRoot.Player);
+                GameRoot.Player = null;
 
                 //Supprimer la munition
                 Game.Components.Remove(this);

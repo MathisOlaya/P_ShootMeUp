@@ -38,7 +38,10 @@ namespace TankBattle
             Components.Add(Player);
 
             //Ajouter un nouveau tank à la liste.
-            Tanks.Add(new Ennemy(this));
+            for(int i = 0; i < 2; i++)
+            {
+                Tanks.Add(new Ennemy(this));
+            }
             
             foreach(Ennemy tank in Tanks)
             {

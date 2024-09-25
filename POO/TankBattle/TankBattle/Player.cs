@@ -36,7 +36,6 @@ namespace TankBattle
         private double _RealodingTime = 1.5f;
 
         //HP---------------------------------------------------------------------------
-        public bool IsAlive { get; set; } = true;
 
         public Player(Game game) : base(game)
         {
