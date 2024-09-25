@@ -15,7 +15,7 @@ namespace TankBattle
         private SpriteBatch _spriteBatch;
 
         //Variables 
-        public Vector2 EnnemyPosition { get; private set; }
+        public Vector2 Position { get; private set; }
         private const int _EnnemyPositionY = 100; //Position finale en Y du tank.
         private bool IsTankReadyToShoot = false;
 
@@ -32,7 +32,7 @@ namespace TankBattle
             base.Initialize();
 
             //Calculer la position de départ, le faire apparaitre en dehors de l'écran, et le faire avancer pour une animation.
-            EnnemyPosition = new Vector2(GlobalHelpers.GenerateRandom(50, Config.WindowWidth - 50), -150);
+            Position = new Vector2(GlobalHelpers.GenerateRandom(50, Config.WindowWidth - 50), -150);
         }
         protected override void LoadContent()
         {
@@ -56,11 +56,11 @@ namespace TankBattle
                 _timerCoolDownShoot += gameTime.ElapsedGameTime.TotalSeconds;
             }
 
-            //Vérifier si le CoolDown est fini, si oui tirer et le réinitialiser
-            if(_timerCoolDownShoot >= _interval)
+            //Vérifier si le CoolDown est fini et si le joueur est vivant, si oui tirer et le réinitialiser
+            if(_timerCoolDownShoot >= _interval && GameRoot.Player.IsAlive)
             {
                 //Lancer un missile depuis le tank.
-                Shell shell = new Shell(Game, EnnemyPosition);
+                Shell shell = new Shell(Game, Position);
                 Game.Components.Add(shell);
                 //Réinitialiser le chrono
                 _timerCoolDownShoot = 0;
@@ -71,14 +71,14 @@ namespace TankBattle
             base.Draw(gameTime);
 
             _spriteBatch.Begin();
-            _spriteBatch.Draw(texture, EnnemyPosition, null, Color.White, MathF.PI, new Vector2(texture.Width / 2, texture.Height / 2), 1f, SpriteEffects.None, 0f);
+            _spriteBatch.Draw(texture, Position, null, Color.White, MathF.PI, new Vector2(texture.Width / 2, texture.Height / 2), 1f, SpriteEffects.None, 0f);
             _spriteBatch.End();
         }
         private void MoveToScene()
         {
-            if (EnnemyPosition.Y != _EnnemyPositionY)
+            if (Position.Y != _EnnemyPositionY)
             {
-                EnnemyPosition  = new Vector2(EnnemyPosition.X, EnnemyPosition.Y + 1);
+                Position  = new Vector2(Position.X, Position.Y + 1);
             }
             else
                 IsTankReadyToShoot = true;

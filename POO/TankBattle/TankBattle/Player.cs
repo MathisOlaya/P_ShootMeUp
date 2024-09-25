@@ -35,6 +35,9 @@ namespace TankBattle
         private double _timerGunReloading;
         private double _RealodingTime = 1.5f;
 
+        //HP---------------------------------------------------------------------------
+        public bool IsAlive { get; set; } = true;
+
         public Player(Game game) : base(game)
         {
             DEFAULT_POS = new Vector2(Config.WindowWidth / 2, Config.WindowHeight - Config.WindowHeight / 8);
