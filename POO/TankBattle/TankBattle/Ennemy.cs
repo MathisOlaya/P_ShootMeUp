@@ -31,31 +31,48 @@ namespace TankBattle
         {
             base.Initialize();
 
-
-            //Calculer la position de départ, le faire apparaitre en dehors de l'écran, et le faire avancer pour une animation.
+            // Calculer la position de départ initiale
             Position = new Vector2(GlobalHelpers.GenerateRandom(50, Config.WindowWidth - 50), -150);
 
-            //Permet de vérifier que tous les tanks de la liste ont une valeur. Donc si le dernier à une valeur, ils en tous.
-            if (GameRoot.Tanks[GameRoot.TANK_NUMBERS - 1].Position.Y != 0)
+            GameRoot.Tanks.Add(this);
+
+            bool isValidPosition = false;
+            int maxAttempts = 100;  // Limite d'essais
+            int attempts = 0;       // Compteur d'essais
+
+            // Boucle jusqu'à ce que la position soit valide ou que le nombre maximum d'essais soit atteint
+            while (!isValidPosition && attempts < maxAttempts)
             {
-                //Sélectionner tous les tanks de la liste.
+                isValidPosition = true;  // Supposons que la position est correcte au départ
+                attempts++; // Incrémenter le compteur à chaque essai
+
                 for (int i = 0; i < GameRoot.Tanks.Count; i++)
                 {
-                    //Permet de vérifier que le tank que nous vérifions n'est pas celui que nous venons de créer. Sinon la position sera tjrs pareille.
+                    // Vérifier que nous ne comparons pas avec le tank actuel
                     if (GameRoot.Tanks[i].GetHashCode() != this.GetHashCode())
                     {
-                        //Console.WriteLine("\nTank : " + this.GetHashCode() + " Position " + Position + "\nTank : " + GameRoot.Tanks[i].GetHashCode() + " Position " + GameRoot.Tanks[i].Position);
-                        if (this.Position.X <= GameRoot.Tanks[i].Position.X + GameRoot.Tanks[i].texture.Width && this.Position.X >= GameRoot.Tanks[i].Position.X - GameRoot.Tanks[i].texture.Width)
+                        // Vérifier le chevauchement horizontal
+                        if (Position.X <= GameRoot.Tanks[i].Position.X + GameRoot.Tanks[i].texture.Width &&
+                            Position.X >= GameRoot.Tanks[i].Position.X - GameRoot.Tanks[i].texture.Width)
                         {
+                            // Si les positions se chevauchent, générer une nouvelle position et recommencer la vérification
                             Position = new Vector2(GlobalHelpers.GenerateRandom(50, Config.WindowWidth - 50), -150);
+                            isValidPosition = false;  // La position n'est pas correcte, donc il faut continuer à vérifier
+                            break;  // Recommencer la vérification des tanks avec la nouvelle position
                         }
                     }
                 }
             }
-
-
-
+            // Si le nombre maximum d'essais est atteint sans trouver de position, supprimer le tank
+            if (!isValidPosition)
+            {
+                // Retirer le tank de la liste et des composants
+                GameRoot.Tanks.Remove(this);
+                Game.Components.Remove(this);
+            }
         }
+
+
         protected override void LoadContent()
         {
             base.LoadContent();
