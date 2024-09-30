@@ -3,12 +3,12 @@
 En étudiant le dump MySQL db_space_invaders.sql vous constaterez que vous ne trouvez
 pas le mot clé INDEX. */
 
---1     Pourtant certains index existent déjà. Pourquoi ?
+-- 1     Pourtant certains index existent déjà. Pourquoi ?
 
       /*Tout simplement car les clés primaires ainsi que les clés étrangères 
         contiennent par défaut des INDEX lors de la création*/
 
---2     Quels sont les avantages et les inconvénients des index ? 
+-- 2     Quels sont les avantages et les inconvénients des index ? 
       
       /*Avantages : 
                     1) Ils permettent d'accélerer les requêtes sans devoir parcourir toute la table. Cela est tres efficace dans des grandes base de données.

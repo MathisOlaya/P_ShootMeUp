@@ -10,49 +10,49 @@ un environnement docker ce qui nous forcerait à utiliser l'adresse IP du docker.
 aucun paramètre, ce qui le place dans le nom d'hôte % qui sélectionne tous les hôtes par défaut.*/
 
 use db_space_invaders;
---Administrateurs
-    --Role
+-- Administrateurs
+    -- Role
     CREATE role "Administrateurs";
-    --Droits pour le role Administrateur
+    -- Droits pour le role Administrateur
     GRANT CREATE, SELECT, UPDATE, DELETE ON * to "Administrateurs" WITH GRANT OPTION;
-    --Créer l'utilisateur administrateur.
+    -- Créer l'utilisateur administrateur.
     CREATE USER "Administrateur" IDENTIFIED BY "AdminPass";
-    --Attribuer les droits 
+    -- Attribuer les droits 
     GRANT "Administrateurs" TO "Administrateur" ;
-    --Activer le rôle
+    -- Activer le rôle
     SET DEFAULT ROLE "Administrateurs" TO "Administrateur" ;
 
 
---Joueur
-    --Role
+-- Joueur
+    -- Role
     CREATE role "Joueurs";
-    --Droits pour le role Joueur
+    -- Droits pour le role Joueur
     GRANT SELECT ON t_arme TO "Joueurs";
     GRANT CREATE, SELECT ON t_commande TO "Joueurs";
-    --Créer l'utilisateur joueur
+    -- Créer l'utilisateur joueur
     CREATE USER "Joueur" IDENTIFIED BY "JoueurPass";
-    --Attribuer les droits
+    -- Attribuer les droits
     GRANT "Joueurs" TO "Joueur" ;
-    --Activer le rôle
+    -- Activer le rôle
     SET DEFAULT ROLE "Joueurs" TO "Joueur" ;
 
 
---Gestionnaire de boutique
-    --Role
+-- Gestionnaire de boutique
+    -- Role
     CREATE role "GestionnairesDeBoutique";
-    --Droits pour le role Gestionnaire de boutique
+    -- Droits pour le role Gestionnaire de boutique
     GRANT SELECT ON t_joueur TO 'GestionnairesDeBoutique';
     GRANT UPDATE, SELECT, DELETE on t_arme TO "GestionnairesDeBoutique";
     GRANT SELECT on t_commande TO "GestionnairesDeBoutique";
-    --Créer l'utlisateur Gestionnaire de boutique 
+    -- Créer l'utlisateur Gestionnaire de boutique 
     CREATE USER "GestionnaireDeBoutique" IDENTIFIED BY "GestionnairePass";
-    --Attribuer les droits
+    -- Attribuer les droits
     GRANT "GestionnairesDeBoutique" TO "GestionnaireDeBoutique";
-    --Activer le rôle
+    -- Activer le rôle
     SET DEFAULT ROLE "GestionnairesDeBoutique" TO "GestionnaireDeBoutique";
 
 
---Vérifier les privilèges de chaque rôle
+-- Vérifier les privilèges de chaque rôle
     SHOW GRANTS FOR "Administrateurs" ;
     SHOW GRANTS FOR "Joueurs" ;
     SHOW GRANTS FOR "GestionnairesDeBoutique" ;
