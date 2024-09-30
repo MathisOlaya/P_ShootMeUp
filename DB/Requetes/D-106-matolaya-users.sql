@@ -7,7 +7,7 @@ De cette manière, tous les privilèges nécessaires sont regroupés dans un seul mo
 
 /*Pour la création de rôles et d'utilisateurs, on ne précise pas @localhost car nous travaillons dans 
 un environnement docker ce qui nous forcerait à utiliser l'adresse IP du docker. Nous utilisons donc 
-aucun paramètre, ce qui le place dans le nom d'hôte % qui sélectionne tous les hôtes par défauts.*/
+aucun paramètre, ce qui le place dans le nom d'hôte % qui sélectionne tous les hôtes par défaut.*/
 
 use db_space_invaders;
 --Administrateurs
