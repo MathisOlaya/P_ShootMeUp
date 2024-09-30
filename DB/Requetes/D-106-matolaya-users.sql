@@ -5,41 +5,54 @@ Dans ce cas précis, l'utilisation d'un rôle peut sembler superflue, mais dans un
 grande avec davantage d'utilisateurs, cela réduit considérablement la charge de travail.
 De cette manière, tous les privilèges nécessaires sont regroupés dans un seul mot : le rôle.*/
 
+/*Pour la création de rôles et d'utilisateurs, on ne précise pas @localhost car nous travaillons dans 
+un environnement docker ce qui nous forcerait à utiliser l'adresse IP du docker. Nous utilisons donc 
+aucun paramètre, ce qui le place dans le nom d'hôte % qui sélectionne tous les hôtes par défauts.*/
+
 use db_space_invaders;
 --Administrateurs
     --Role
-    CREATE role "Administrateurs"@"localhost";
+    CREATE role "Administrateurs";
     --Droits pour le role Administrateur
-    GRANT CREATE, SELECT, UPDATE, DELETE ON * to "Administrateurs"@"localhost" WITH GRANT OPTION;
+    GRANT CREATE, SELECT, UPDATE, DELETE ON * to "Administrateurs" WITH GRANT OPTION;
     --Créer l'utilisateur administrateur.
-    CREATE USER "Administrateur"@"localhost" IDENTIFIED BY "AdminPass";
+    CREATE USER "Administrateur" IDENTIFIED BY "AdminPass";
     --Attribuer les droits 
-    GRANT "Administrateurs"@"localhost" TO "Administrateur"@"localhost";
+    GRANT "Administrateurs" TO "Administrateur" ;
+    --Activer le rôle
+    SET DEFAULT ROLE "Administrateurs" TO "Administrateur" ;
+
 
 --Joueur
     --Role
-    CREATE role "Joueurs"@"localhost";
+    CREATE role "Joueurs";
     --Droits pour le role Joueur
-    GRANT SELECT ON t_arme TO "Joueurs"@"localhost";
-    GRANT CREATE, SELECT ON t_commande TO "Joueurs"@"localhost";
+    GRANT SELECT ON t_arme TO "Joueurs";
+    GRANT CREATE, SELECT ON t_commande TO "Joueurs";
     --Créer l'utilisateur joueur
-    CREATE USER "Joueur"@"localhost" IDENTIFIED BY "JoueurPass";
+    CREATE USER "Joueur" IDENTIFIED BY "JoueurPass";
     --Attribuer les droits
-    GRANT "Joueurs"@"localhost" TO "Joueur"@"localhost";
+    GRANT "Joueurs" TO "Joueur" ;
+    --Activer le rôle
+    SET DEFAULT ROLE "Joueurs" TO "Joueur" ;
+
 
 --Gestionnaire de boutique
     --Role
-    CREATE role "GestionnairesDeBoutique"@"localhost";
+    CREATE role "GestionnairesDeBoutique";
     --Droits pour le role Gestionnaire de boutique
-    GRANT SELECT ON t_joueur TO 'GestionnairesDeBoutique'@'localhost';
-    GRANT UPDATE, SELECT, DELETE on t_arme TO "GestionnairesDeBoutique"@"localhost";
-    GRANT SELECT on t_commande TO "GestionnairesDeBoutique"@"localhost";
+    GRANT SELECT ON t_joueur TO 'GestionnairesDeBoutique';
+    GRANT UPDATE, SELECT, DELETE on t_arme TO "GestionnairesDeBoutique";
+    GRANT SELECT on t_commande TO "GestionnairesDeBoutique";
     --Créer l'utlisateur Gestionnaire de boutique 
-    CREATE USER "GestionnaireDeBoutique"@"localhost" IDENTIFIED BY "GestionnairePass";
+    CREATE USER "GestionnaireDeBoutique" IDENTIFIED BY "GestionnairePass";
     --Attribuer les droits
-    GRANT "GestionnairesDeBoutique"@"localhost" TO "GestionnaireDeBoutique"@"localhost";
+    GRANT "GestionnairesDeBoutique" TO "GestionnaireDeBoutique";
+    --Activer le rôle
+    SET DEFAULT ROLE "GestionnairesDeBoutique" TO "GestionnaireDeBoutique";
+
 
 --Vérifier les privilèges de chaque rôle
-    SHOW GRANTS FOR "Administrateurs"@"localhost";
-    SHOW GRANTS FOR "Joueurs"@"localhost";
-    SHOW GRANTS FOR "GestionnairesDeBoutique"@"localhost";
+    SHOW GRANTS FOR "Administrateurs" ;
+    SHOW GRANTS FOR "Joueurs" ;
+    SHOW GRANTS FOR "GestionnairesDeBoutique" ;
