@@ -46,8 +46,7 @@
               "RelativeToolTip": "TankBattle\\Protection.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-02T13:54:33.264Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-02T13:54:33.264Z"
             },
             {
               "$type": "Document",
@@ -59,8 +58,7 @@
               "RelativeToolTip": "TankBattle\\PlayerBullet.cs",
               "ViewState": "AQIAAAgAAAAAAAAAAAAxwEoAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-20T08:59:21.896Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-20T08:59:21.896Z"
             },
             {
               "$type": "Document",
@@ -70,7 +68,7 @@
               "RelativeDocumentMoniker": "TankBattle\\GameRoot.cs",
               "ToolTip": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattle\\TankBattle\\GameRoot.cs",
               "RelativeToolTip": "TankBattle\\GameRoot.cs",
-              "ViewState": "AQIAADAAAAAAAAAAAAAowE8AAAAiAAAA",
+              "ViewState": "AQIAADYAAAAAAAAAAAAowEoAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-20T07:30:24.281Z",
               "EditorCaption": ""
@@ -85,8 +83,7 @@
               "RelativeToolTip": "TankBattle\\Ennemy.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAGAAAAA2AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-18T13:21:00.161Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-18T13:21:00.161Z"
             },
             {
               "$type": "Document",
@@ -98,8 +95,7 @@
               "RelativeToolTip": "TankBattle\\Player.cs",
               "ViewState": "AQIAAGIAAAAAAAAAAAAcwDoAAAALAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-18T14:12:12.708Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-18T14:12:12.708Z"
             },
             {
               "$type": "Document",
@@ -111,8 +107,7 @@
               "RelativeToolTip": "TankBattle\\Shell.cs",
               "ViewState": "AQIAAD0AAAAAAAAAAAAcwFMAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-18T13:58:34.426Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-18T13:58:34.426Z"
             }
           ]
         }

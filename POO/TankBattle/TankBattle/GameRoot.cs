@@ -19,8 +19,8 @@ namespace TankBattle
         public static List<Protection> Protections = new List<Protection>();
         //Créer une instance du joueur globale qui sera accessible partout.
         public static Player Player;
-        //La partie est elle lancée ? 
-        public static bool isGameStarted = false;
+        //Correspond à l'état précedent de la souris.
+        private MouseState previousMouseState;
 
         public GameRoot()
         {
@@ -65,18 +65,23 @@ namespace TankBattle
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            //Attendre que le joueur ait posé deux protections
-            MouseState mouseState = Mouse.GetState();
-            if(mouseState.LeftButton == ButtonState.Pressed && Protections.Count < 2)
+            //Enregistrer l'état de la souris
+            MouseState currentMouseState = Mouse.GetState();
+
+            //Si le joueur clic (simple clic max !) et que le nombre de protections est plus petit que 2.
+            if(currentMouseState.RightButton == ButtonState.Pressed && previousMouseState.RightButton == ButtonState.Released && Protections.Count < 2)
             {
-                Protection protection = new Protection(this, new Vector2(mouseState.Position.X, mouseState.Position.Y));
+                Protection protection = new Protection(this, new Vector2(currentMouseState.Position.X, currentMouseState.Position.Y));
                 Protections.Add(protection);
                 this.Components.Add(protection);
             }
-            
+
+            // Mettre à jour l'état précédent de la souris pour la prochaine boucle de mise à jour
+            previousMouseState = currentMouseState;
+
 
             // TODO: Add your update logic here
-            
+
             base.Update(gameTime);
 
             
