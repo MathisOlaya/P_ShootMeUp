@@ -10,6 +10,7 @@ namespace TankBattle
     {
         public static Texture2D texture; //Texture du joueur
         private static Texture2D HealthPointTexture;
+        private static Texture2D BulletIconTexture;
         private SpriteFont spriteFont;
         private SpriteBatch _spriteBatch;
 
@@ -35,6 +36,7 @@ namespace TankBattle
         private bool isReloading = false;
         private double _timerGunReloading;
         private double _RealodingTime = 1.5f;
+        private Color WhiteOppacity = Color.White;
 
         //HP---------------------------------------------------------------------------
         public int HealthPoint = 3;
@@ -60,6 +62,7 @@ namespace TankBattle
             texture = Game.Content.Load<Texture2D>("player");
             HealthPointTexture = Game.Content.Load<Texture2D>("player-healthpoint");
             spriteFont = Game.Content.Load<SpriteFont>("Font");
+            BulletIconTexture = Game.Content.Load<Texture2D>("icon-bullet");
         }
         public override void Update(GameTime gameTime)
         {
@@ -92,6 +95,12 @@ namespace TankBattle
             //Regarder s'il est en train de recharger.
             CheckReload(gameTime);
 
+            //Modifier l'opacité de l'icone de munition s'il recharge.
+            if (isReloading) WhiteOppacity.A = 50;
+            else WhiteOppacity.A = 255;
+
+            
+
             base.Update(gameTime);
         }
         public override void Draw(GameTime gameTime)
@@ -111,8 +120,11 @@ namespace TankBattle
             //Dessiner le joueur selon certains critères.
             _spriteBatch.Draw(texture, Position, null, Color.White, 0f, new Vector2(texture.Width / 2, texture.Height / 2), 0.5f, SpriteEffects.None, 0f);
 
+            //Dessiner une icone de munitions à coter du nombre de munition restante dans le chargeur. Baisser son opacité s'il recharge
+            _spriteBatch.Draw(BulletIconTexture, new Vector2(Config.WindowWidth - 100, Config.WindowHeight - 50), null, WhiteOppacity, 0f, new Vector2(0,0), 1.5f, SpriteEffects.None, 0f);
+       
             //Ecrire le nombre de munitions, en rouge s'il recharge.
-            if (isReloading)
+            if(isReloading)
                 _spriteBatch.DrawString(spriteFont, Ammo.ToString(), new Vector2(Config.WindowWidth - 50, Config.WindowHeight - 50), Color.Red);
             else
                 _spriteBatch.DrawString(spriteFont, Ammo.ToString(), new Vector2(Config.WindowWidth - 50, Config.WindowHeight - 50), Color.White);

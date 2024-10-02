@@ -11,8 +11,12 @@ namespace TankBattle
     public class Ennemy : DrawableGameComponent
     {
         public Texture2D texture; //Texture du joueur
+        private GraphicsDevice _graphicsDevice;
         private SpriteFont spriteFont;
         private SpriteBatch _spriteBatch;
+
+        //Tableau
+        public Texture2D[] LifeBarTextures = new Texture2D[3];
 
         //Variables 
         public Vector2 Position { get; private set; }
@@ -25,11 +29,10 @@ namespace TankBattle
 
         //HP
         public int HealthPoint = 2;
-        private Rectangle LifeBar;
 
         public Ennemy(Game game) : base(game)
         {
-            
+
         }
         public override void Initialize()
         {
@@ -86,7 +89,11 @@ namespace TankBattle
             //Charger le sprite 
             texture = Game.Content.Load<Texture2D>("tank");
             spriteFont = Game.Content.Load<SpriteFont>("Font");
-        }
+
+            LifeBarTextures[0] = Game.Content.Load<Texture2D>("LifeBar/dead");
+            LifeBarTextures[1] = Game.Content.Load<Texture2D>("LifeBar/mid");
+            LifeBarTextures[2] = Game.Content.Load<Texture2D>("LifeBar/full");
+    }
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
@@ -117,8 +124,10 @@ namespace TankBattle
             _spriteBatch.Begin();
             _spriteBatch.Draw(texture, Position, null, Color.White, MathF.PI, new Vector2(texture.Width / 2, texture.Height / 2), 1f, SpriteEffects.None, 0f);
 
-            //Dessiner
-            _spriteBatch.DrawString(spriteFont, HealthPoint.ToString(), new Vector2(Position.X, Position.Y - 105), Color.White);
+            //Dessiner la barre de vie du tank.
+            _spriteBatch.Draw(LifeBarTextures[HealthPoint], new Vector2(Position.X, Position.Y - 95), null, Color.White, 0f, new Vector2(LifeBarTextures[HealthPoint].Width / 2, LifeBarTextures[HealthPoint].Height / 2), 1.5f, SpriteEffects.None, 0f);
+
+            //_spriteBatch.DrawString(spriteFont, HealthPoint.ToString(), new Vector2(Position.X, Position.Y - 105), Color.White);
             _spriteBatch.End();
         }
         private void MoveToScene()

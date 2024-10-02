@@ -42,3 +42,7 @@ C:\Users\pg24muu\Documents\GitHub\P_ShootMeUp\POO\TankBattle\TankBattle\bin\Debu
 C:\Users\pg24muu\Documents\GitHub\P_ShootMeUp\POO\TankBattle\TankBattle\bin\Debug\net6.0-windows\Content\PlayerBullet.xnb
 C:\Users\pg24muu\Documents\GitHub\P_ShootMeUp\POO\TankBattle\TankBattle\bin\Debug\net6.0-windows\Content\TankBullet.xnb
 C:\Users\pg24muu\Documents\GitHub\P_ShootMeUp\POO\TankBattle\TankBattle\bin\Debug\net6.0-windows\Content\player-healthpoint.xnb
+C:\Users\pg24muu\Documents\GitHub\P_ShootMeUp\POO\TankBattle\TankBattle\bin\Debug\net6.0-windows\Content\LifeBar\dead.xnb
+C:\Users\pg24muu\Documents\GitHub\P_ShootMeUp\POO\TankBattle\TankBattle\bin\Debug\net6.0-windows\Content\LifeBar\full.xnb
+C:\Users\pg24muu\Documents\GitHub\P_ShootMeUp\POO\TankBattle\TankBattle\bin\Debug\net6.0-windows\Content\LifeBar\mid.xnb
+C:\Users\pg24muu\Documents\GitHub\P_ShootMeUp\POO\TankBattle\TankBattle\bin\Debug\net6.0-windows\Content\icon-bullet.xnb

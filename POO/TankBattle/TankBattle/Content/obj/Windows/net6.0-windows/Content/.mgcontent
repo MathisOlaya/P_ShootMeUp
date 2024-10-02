@@ -5,6 +5,10 @@
   <Config />
   <SourceFiles>
     <File>C:/Users/pg24muu/Documents/GitHub/P_ShootMeUp/POO/TankBattle/TankBattle/Content/Font.spritefont</File>
+    <File>C:/Users/pg24muu/Documents/GitHub/P_ShootMeUp/POO/TankBattle/TankBattle/Content/icon-bullet.png</File>
+    <File>C:/Users/pg24muu/Documents/GitHub/P_ShootMeUp/POO/TankBattle/TankBattle/Content/LifeBar/dead.png</File>
+    <File>C:/Users/pg24muu/Documents/GitHub/P_ShootMeUp/POO/TankBattle/TankBattle/Content/LifeBar/full.png</File>
+    <File>C:/Users/pg24muu/Documents/GitHub/P_ShootMeUp/POO/TankBattle/TankBattle/Content/LifeBar/mid.png</File>
     <File>C:/Users/pg24muu/Documents/GitHub/P_ShootMeUp/POO/TankBattle/TankBattle/Content/player-healthpoint.png</File>
     <File>C:/Users/pg24muu/Documents/GitHub/P_ShootMeUp/POO/TankBattle/TankBattle/Content/player.png</File>
     <File>C:/Users/pg24muu/Documents/GitHub/P_ShootMeUp/POO/TankBattle/TankBattle/Content/PlayerBullet.png</File>
@@ -12,6 +16,10 @@
     <File>C:/Users/pg24muu/Documents/GitHub/P_ShootMeUp/POO/TankBattle/TankBattle/Content/TankBullet.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
