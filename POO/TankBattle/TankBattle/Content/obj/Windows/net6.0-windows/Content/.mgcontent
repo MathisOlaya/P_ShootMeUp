@@ -12,10 +12,12 @@
     <File>C:/Users/pg24muu/Documents/GitHub/P_ShootMeUp/POO/TankBattle/TankBattle/Content/player-healthpoint.png</File>
     <File>C:/Users/pg24muu/Documents/GitHub/P_ShootMeUp/POO/TankBattle/TankBattle/Content/player.png</File>
     <File>C:/Users/pg24muu/Documents/GitHub/P_ShootMeUp/POO/TankBattle/TankBattle/Content/PlayerBullet.png</File>
+    <File>C:/Users/pg24muu/Documents/GitHub/P_ShootMeUp/POO/TankBattle/TankBattle/Content/sand-bag.png</File>
     <File>C:/Users/pg24muu/Documents/GitHub/P_ShootMeUp/POO/TankBattle/TankBattle/Content/tank.png</File>
     <File>C:/Users/pg24muu/Documents/GitHub/P_ShootMeUp/POO/TankBattle/TankBattle/Content/TankBullet.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

@@ -12,18 +12,22 @@ namespace TankBattle
         private SpriteBatch _spriteBatch;
 
         //Nombres de tanks
-        public const int TANK_NUMBERS = 1;
+        public const int TANK_NUMBERS = 6;
         //Liste de tous les tanks
         public static List<Ennemy> Tanks = new List<Ennemy>();
+        //Liste de toutes les protections
+        public static List<Protection> Protections = new List<Protection>();
         //Créer une instance du joueur globale qui sera accessible partout.
         public static Player Player;
+        //La partie est elle lancée ? 
+        public static bool isGameStarted = false;
 
         public GameRoot()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-
+            
             //Changer la taille de la fenêtre 
             _graphics.PreferredBackBufferWidth = 1280;
             _graphics.PreferredBackBufferHeight = 720;
@@ -40,13 +44,12 @@ namespace TankBattle
             Components.Add(Player);
 
             //Ajouter un nouveau tank à la liste.
-            for(int i = 0; i < TANK_NUMBERS; i++)
+            for (int i = 0; i < TANK_NUMBERS; i++)
             {
                 Components.Add(new Ennemy(this));
             }
             
             
-
             base.Initialize();
         }
 
@@ -62,9 +65,21 @@ namespace TankBattle
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
+            //Attendre que le joueur ait posé deux protections
+            MouseState mouseState = Mouse.GetState();
+            if(mouseState.LeftButton == ButtonState.Pressed && Protections.Count < 2)
+            {
+                Protection protection = new Protection(this, new Vector2(mouseState.Position.X, mouseState.Position.Y));
+                Protections.Add(protection);
+                this.Components.Add(protection);
+            }
+            
 
+            // TODO: Add your update logic here
+            
             base.Update(gameTime);
+
+            
         }
 
         protected override void Draw(GameTime gameTime)
