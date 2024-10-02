@@ -16,12 +16,15 @@ namespace TankBattle
 
         //Variables 
         public Vector2 Position { get; private set; }
-        private const int _EnnemyPositionY = 100; //Position finale en Y du tank.
+        private const int _EnnemyPositionY = 125; //Position finale en Y du tank.
         private bool IsTankReadyToShoot = false;
 
         //Timer 
         private double _timerCoolDownShoot;
-        private double _interval = 3f;
+        private double _interval = GlobalHelpers.GenerateRandom(15, 25) / 10;   //interval entre chaque tir du tank.
+
+        //HP
+        public int HealthPoint = 2;
 
         public Ennemy(Game game) : base(game)
         {
@@ -32,7 +35,7 @@ namespace TankBattle
             base.Initialize();
 
             // Calculer la position de départ initiale
-            Position = new Vector2(GlobalHelpers.GenerateRandom(50, Config.WindowWidth - 50), -150);
+            Position = new Vector2(GlobalHelpers.GenerateRandom(50, Config.WindowWidth - 50), GlobalHelpers.GenerateRandom(-250,-50 ));
 
             GameRoot.Tanks.Add(this);
 
@@ -56,7 +59,7 @@ namespace TankBattle
                             Position.X >= GameRoot.Tanks[i].Position.X - GameRoot.Tanks[i].texture.Width)
                         {
                             // Si les positions se chevauchent, générer une nouvelle position et recommencer la vérification
-                            Position = new Vector2(GlobalHelpers.GenerateRandom(50, Config.WindowWidth - 50), -150);
+                            Position = new Vector2(GlobalHelpers.GenerateRandom(50, Config.WindowWidth - 50), GlobalHelpers.GenerateRandom(-350, -150));
                             isValidPosition = false;  // La position n'est pas correcte, donc il faut continuer à vérifier
                             break;  // Recommencer la vérification des tanks avec la nouvelle position
                         }
@@ -81,6 +84,7 @@ namespace TankBattle
 
             //Charger le sprite 
             texture = Game.Content.Load<Texture2D>("tank");
+            spriteFont = Game.Content.Load<SpriteFont>("Font");
         }
         public override void Update(GameTime gameTime)
         {
@@ -111,6 +115,8 @@ namespace TankBattle
 
             _spriteBatch.Begin();
             _spriteBatch.Draw(texture, Position, null, Color.White, MathF.PI, new Vector2(texture.Width / 2, texture.Height / 2), 1f, SpriteEffects.None, 0f);
+            //Ecrire les vies restantes du tank au dessus de sa position
+            _spriteBatch.DrawString(spriteFont, HealthPoint.ToString(), new Vector2(Position.X, Position.Y - 105), Color.White);
             _spriteBatch.End();
         }
         private void MoveToScene()

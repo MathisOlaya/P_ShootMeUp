@@ -68,12 +68,20 @@ namespace TankBattle
             {
                 if(CollisionHelpers.IsCollidingWith(_BulletPosition, tank))
                 {
-                    //Supprimer le tank
-                    Game.Components.Remove(tank);
-                    //Ajouter le tank à la liste de suppression
-                    TankToRemove.Add(tank);
                     //Supprimer la munition
                     Game.Components.Remove(this);
+
+                    //Retirer une vie au tank
+                    tank.HealthPoint -= 1;
+
+                    //S'il n'a plus de vie, le supprimer
+                    if(tank.HealthPoint == 0)
+                    {
+                        //Supprimer le tank
+                        Game.Components.Remove(tank);
+                        //Ajouter le tank à la liste de suppression
+                        TankToRemove.Add(tank);
+                    }
                 }
             }
             foreach(Ennemy DeadTank in TankToRemove)

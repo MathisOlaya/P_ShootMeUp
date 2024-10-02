@@ -36,6 +36,7 @@ namespace TankBattle
         private double _RealodingTime = 1.5f;
 
         //HP---------------------------------------------------------------------------
+        public int HealthPoint = 3;
 
         public Player(Game game) : base(game)
         {
@@ -101,6 +102,9 @@ namespace TankBattle
                 _spriteBatch.DrawString(spriteFont, Ammo.ToString(), new Vector2(Config.WindowWidth - 50, Config.WindowHeight - 50), Color.Red);
             else
                 _spriteBatch.DrawString(spriteFont, Ammo.ToString(), new Vector2(Config.WindowWidth - 50, Config.WindowHeight - 50), Color.White);
+
+            //Ecrire le nombre de vie 
+            _spriteBatch.DrawString(spriteFont, HealthPoint.ToString(), new Vector2(50, Config.WindowHeight - 50), Color.White);
 
             //Finir le dessin.
             _spriteBatch.End();

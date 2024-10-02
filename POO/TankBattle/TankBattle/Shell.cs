@@ -70,12 +70,20 @@ namespace TankBattle
         {
             if(CollisionHelpers.IsCollidingWith(_ShellPosition, GameRoot.Player))
             {
-                //Supprimer le joueur
-                Game.Components.Remove(GameRoot.Player);
-                GameRoot.Player = null;
-
                 //Supprimer la munition
                 Game.Components.Remove(this);
+
+                //Retirer une vie au joueur
+                GameRoot.Player.HealthPoint -= 1;
+
+                //Si il n'a plus de vie, le supprimer
+                if (GameRoot.Player.HealthPoint == 0)
+                {
+                    //Supprimer le joueur
+                    Game.Components.Remove(GameRoot.Player);
+                    GameRoot.Player = null;
+                }
+                
             }
         }
     }
