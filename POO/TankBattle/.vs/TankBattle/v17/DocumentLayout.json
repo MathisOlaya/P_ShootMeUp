@@ -46,8 +46,7 @@
               "RelativeToolTip": "TankBattle\\CollisionHelpers.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-25T11:18:08.903Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-25T11:18:08.903Z"
             },
             {
               "$type": "Document",
@@ -59,8 +58,7 @@
               "RelativeToolTip": "TankBattle\\PlayerBullet.cs",
               "ViewState": "AQIAAEEAAAAAAAAAAAAuwFMAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-20T08:59:21.896Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-20T08:59:21.896Z"
             },
             {
               "$type": "Document",
@@ -72,8 +70,7 @@
               "RelativeToolTip": "TankBattle\\GameRoot.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-20T07:30:24.281Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-20T07:30:24.281Z"
             },
             {
               "$type": "Document",
@@ -83,7 +80,7 @@
               "RelativeDocumentMoniker": "TankBattle\\Ennemy.cs",
               "ToolTip": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattle\\TankBattle\\Ennemy.cs",
               "RelativeToolTip": "TankBattle\\Ennemy.cs",
-              "ViewState": "AQIAAGUAAAAAAAAAAAAcwIAAAAAjAAAA",
+              "ViewState": "AQIAAGEAAAAAAAAAAAAowHcAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-18T13:21:00.161Z",
               "EditorCaption": ""
@@ -96,7 +93,7 @@
               "RelativeDocumentMoniker": "TankBattle\\Player.cs",
               "ToolTip": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattle\\TankBattle\\Player.cs",
               "RelativeToolTip": "TankBattle\\Player.cs",
-              "ViewState": "AQIAADsAAAAAAAAAAAA0wDcAAAAYAAAA",
+              "ViewState": "AQIAADkAAAAAAAAAAAAIwGkAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-18T14:12:12.708Z",
               "EditorCaption": ""
@@ -111,8 +108,7 @@
               "RelativeToolTip": "TankBattle\\Shell.cs",
               "ViewState": "AQIAAD0AAAAAAAAAAAAcwFMAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-18T13:58:34.426Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-18T13:58:34.426Z"
             }
           ]
         }

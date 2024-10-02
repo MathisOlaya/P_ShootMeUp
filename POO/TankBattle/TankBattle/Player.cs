@@ -9,6 +9,7 @@ namespace TankBattle
     public class Player : DrawableGameComponent
     {
         public static Texture2D texture; //Texture du joueur
+        private static Texture2D HealthPointTexture;
         private SpriteFont spriteFont;
         private SpriteBatch _spriteBatch;
 
@@ -25,7 +26,7 @@ namespace TankBattle
         private readonly int MarginRightSize = Config.WindowWidth - 50;
 
         //Gun--------------------------------------------------------------------------
-        //Timer du cooldown pour le tir
+        //Timer du cooldown aadpour le tir
         private double _timerCoolDownShoot;
         private double _interval = 0.2f;
 
@@ -37,6 +38,8 @@ namespace TankBattle
 
         //HP---------------------------------------------------------------------------
         public int HealthPoint = 3;
+        private readonly Vector2 HEALTH_SPRITE_DEFAULT_POS = new Vector2(35, Config.WindowHeight - 35);
+        private Vector2 HealthSpritePosition;
 
         public Player(Game game) : base(game)
         {
@@ -55,6 +58,7 @@ namespace TankBattle
 
             //Ajouter le sprite du joueur
             texture = Game.Content.Load<Texture2D>("player");
+            HealthPointTexture = Game.Content.Load<Texture2D>("player-healthpoint");
             spriteFont = Game.Content.Load<SpriteFont>("Font");
         }
         public override void Update(GameTime gameTime)
@@ -94,6 +98,16 @@ namespace TankBattle
         {
             //Lancer le dessin.
             _spriteBatch.Begin();
+
+            //Repositionner la position du premier casque, à la position par défaut. Sinon les casques avanceront de 50 à chaque tic jusqu'à sortir de l'écran
+            HealthSpritePosition = HEALTH_SPRITE_DEFAULT_POS;
+            //Ecrire le nombre de vie
+            for (int i = 0; i < HealthPoint; i++)
+            {
+                _spriteBatch.Draw(HealthPointTexture, HealthSpritePosition, null, Color.White, 0f, new Vector2(HealthPointTexture.Width / 2, HealthPointTexture.Height / 2), 1.5f, SpriteEffects.None, 0f);
+                HealthSpritePosition.X += 50;
+            }
+
             //Dessiner le joueur selon certains critères.
             _spriteBatch.Draw(texture, Position, null, Color.White, 0f, new Vector2(texture.Width / 2, texture.Height / 2), 0.5f, SpriteEffects.None, 0f);
 
@@ -102,9 +116,7 @@ namespace TankBattle
                 _spriteBatch.DrawString(spriteFont, Ammo.ToString(), new Vector2(Config.WindowWidth - 50, Config.WindowHeight - 50), Color.Red);
             else
                 _spriteBatch.DrawString(spriteFont, Ammo.ToString(), new Vector2(Config.WindowWidth - 50, Config.WindowHeight - 50), Color.White);
-
-            //Ecrire le nombre de vie 
-            _spriteBatch.DrawString(spriteFont, HealthPoint.ToString(), new Vector2(50, Config.WindowHeight - 50), Color.White);
+            
 
             //Finir le dessin.
             _spriteBatch.End();

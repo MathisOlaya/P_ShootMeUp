@@ -25,6 +25,7 @@ namespace TankBattle
 
         //HP
         public int HealthPoint = 2;
+        private Rectangle LifeBar;
 
         public Ennemy(Game game) : base(game)
         {
@@ -115,7 +116,8 @@ namespace TankBattle
 
             _spriteBatch.Begin();
             _spriteBatch.Draw(texture, Position, null, Color.White, MathF.PI, new Vector2(texture.Width / 2, texture.Height / 2), 1f, SpriteEffects.None, 0f);
-            //Ecrire les vies restantes du tank au dessus de sa position
+
+            //Dessiner
             _spriteBatch.DrawString(spriteFont, HealthPoint.ToString(), new Vector2(Position.X, Position.Y - 105), Color.White);
             _spriteBatch.End();
         }
