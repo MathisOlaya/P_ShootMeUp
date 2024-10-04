@@ -11,7 +11,10 @@ namespace TankBattle
         private SpriteBatch _spriteBatch;
         //Variables
         private Texture2D texture;
-        private Vector2 Position {  get; set; }
+        public Vector2 Position {  get; private set; }
+
+        //HP
+        public int HealthPoint = 5;
 
         public Protection(Game game, Vector2 mousePosition) : base(game)
         {

@@ -12,15 +12,16 @@ namespace TankBattle
         private SpriteBatch _spriteBatch;
 
         //Nombres de tanks
-        public const int TANK_NUMBERS = 6;
+        public const int TANK_NUMBERS = 1;
         //Liste de tous les tanks
         public static List<Ennemy> Tanks = new List<Ennemy>();
         //Liste de toutes les protections
         public static List<Protection> Protections = new List<Protection>();
         //Créer une instance du joueur globale qui sera accessible partout.
         public static Player Player;
-        //Correspond à l'état précedent de la souris.
-        private MouseState previousMouseState;
+        
+
+
 
         public GameRoot()
         {
@@ -64,21 +65,6 @@ namespace TankBattle
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
-            //Enregistrer l'état de la souris
-            MouseState currentMouseState = Mouse.GetState();
-
-            //Si le joueur clic (simple clic max !) et que le nombre de protections est plus petit que 2.
-            if(currentMouseState.RightButton == ButtonState.Pressed && previousMouseState.RightButton == ButtonState.Released && Protections.Count < 2)
-            {
-                Protection protection = new Protection(this, new Vector2(currentMouseState.Position.X, currentMouseState.Position.Y));
-                Protections.Add(protection);
-                this.Components.Add(protection);
-            }
-
-            // Mettre à jour l'état précédent de la souris pour la prochaine boucle de mise à jour
-            previousMouseState = currentMouseState;
-
 
             // TODO: Add your update logic here
 

@@ -68,7 +68,11 @@ namespace TankBattle
         
         private void CheckCollisions()
         {
-            if(CollisionHelpers.IsCollidingWith(_ShellPosition, GameRoot.Player))
+            //Créer une liste qui contiendra les protections a supprimer, car je ne peux pas le supprimer directement, sinon cela produit une erreur
+            List<Protection> ProtectionToRemove = new List<Protection>();
+
+
+            if (CollisionHelpers.IsCollidingWith(_ShellPosition, GameRoot.Player))
             {
                 //Supprimer la munition
                 Game.Components.Remove(this);
@@ -83,7 +87,32 @@ namespace TankBattle
                     Game.Components.Remove(GameRoot.Player);
                     GameRoot.Player = null;
                 }
-                
+            }
+
+            //Checker les collisions avec les protections
+            foreach(Protection protection in GameRoot.Protections)
+            {
+                if(CollisionHelpers.IsCollidingWith(_ShellPosition, protection))
+                {
+                    //Supprimer la shell
+                    Game.Components.Remove(this);
+
+                    //Retirer une vie à la protection
+                    protection.HealthPoint -= 1;
+
+                    if (protection.HealthPoint < 1)
+                    {
+                        //Supprimer la protection
+                        Game.Components.Remove(protection);
+
+                        //Ajouter à la liste de suppression
+                        ProtectionToRemove.Add(protection);
+                    }
+                }
+            }
+            foreach (Protection NoLifeProtection in ProtectionToRemove)
+            {
+                GameRoot.Protections.Remove(NoLifeProtection);
             }
         }
     }

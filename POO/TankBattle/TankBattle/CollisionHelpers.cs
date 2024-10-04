@@ -20,5 +20,12 @@ namespace TankBattle
                    bullet.X > entity.Position.X - (Player.texture.Width * 1f) / 4 &&
                    bullet.X < entity.Position.X + (Player.texture.Width * 1f) / 4);
         }
+        public static bool IsCollidingWith(Vector2 bullet, Protection entity)
+        {
+            return (bullet.Y < entity.Position.Y + (Player.texture.Height * 1f) / 4 &&
+                   bullet.Y > entity.Position.Y - (Player.texture.Height * 1f) / 4 &&
+                   bullet.X > entity.Position.X - (Player.texture.Width * 1f) / 4 &&
+                   bullet.X < entity.Position.X + (Player.texture.Width * 1f) / 4);
+        }
     }
 }

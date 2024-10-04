@@ -63,6 +63,8 @@ namespace TankBattle
         {
             //Créer une liste qui contiendra les tanks a supprimer, car je ne peux pas le supprimer directement, sinon cela produit une erreur
             List<Ennemy> TankToRemove = new List<Ennemy>();
+            //Créer une liste qui contiendra les protections a supprimer, car je ne peux pas le supprimer directement, sinon cela produit une erreur
+            List<Protection> ProtectionToRemove = new List<Protection>();
 
             foreach (Ennemy tank in GameRoot.Tanks)
             {
@@ -71,11 +73,11 @@ namespace TankBattle
                     //Supprimer la munition
                     Game.Components.Remove(this);
 
-                    //Retirer une vie au tank
-                    tank.HealthPoint -= 1;
+                    //Retirer une vie au tank si elle ne vaut pas 0
+                    tank.HealthPoint -=1;
 
                     //S'il n'a plus de vie, le supprimer
-                    if(tank.HealthPoint == 0)
+                    if (tank.HealthPoint < 1)
                     {
                         //Supprimer le tank
                         Game.Components.Remove(tank);
@@ -87,6 +89,33 @@ namespace TankBattle
             foreach(Ennemy DeadTank in TankToRemove)
             {
                 GameRoot.Tanks.Remove(DeadTank);
+            }
+
+            //Checker les collisions avec les protections 
+            foreach (Protection protection in GameRoot.Protections)
+            {
+                if (CollisionHelpers.IsCollidingWith(_BulletPosition, protection))
+                {
+                    //Supprimer la munition
+                    Game.Components.Remove(this);
+
+                    //Retirer une vie à la protection
+                    protection.HealthPoint -= 1;
+
+                    if (protection.HealthPoint < 1)
+                    {
+                        //Supprimer la protection
+                        Game.Components.Remove(protection);
+
+                        //Ajouter à la liste de suppression
+                        ProtectionToRemove.Add(protection);
+                    }
+
+                }
+            }
+            foreach (Protection NoLifeProtection in ProtectionToRemove)
+            {
+                GameRoot.Protections.Remove(NoLifeProtection);
             }
         }
     }
