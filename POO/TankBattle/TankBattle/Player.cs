@@ -78,61 +78,63 @@ namespace TankBattle
         }
         public override void Update(GameTime gameTime)
         {
-            //A chaque tics, rajouter le temps passé dans le timer 
+            // A chaque tics, rajouter le temps passé dans le timer 
             _timerCoolDownShoot += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            //Si il ne dépasse pas les limites, on le fait bouger 
+            // Si il ne dépasse pas les limites, on le fait bouger 
             if (CheckLimit())
             {
                 Velocity = Input.GetMovementDirection() * SPEED;
                 Position += Velocity.ToPoint().ToVector2();
-                //Permet de limiter la position du joueur.
                 Position = Vector2.Clamp(Position, new Vector2(MarginLeftSize + 1, Position.Y), new Vector2(MarginRightSize - 1, Position.Y));
             }
 
-            //Regarder si le joueur à tirer.
+            // Regarder si le joueur à tirer.
             if (Input.IsShooting() && _timerCoolDownShoot >= _interval && Ammo > 0 && isReloading == false)
             {
                 PlayerBullet bullet = new PlayerBullet(Game, Position);
                 Game.Components.Add(bullet);
 
-                //Réinitialiser le timer
+                // Réinitialiser le timer
                 _timerCoolDownShoot = 0f;
 
-                //Retirer une munition du chargeur 
+                // Retirer une munition du chargeur 
                 Ammo--;
             }
-            //Regarder si le joueur appuie sur 'R' pour recharger son arme.
-            if(Input.IsReloading()) isReloading = true;
-            //Regarder s'il est en train de recharger.
+
+            // Regarder si le joueur appuie sur 'R' pour recharger son arme.
+            if (Input.IsReloading()) isReloading = true;
             CheckReload(gameTime);
 
-            //Modifier l'opacité de l'icone de munition s'il recharge.
-            if (isReloading) WhiteOppacity.A = 50;
-            else WhiteOppacity.A = 255;
+            // Modifier l'opacité de l'icone de munition s'il recharge.
+            WhiteOppacity.A = isReloading ? (byte)50 : (byte)255;
 
-            //Timer du délai de posement des protections 
+            // Timer du délai de posement des protections 
             if (isTimerProtectionDelayStarted)
-                ProtectionPlacementTimer += (float)gameTime.TotalGameTime.TotalSeconds;
+            {
+                ProtectionPlacementTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            //S'il a attendu suffisement longtemps
-            if (ProtectionPlacementTimer > PROTECTION_PLACEMENT_DELAY)
-                canHePlaceProtection = true;
-            Console.WriteLine(canHePlaceProtection);
-            //Enregistrer l'état de la souris
+                // Si le joueur a attendu suffisamment longtemps (20 secondes)
+                if (ProtectionPlacementTimer >= PROTECTION_PLACEMENT_DELAY / 1000f) // Conversion en secondes
+                {
+                    canHePlaceProtection = true;
+                    ProtectionPlacementTimer = 0f; // Réinitialiser le timer
+                    isTimerProtectionDelayStarted = false;
+                }
+            }
+            Console.WriteLine(ProtectionPlacementTimer);
+            // Enregistrer l'état de la souris
             MouseState currentMouseState = Mouse.GetState();
 
-            //Si le joueur clic (simple clic max !) et que le nombre de protections est plus petit que 2.
-            if (currentMouseState.RightButton == ButtonState.Pressed && previousMouseState.RightButton == ButtonState.Released && canHePlaceProtection == true)
+            // Si le joueur clic droit et peut placer une protection
+            if (currentMouseState.RightButton == ButtonState.Pressed && previousMouseState.RightButton == ButtonState.Released && canHePlaceProtection)
             {
                 Protection protection = new Protection(Game, new Vector2(currentMouseState.Position.X, currentMouseState.Position.Y));
                 GameRoot.Protections.Add(protection);
                 this.Game.Components.Add(protection);
 
-                //Lancer le timer de délai
+                // Lancer le timer de délai
                 isTimerProtectionDelayStarted = true;
-
-                //refuser le positionnement de protection
                 canHePlaceProtection = false;
             }
 
@@ -141,6 +143,7 @@ namespace TankBattle
 
             base.Update(gameTime);
         }
+
         public override void Draw(GameTime gameTime)
         {
             //Lancer le dessin.
@@ -160,10 +163,27 @@ namespace TankBattle
 
             //Dessiner une icone de munitions à coter du nombre de munition restante dans le chargeur. Baisser son opacité s'il recharge
             _spriteBatch.Draw(BulletIconTexture, new Vector2(Config.WindowWidth - 100, Config.WindowHeight - 50), null, WhiteOppacity, 0f, new Vector2(0,0), 1.5f, SpriteEffects.None, 0f);
-            
-            //
+
+            // Calcul du temps restant en secondes avant que le joueur puisse placer une nouvelle protection
+            double timeRemaining = (PROTECTION_PLACEMENT_DELAY / 1000f) - ProtectionPlacementTimer;
+
+            // S'assurer que le temps restant soit bien 0 quand le joueur peut placer une protection
+            if (canHePlaceProtection)
+            {
+                timeRemaining = 0;
+            }
+            else
+            {
+                // Sinon, s'assurer que le temps restant n'est pas négatif
+                timeRemaining = Math.Max(0, timeRemaining);
+            }
+
+            // Afficher le temps restant avant le prochain placement de protection
+            _spriteBatch.DrawString(spriteFont, timeRemaining.ToString("0.0"), new Vector2(Config.WindowWidth - 60, Config.WindowHeight - 100), Color.Red);
+
+
             //Ecrire le nombre de munitions, en rouge s'il recharge.
-            if(isReloading)
+            if (isReloading)
                 _spriteBatch.DrawString(spriteFont, Ammo.ToString(), new Vector2(Config.WindowWidth - 50, Config.WindowHeight - 50), Color.Red);
             else
                 _spriteBatch.DrawString(spriteFont, Ammo.ToString(), new Vector2(Config.WindowWidth - 50, Config.WindowHeight - 50), Color.White);
