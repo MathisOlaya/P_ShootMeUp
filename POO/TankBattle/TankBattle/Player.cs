@@ -55,6 +55,11 @@ namespace TankBattle
         public static bool isTimerProtectionDelayStarted = false;
         private bool canHePlaceProtection = true;
 
+        // Ajoute une variable pour compter les structures placées.
+        private int structuresPlaced = 0;
+        private const int MAX_STRUCTURES = 2;
+        private bool isInSinglePlacementMode = false; // Mode pour une seule structure après le timer.
+
         public Player(Game game) : base(game)
         {
             DEFAULT_POS = new Vector2(Config.WindowWidth / 2, Config.WindowHeight - Config.WindowHeight / 8);
@@ -76,6 +81,10 @@ namespace TankBattle
             spriteFont = Game.Content.Load<SpriteFont>("Font");
             BulletIconTexture = Game.Content.Load<Texture2D>("icon-bullet");
         }
+
+
+
+
         public override void Update(GameTime gameTime)
         {
             // A chaque tics, rajouter le temps passé dans le timer 
@@ -120,22 +129,37 @@ namespace TankBattle
                     canHePlaceProtection = true;
                     ProtectionPlacementTimer = 0f; // Réinitialiser le timer
                     isTimerProtectionDelayStarted = false;
+
+                    // Si deux structures ont été placées, passer en mode "placement unique".
+                    if (structuresPlaced >= MAX_STRUCTURES)
+                    {
+                        isInSinglePlacementMode = true;
+                    }
+                    structuresPlaced = 0; // Réinitialiser le compteur de structures placées
                 }
             }
-            Console.WriteLine(ProtectionPlacementTimer);
+
             // Enregistrer l'état de la souris
             MouseState currentMouseState = Mouse.GetState();
 
-            // Si le joueur clic droit et peut placer une protection
+            // Gestion du placement selon le mode : deux structures ou une structure après délai
             if (currentMouseState.RightButton == ButtonState.Pressed && previousMouseState.RightButton == ButtonState.Released && canHePlaceProtection)
             {
-                Protection protection = new Protection(Game, new Vector2(currentMouseState.Position.X, currentMouseState.Position.Y));
-                GameRoot.Protections.Add(protection);
-                this.Game.Components.Add(protection);
+                if ((isInSinglePlacementMode && structuresPlaced < 1) || (!isInSinglePlacementMode && structuresPlaced < MAX_STRUCTURES))
+                {
+                    Protection protection = new Protection(Game, new Vector2(currentMouseState.Position.X, currentMouseState.Position.Y));
+                    GameRoot.Protections.Add(protection);
+                    this.Game.Components.Add(protection);
 
-                // Lancer le timer de délai
-                isTimerProtectionDelayStarted = true;
-                canHePlaceProtection = false;
+                    structuresPlaced++; // Incrémenter le nombre de structures placées
+
+                    if (structuresPlaced >= MAX_STRUCTURES || (isInSinglePlacementMode && structuresPlaced >= 1))
+                    {
+                        // Lancer le timer de délai seulement après avoir placé une ou deux structures selon le mode
+                        isTimerProtectionDelayStarted = true;
+                        canHePlaceProtection = false;
+                    }
+                }
             }
 
             // Mettre à jour l'état précédent de la souris pour la prochaine boucle de mise à jour
@@ -146,23 +170,23 @@ namespace TankBattle
 
         public override void Draw(GameTime gameTime)
         {
-            //Lancer le dessin.
+            // Lancer le dessin.
             _spriteBatch.Begin();
 
-            //Repositionner la position du premier casque, à la position par défaut. Sinon les casques avanceront de 50 à chaque tic jusqu'à sortir de l'écran
+            // Repositionner la position du premier casque, à la position par défaut. Sinon les casques avanceront de 50 à chaque tic jusqu'à sortir de l'écran
             HealthSpritePosition = HEALTH_SPRITE_DEFAULT_POS;
-            //Ecrire le nombre de vie
+            // Ecrire le nombre de vie
             for (int i = 0; i < HealthPoint; i++)
             {
                 _spriteBatch.Draw(HealthPointTexture, HealthSpritePosition, null, Color.White, 0f, new Vector2(HealthPointTexture.Width / 2, HealthPointTexture.Height / 2), 1.5f, SpriteEffects.None, 0f);
                 HealthSpritePosition.X += 50;
             }
 
-            //Dessiner le joueur selon certains critères.
+            // Dessiner le joueur selon certains critères.
             _spriteBatch.Draw(texture, Position, null, Color.White, 0f, new Vector2(texture.Width / 2, texture.Height / 2), 0.5f, SpriteEffects.None, 0f);
 
-            //Dessiner une icone de munitions à coter du nombre de munition restante dans le chargeur. Baisser son opacité s'il recharge
-            _spriteBatch.Draw(BulletIconTexture, new Vector2(Config.WindowWidth - 100, Config.WindowHeight - 50), null, WhiteOppacity, 0f, new Vector2(0,0), 1.5f, SpriteEffects.None, 0f);
+            // Dessiner une icone de munitions à côté du nombre de munition restante dans le chargeur. Baisser son opacité s'il recharge
+            _spriteBatch.Draw(BulletIconTexture, new Vector2(Config.WindowWidth - 100, Config.WindowHeight - 50), null, WhiteOppacity, 0f, new Vector2(0, 0), 1.5f, SpriteEffects.None, 0f);
 
             // Calcul du temps restant en secondes avant que le joueur puisse placer une nouvelle protection
             double timeRemaining = (PROTECTION_PLACEMENT_DELAY / 1000f) - ProtectionPlacementTimer;
@@ -181,18 +205,18 @@ namespace TankBattle
             // Afficher le temps restant avant le prochain placement de protection
             _spriteBatch.DrawString(spriteFont, timeRemaining.ToString("0.0"), new Vector2(Config.WindowWidth - 60, Config.WindowHeight - 100), Color.Red);
 
-
-            //Ecrire le nombre de munitions, en rouge s'il recharge.
+            // Ecrire le nombre de munitions, en rouge s'il recharge.
             if (isReloading)
                 _spriteBatch.DrawString(spriteFont, Ammo.ToString(), new Vector2(Config.WindowWidth - 50, Config.WindowHeight - 50), Color.Red);
             else
                 _spriteBatch.DrawString(spriteFont, Ammo.ToString(), new Vector2(Config.WindowWidth - 50, Config.WindowHeight - 50), Color.White);
-            
 
-            //Finir le dessin.
+            // Finir le dessin.
             _spriteBatch.End();
             base.Draw(gameTime);
         }
+
+
         private void CheckReload(GameTime gameTime)
         {
             //checker si le joueur est en train de charger.

@@ -12,7 +12,7 @@ namespace TankBattle
         private SpriteBatch _spriteBatch;
 
         //Nombres de tanks
-        public const int TANK_NUMBERS = 1;
+        public const int TANK_NUMBERS = 8;
         //Liste de tous les tanks
         public static List<Ennemy> Tanks = new List<Ennemy>();
         //Liste de toutes les protections
