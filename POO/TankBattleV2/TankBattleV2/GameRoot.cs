@@ -26,7 +26,7 @@ namespace TankBattleV2
             _graphics.PreferredBackBufferHeight = Config.WINDOW_HEIGHT;
             //Appliquer les changements de taille.
             _graphics.ApplyChanges();
-
+            
             base.Initialize();
         }
 

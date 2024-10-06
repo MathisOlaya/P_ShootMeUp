@@ -33,7 +33,7 @@ namespace TankBattleV2
             Player = new Player(EntityConfig.Player.Texture, GameRoot.spriteFont, GameRoot.spriteBatch, EntityConfig.Player.Position, EntityConfig.Player.HealthPoint, EntityConfig.Player.HealthPointSpritePosition, EntityConfig.Player.Scale, EntityConfig.Player.HitBox, EntityConfig.Player.Speed, EntityConfig.Bullet.CoolDownShoot, EntityConfig.Player.AmmoCapacity, EntityConfig.Player.TimeForReloading, EntityConfig.Player.HealthPointTexture);
             Add(Player);
             //Add tank
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 6; i++)
             {
                 // Ajouter le nouveau tank avec la position valide
                 Add(new Tank(EntityConfig.Tank.Texture, GameRoot.spriteFont, GameRoot.spriteBatch, EntityConfig.Tank.Position, EntityConfig.Tank.HealthPoint, EntityConfig.Tank.HealthPointSpritePosition, EntityConfig.Tank.Scale, EntityConfig.Tank.HitBox, EntityConfig.Tank.LifeBarScale, EntityConfig.Shell.CoolDownShoot));
@@ -91,14 +91,16 @@ namespace TankBattleV2
                 if (entity is Player player)
                     player.isAlive = false;
 
+                Remove(entity);
+
                 //Si c'est un tank, remettre sa position en disponible.
-                if(entity is Tank tank)
+                if (entity is Tank tank)
                 {
                     //Permet de changer la valeur "Value" à partir de la clé qui est un position.
-                    EntityConfig.Tank.spawnPoints[tank.Position] = true;
-                }
+                    EntityConfig.Tank.spawnPoints[new Vector2(tank.Position.X, -150)] = true;
+                    Add(new Tank(EntityConfig.Tank.Texture, GameRoot.spriteFont, GameRoot.spriteBatch, EntityConfig.Tank.Position, EntityConfig.Tank.HealthPoint, EntityConfig.Tank.HealthPointSpritePosition, EntityConfig.Tank.Scale, EntityConfig.Tank.HitBox, EntityConfig.Tank.LifeBarScale, EntityConfig.Shell.CoolDownShoot));
 
-                Remove(entity);
+                }
             }
         }
 
