@@ -3,12 +3,12 @@ Fichier texte contenant la ToDo-List du projet UX.
 	Analyse : 
 	⊠ Création de deux "Personas".
 	⊠ Choix d'une palette graphique.
-	▢ Faire une interface plus eco-friendly
+	⊠ Faire une interface plus eco-friendly
 	▢ Rendre l'interface plus accessible.
 
 	Conception : 
 	⊠ Créer tous les écrans (maquettes) en base-fidelité.
-	▢ Créer l'éditeur de niveau en maquette haute-fidelité.
+	⊠ Créer l'éditeur de niveau en maquette haute-fidelité.
 	▢ Expliquer les choix effectués.
 
 	Evaluation : 
