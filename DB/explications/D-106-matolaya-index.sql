@@ -21,4 +21,6 @@ pas le mot clé INDEX. */
 --3     Sur quel champ (de quelle table), cela pourrait être pertinent d?ajouter un index ?
 
       /*Sur les tables contenant beaucoup de données, ou qu'on appelle fréquemment. Dans notre cas
-      sur le champ jouPseudo de la table t_joueur. Car ce champ est appelé à chaque connexion du joueur et est généralement unique.
+      sur le champ jouPseudo de la table t_joueur. Car ce champ est appelé à chaque connexion du joueur et est généralement unique.*/
+      use db_space_invaders;
+      CREATE INDEX idx_jouPseudo ON t_joueur(jouPseudo);
