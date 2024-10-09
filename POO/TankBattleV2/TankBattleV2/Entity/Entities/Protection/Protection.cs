@@ -22,7 +22,7 @@ namespace TankBattleV2
 
         public override void Update(GameTime gameTime)
         {
-            Console.WriteLine("Update");
+            Console.Write("");
         }
         public override void Draw(GameTime gameTime)
         {

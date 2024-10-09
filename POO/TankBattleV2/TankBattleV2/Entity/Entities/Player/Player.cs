@@ -32,7 +32,7 @@ namespace TankBattleV2
         private Texture2D HealthPointTexture;
         private readonly Vector2 HEALTH_SPRITE_DEFAULT_POS;
 
-
+        private MouseState _previousMouseState;
 
         public Player(Texture2D texture, SpriteFont spriteFont, SpriteBatch spriteBatch, Vector2 position, int healthPoint, Vector2 healthSpritePosition, float scale, Rectangle hitBox, float speed, float coolDownShoot, int ammo, float timeForReloading, Texture2D healthPointTexture) : base(texture, spriteFont, spriteBatch, position, healthPoint, healthSpritePosition, scale, hitBox)
         {
@@ -56,11 +56,7 @@ namespace TankBattleV2
         {
             MovePlayer();
             Shoot(gameTime);
-
-            if (GlobalHelpers.Input.isPlacingProtection)
-            {
-                EntityManager.Add(new Protection(EntityConfig.Protection.Texture, SprintFont, SpriteBatch, GlobalHelpers.Input.GetMousePosition(), EntityConfig.Protection.HealthPoint, new Vector2(0, 0), EntityConfig.Protection.Scale, EntityConfig.Protection.HitBox));
-            }
+            Protection();
         }
         public override void Draw(GameTime gameTime)
         {
@@ -140,6 +136,15 @@ namespace TankBattleV2
                 //Retirer une munition du chargeur 
                 Ammo--;
             }
+        }
+        private void Protection()
+        {
+            if (GlobalHelpers.Input.isPlacingProtection && _previousMouseState.RightButton == ButtonState.Released)
+            {
+                EntityManager.Add(new Protection(EntityConfig.Protection.Texture, SprintFont, SpriteBatch, GlobalHelpers.Input.GetMousePosition(), EntityConfig.Protection.HealthPoint, new Vector2(0, 0), EntityConfig.Protection.Scale, EntityConfig.Protection.HitBox));
+            }
+            //Enregistrer l'état précédent de la souris. Permet de s'assure que le joueur à bien relacher le clic droit avant d'en reposer un.
+            _previousMouseState = GlobalHelpers.Input.GetMouseState();
         }
     }
 }
