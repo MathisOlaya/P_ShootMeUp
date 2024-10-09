@@ -57,6 +57,8 @@ namespace EntityConfig
 
         public static Vector2 Position;
 
+        public static readonly int LIMITE_POSITION_Y = 175;
+
         public static int HealthPoint = 2;
 
         public static Vector2 HealthPointSpritePosition = new Vector2(Config.WINDOW_WIDTH - 50, Config.WINDOW_HEIGHT - 50);

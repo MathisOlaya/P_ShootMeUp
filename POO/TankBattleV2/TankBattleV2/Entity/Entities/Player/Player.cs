@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using System;
 
 
+
 namespace TankBattleV2
 {
     public class Player : Entity, IMovable, IShootable
@@ -39,6 +40,7 @@ namespace TankBattleV2
         private bool isInSinglePlacementMode = false;   //Au lancement le joueur peut poser deux protections, puis après qu'une par une avec un délai de 20 secondes.
         private int structurePlaced = 0;                //Nombre de structure placée, permet d'activer le mode singleplacement quand il en a posé autant que MAX_STRUCTURE
         private const int MAX_STRUCTURE = 2;            //Limite de structure avant que le single mod s'active.
+        private Rectangle placementProtectionLimit;     //Concerne une zone ou le joueur peut poser des protections, étant donné qu'il ne peut pas les placer partout (ex: derrière le tank = impossible)
 
         public Player(Texture2D texture, SpriteFont spriteFont, SpriteBatch spriteBatch, Vector2 position, int healthPoint, Vector2 healthSpritePosition, float scale, Rectangle hitBox, float speed, float coolDownShoot, int ammo, float timeForReloading, Texture2D healthPointTexture) : base(texture, spriteFont, spriteBatch, position, healthPoint, healthSpritePosition, scale, hitBox)
         {
@@ -57,6 +59,8 @@ namespace TankBattleV2
             Direction = new Vector2(0, -1);
             Position = new Vector2(Config.WINDOW_WIDTH / 2 - (Texture.Width / 2 * Scale), Config.WINDOW_HEIGHT - 175);    //Positionner le joueur en bas au centre de l'écran.
             HitBox = new Rectangle((int)(Position.X - Texture.Width / 2 * Scale), (int)(Position.Y - Texture.Height / 2 * Scale), (int)(Texture.Width * Scale), (int)(Texture.Height * Scale));  //Créer la HitBox du joueur.
+            placementProtectionLimit = new Rectangle(0,(int)(EntityConfig.Tank.LIMITE_POSITION_Y + EntityConfig.Tank.Texture.Height / 2 * EntityConfig.Tank.Scale), Config.WINDOW_WIDTH, (int)(Config.WINDOW_HEIGHT - (EntityConfig.Tank.LIMITE_POSITION_Y + EntityConfig.Tank.Texture.Height / 2 * EntityConfig.Tank.Scale) - (Config.WINDOW_HEIGHT - Position.Y) - (Texture.Height / 2 * Scale)));
+            
         }
 
         public override void Update(GameTime gameTime)
@@ -64,7 +68,6 @@ namespace TankBattleV2
             MovePlayer();
             Shoot(gameTime);
             Protection(gameTime);
-            Console.WriteLine(TimeSinceLastProtectionPlaced);
         }
         public override void Draw(GameTime gameTime)
         {
@@ -77,6 +80,14 @@ namespace TankBattleV2
             //Dessiner le nombre de vies restantes au joueur.
             // Repositionner la position du premier casque, à la position par défaut. Sinon les casques avanceront de 50 à chaque tic jusqu'à sortir de l'écran
             HealthSpritePosition = HEALTH_SPRITE_DEFAULT_POS;
+
+            // Dessiner la HitBox
+            Texture2D rectangleTexture = new Texture2D(SpriteBatch.GraphicsDevice, 1, 1);
+            rectangleTexture.SetData(new Color[] { Color.Red });
+
+            SpriteBatch.Draw(rectangleTexture, placementProtectionLimit, Color.Red * 0.5f); // Le * 0.5f rend la couleur semi-transparente
+
+
             // Ecrire le nombre de vie
             for (int i = 0; i < HealthPoint; i++)
             {

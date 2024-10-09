@@ -71,11 +71,11 @@ namespace TankBattleV2
         private void MoveToScene(GameTime gameTime)
         {
             //Les tanks apparaissent avec une position négative en dehors de l'écran. Ils avancent jusqu'a une position Y précise, puis commencent à tirer.
-            Position += new Vector2(0, (Position.Y < 175) ? 1 : 0);
+            Position += new Vector2(0, (Position.Y < EntityConfig.Tank.LIMITE_POSITION_Y) ? 1 : 0);
             HitBox.Location = new Point((int)(Position.X - Texture.Width / 2 * Scale), (int)(Position.Y - Texture.Height / 2 * Scale));
 
             //Dès qu'il arrive, lancer le timer de délai entre chaque tir.
-            if (Position.Y == 175)
+            if (Position.Y == EntityConfig.Tank.LIMITE_POSITION_Y)
                 TimeSinceLastShot += (float)gameTime.ElapsedGameTime.TotalSeconds;
         }
         private void Shoot(GameTime gameTime)
