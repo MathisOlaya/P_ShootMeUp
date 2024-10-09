@@ -20,9 +20,10 @@ namespace TankBattleV2
         public float TimeBetweenEveryShot { get; set; }
         public Vector2 Direction { get; set; }
 
+
         //Munitions
         private int Ammo;
-        private Vector2 AmmoCapacityLocation = new Vector2(Config.WINDOW_WIDTH - 50, Config.WINDOW_HEIGHT - 75);
+        private Vector2 AmmoCapacityLocation = new Vector2(Config.WINDOW_WIDTH - 50, Config.WINDOW_HEIGHT - 115);
         private bool isReloading = false;
         private float TimeSinceReloadingStarted;
         private float TimeForReloading;
@@ -94,7 +95,9 @@ namespace TankBattleV2
             }
 
             //Dessiner le temps restant avant le placement de la prochaine protection
-            SpriteBatch.DrawString(SprintFont, Math.Round(TimeBetweenEveryProtectionPlacement - TimeSinceLastProtectionPlaced).ToString(), new Vector2(Config.WINDOW_WIDTH - 50, Config.WINDOW_HEIGHT - 115), Color.White);
+            SpriteBatch.DrawString(SprintFont, Math.Round(TimeBetweenEveryProtectionPlacement - TimeSinceLastProtectionPlaced).ToString(), new Vector2(Config.WINDOW_WIDTH - 50, Config.WINDOW_HEIGHT - 155), Color.White);
+
+            SpriteBatch.DrawString(SprintFont, EntityManager.Score.ToString(), new Vector2(Config.WINDOW_WIDTH - 50, Config.WINDOW_HEIGHT - 75), Color.White);
 
             SpriteBatch.End();
         }

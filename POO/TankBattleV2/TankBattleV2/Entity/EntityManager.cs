@@ -16,6 +16,10 @@ namespace TankBattleV2
 
         public static Player Player;
 
+        //Game
+        public static int Score { get; set; }
+        public static float GameTimer;
+
         public static void Add(Entity entity)
         {
             Entities.Add(entity);
@@ -47,6 +51,7 @@ namespace TankBattleV2
                 entity.Update(gameTime);
             }
             CheckCollisions();
+            Game(gameTime);
         }
         public static void Draw(GameTime gameTime)
         {
@@ -96,12 +101,20 @@ namespace TankBattleV2
                 //Si c'est un tank, remettre sa position en disponible.
                 if (entity is Tank tank)
                 {
+                    //Incrémenter le score
+                    Score += 500;
+
                     //Permet de changer la valeur "Value" à partir de la clé qui est un position.
                     EntityConfig.Tank.spawnPoints[new Vector2(tank.Position.X, -150)] = true;
                     Add(new Tank(EntityConfig.Tank.Texture, GameRoot.spriteFont, GameRoot.spriteBatch, EntityConfig.Tank.Position, EntityConfig.Tank.HealthPoint, EntityConfig.Tank.HealthPointSpritePosition, EntityConfig.Tank.Scale, EntityConfig.Tank.HitBox, EntityConfig.Tank.LifeBarScale, EntityConfig.Shell.CoolDownShoot));
 
                 }
             }
+        }
+        private static void Game(GameTime gameTime)
+        {
+            GameTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            Score += (int)GameTimer;
         }
 
     }
