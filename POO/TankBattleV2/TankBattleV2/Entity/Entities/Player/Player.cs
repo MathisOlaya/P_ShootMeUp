@@ -1,11 +1,8 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using System.ComponentModel;
-using System.Diagnostics.Tracing;
 using Microsoft.Xna.Framework.Input;
-using System.Linq;
+using System;
+
 
 namespace TankBattleV2
 {
@@ -59,6 +56,13 @@ namespace TankBattleV2
         {
             MovePlayer();
             Shoot(gameTime);
+
+            MouseState mouse = new MouseState();
+            if(mouse.LeftButton == ButtonState.Pressed)
+            {
+                Console.WriteLine("Ok");
+                EntityManager.Add(new Protection(EntityConfig.Protection.Texture, SprintFont, SpriteBatch, mouse.Position.ToVector2(), EntityConfig.Protection.HealthPoint, new Vector2(0, 0), EntityConfig.Protection.Scale, EntityConfig.Protection.HitBox));
+            }
         }
         public override void Draw(GameTime gameTime)
         {
