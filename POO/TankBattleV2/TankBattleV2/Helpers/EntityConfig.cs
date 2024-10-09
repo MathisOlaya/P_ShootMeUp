@@ -33,7 +33,6 @@ namespace EntityConfig
 
         public static float TimeForReloading = 1.5f;
     }
-
     public static class Bullet
     {
         public static Texture2D Texture;
@@ -50,7 +49,6 @@ namespace EntityConfig
 
         public static float CoolDownShoot = 0.2f;
     }
-
     public static class Tank
     {
         public static Texture2D Texture;
@@ -97,5 +95,17 @@ namespace EntityConfig
         public static float Speed = 8f;
 
         public static float CoolDownShoot = 1.2f;
+    }
+    public static class Protection
+    {
+        public static Texture2D Texture;
+
+        public static int HealthPoint = 5;
+
+        public static float Scale = Player.Scale / 4;
+
+        public static Rectangle HitBox;
+
+        public static float CoolDownProtectionPose = 20f;
     }
 }

@@ -20,7 +20,7 @@ namespace TankBattleV2
         {
             Entities.Add(entity);
 
-            //A chaque création, effectuer la méthode Initialiaze
+            //A chaque création, effectuer la méthode Initialize
             entity.Initialize();
         }
         public static void Remove(Entity entity)
