@@ -32,7 +32,13 @@ namespace TankBattleV2
         private Texture2D HealthPointTexture;
         private readonly Vector2 HEALTH_SPRITE_DEFAULT_POS;
 
-        private MouseState _previousMouseState;
+        //Protection
+        private MouseState _previousMouseState;     //Etat précédent de la souris.
+        private float TimeSinceLastProtectionPlaced;
+        private float TimeBetweenEveryProtectionPlacement;
+        private bool isInSinglePlacementMode = false;   //Au lancement le joueur peut poser deux protections, puis après qu'une par une avec un délai de 20 secondes.
+        private int structurePlaced = 0;                //Nombre de structure placée, permet d'activer le mode singleplacement quand il en a posé autant que MAX_STRUCTURE
+        private const int MAX_STRUCTURE = 2;            //Limite de structure avant que le single mod s'active.
 
         public Player(Texture2D texture, SpriteFont spriteFont, SpriteBatch spriteBatch, Vector2 position, int healthPoint, Vector2 healthSpritePosition, float scale, Rectangle hitBox, float speed, float coolDownShoot, int ammo, float timeForReloading, Texture2D healthPointTexture) : base(texture, spriteFont, spriteBatch, position, healthPoint, healthSpritePosition, scale, hitBox)
         {
@@ -42,6 +48,7 @@ namespace TankBattleV2
             TimeForReloading = timeForReloading;
             HEALTH_SPRITE_DEFAULT_POS = healthSpritePosition;
             HealthPointTexture = healthPointTexture;
+            TimeBetweenEveryProtectionPlacement = EntityConfig.Protection.CoolDownProtectionPose;
         }
 
         public override void Initialize()
@@ -56,7 +63,8 @@ namespace TankBattleV2
         {
             MovePlayer();
             Shoot(gameTime);
-            Protection();
+            Protection(gameTime);
+            Console.WriteLine(TimeSinceLastProtectionPlaced);
         }
         public override void Draw(GameTime gameTime)
         {
@@ -137,11 +145,37 @@ namespace TankBattleV2
                 Ammo--;
             }
         }
-        private void Protection()
+        private void Protection(GameTime gameTime)
         {
             if (GlobalHelpers.Input.isPlacingProtection && _previousMouseState.RightButton == ButtonState.Released)
             {
-                EntityManager.Add(new Protection(EntityConfig.Protection.Texture, SprintFont, SpriteBatch, GlobalHelpers.Input.GetMousePosition(), EntityConfig.Protection.HealthPoint, new Vector2(0, 0), EntityConfig.Protection.Scale, EntityConfig.Protection.HitBox));
+                if (structurePlaced < MAX_STRUCTURE)
+                {
+                    EntityManager.Add(new Protection(EntityConfig.Protection.Texture, SprintFont, SpriteBatch, GlobalHelpers.Input.GetMousePosition(), EntityConfig.Protection.HealthPoint, new Vector2(0, 0), EntityConfig.Protection.Scale, EntityConfig.Protection.HitBox));
+                    structurePlaced++;
+                }
+                else
+                {
+                    //Activer le mode de placement unique
+                    isInSinglePlacementMode = true;
+                }
+
+                //Si il est en structure unique, on verifie son temps d'attente
+                if(isInSinglePlacementMode && TimeSinceLastProtectionPlaced >= TimeBetweenEveryProtectionPlacement)
+                {
+                    //Alors poser une structure
+                    EntityManager.Add(new Protection(EntityConfig.Protection.Texture, SprintFont, SpriteBatch, GlobalHelpers.Input.GetMousePosition(), EntityConfig.Protection.HealthPoint, new Vector2(0, 0), EntityConfig.Protection.Scale, EntityConfig.Protection.HitBox));
+
+                    //Reset le timer 
+                    TimeSinceLastProtectionPlaced = 0;
+                }
+
+            }
+            //S'il est en placement unique, alors incrémenter son temps d'attente
+            if (isInSinglePlacementMode)
+            {
+                //Incrémenter le timer de cooldown
+                TimeSinceLastProtectionPlaced += (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
             //Enregistrer l'état précédent de la souris. Permet de s'assure que le joueur à bien relacher le clic droit avant d'en reposer un.
             _previousMouseState = GlobalHelpers.Input.GetMouseState();
