@@ -59,7 +59,11 @@ namespace TankBattleV2
             Direction = new Vector2(0, -1);
             Position = new Vector2(Config.WINDOW_WIDTH / 2 - (Texture.Width / 2 * Scale), Config.WINDOW_HEIGHT - 175);    //Positionner le joueur en bas au centre de l'écran.
             HitBox = new Rectangle((int)(Position.X - Texture.Width / 2 * Scale), (int)(Position.Y - Texture.Height / 2 * Scale), (int)(Texture.Width * Scale), (int)(Texture.Height * Scale));  //Créer la HitBox du joueur.
-            placementProtectionLimit = new Rectangle(0,(int)(EntityConfig.Tank.LIMITE_POSITION_Y + EntityConfig.Tank.Texture.Height / 2 * EntityConfig.Tank.Scale), Config.WINDOW_WIDTH, (int)(Config.WINDOW_HEIGHT - (EntityConfig.Tank.LIMITE_POSITION_Y + EntityConfig.Tank.Texture.Height / 2 * EntityConfig.Tank.Scale) - (Config.WINDOW_HEIGHT - Position.Y) - (Texture.Height / 2 * Scale)));
+            placementProtectionLimit = new Rectangle(
+                0,  //Le rectangle commence sur le côté gauche donc 0.
+                (int)(EntityConfig.Tank.LIMITE_POSITION_Y + EntityConfig.Tank.Texture.Height / 2 * EntityConfig.Tank.Scale), //Le rectangle commence au bout du canon du tank. Donc (Pos Y du tank) + la moitiée de la hauteur de sa texture (car le point est au centre) multipliée par sa scale, car sa taille peut changer.
+                Config.WINDOW_WIDTH, //Elle prend tout l'écran.
+                (int)(Config.WINDOW_HEIGHT - (EntityConfig.Tank.LIMITE_POSITION_Y + EntityConfig.Tank.Texture.Height / 2 * EntityConfig.Tank.Scale) - (Config.WINDOW_HEIGHT - Position.Y) - (Texture.Height / 2 * Scale))); //Le rectangle se finit devant le bout du fusil du joueur, donc la hauteur de l'écran (1920) - la zone supprimée en haut (car sinon le rectangle est décalé étant donné qu'on l'a abaissé.) - la hauteur du joueur en calculant a nouveau sa 1/2 texture en comptant la scale.
             
         }
 
@@ -80,14 +84,6 @@ namespace TankBattleV2
             //Dessiner le nombre de vies restantes au joueur.
             // Repositionner la position du premier casque, à la position par défaut. Sinon les casques avanceront de 50 à chaque tic jusqu'à sortir de l'écran
             HealthSpritePosition = HEALTH_SPRITE_DEFAULT_POS;
-
-            // Dessiner la HitBox
-            Texture2D rectangleTexture = new Texture2D(SpriteBatch.GraphicsDevice, 1, 1);
-            rectangleTexture.SetData(new Color[] { Color.Red });
-
-            SpriteBatch.Draw(rectangleTexture, placementProtectionLimit, Color.Red * 0.5f); // Le * 0.5f rend la couleur semi-transparente
-
-
             // Ecrire le nombre de vie
             for (int i = 0; i < HealthPoint; i++)
             {
@@ -158,11 +154,14 @@ namespace TankBattleV2
         }
         private void Protection(GameTime gameTime)
         {
-            if (GlobalHelpers.Input.isPlacingProtection && _previousMouseState.RightButton == ButtonState.Released)
+            //Calculer la hitbox de la protection pour vérifier qu'elle soit dans la zone.
+            Rectangle protectionHitBox = new Rectangle((int)(GlobalHelpers.Input.GetMousePosition().X - EntityConfig.Protection.Texture.Width / 2 * EntityConfig.Protection.Scale), (int)(GlobalHelpers.Input.GetMousePosition().Y - EntityConfig.Protection.Texture.Height / 2 * EntityConfig.Protection.Scale), (int)(EntityConfig.Protection.Texture.Width * EntityConfig.Protection.Scale), (int)(EntityConfig.Protection.Texture.Height * EntityConfig.Protection.Scale));
+
+            if (GlobalHelpers.Input.isPlacingProtection && _previousMouseState.RightButton == ButtonState.Released && placementProtectionLimit.Intersects(protectionHitBox))
             {
                 if (structurePlaced < MAX_STRUCTURE)
                 {
-                    EntityManager.Add(new Protection(EntityConfig.Protection.Texture, SprintFont, SpriteBatch, GlobalHelpers.Input.GetMousePosition(), EntityConfig.Protection.HealthPoint, new Vector2(0, 0), EntityConfig.Protection.Scale, EntityConfig.Protection.HitBox));
+                    EntityManager.Add(new Protection(EntityConfig.Protection.Texture, SprintFont, SpriteBatch, GlobalHelpers.Input.GetMousePosition(), EntityConfig.Protection.HealthPoint, new Vector2(0, 0), EntityConfig.Protection.Scale, protectionHitBox));
                     structurePlaced++;
                 }
                 else
@@ -175,7 +174,7 @@ namespace TankBattleV2
                 if(isInSinglePlacementMode && TimeSinceLastProtectionPlaced >= TimeBetweenEveryProtectionPlacement)
                 {
                     //Alors poser une structure
-                    EntityManager.Add(new Protection(EntityConfig.Protection.Texture, SprintFont, SpriteBatch, GlobalHelpers.Input.GetMousePosition(), EntityConfig.Protection.HealthPoint, new Vector2(0, 0), EntityConfig.Protection.Scale, EntityConfig.Protection.HitBox));
+                    EntityManager.Add(new Protection(EntityConfig.Protection.Texture, SprintFont, SpriteBatch, GlobalHelpers.Input.GetMousePosition(), EntityConfig.Protection.HealthPoint, new Vector2(0, 0), EntityConfig.Protection.Scale, protectionHitBox));
 
                     //Reset le timer 
                     TimeSinceLastProtectionPlaced = 0;
