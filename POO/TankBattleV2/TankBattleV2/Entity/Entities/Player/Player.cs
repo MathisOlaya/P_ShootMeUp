@@ -57,10 +57,8 @@ namespace TankBattleV2
             MovePlayer();
             Shoot(gameTime);
 
-            MouseState mouse = new MouseState();
-            if(mouse.LeftButton == ButtonState.Pressed)
+            if(GlobalHelpers.Input.isPlacingProtection)
             {
-                Console.WriteLine("Ok");
                 EntityManager.Add(new Protection(EntityConfig.Protection.Texture, SprintFont, SpriteBatch, mouse.Position.ToVector2(), EntityConfig.Protection.HealthPoint, new Vector2(0, 0), EntityConfig.Protection.Scale, EntityConfig.Protection.HitBox));
             }
         }

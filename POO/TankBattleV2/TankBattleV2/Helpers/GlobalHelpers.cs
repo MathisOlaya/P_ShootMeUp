@@ -1,11 +1,6 @@
-﻿using Microsoft.VisualBasic.ApplicationServices;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GlobalHelpers
 {
@@ -23,6 +18,7 @@ namespace GlobalHelpers
             
             return direction;
         }
+        public static Vector2 GetMousePosition() => Mouse.GetState().Position.ToVector2();
         public static bool isShooting() => Mouse.GetState().LeftButton == ButtonState.Pressed;
         public static bool isPlacingProtection => Mouse.GetState().RightButton == ButtonState.Pressed;
         public static bool isReloading() => Keyboard.GetState().IsKeyDown(Keys.R);
