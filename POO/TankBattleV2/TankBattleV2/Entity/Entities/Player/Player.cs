@@ -78,9 +78,11 @@ namespace TankBattleV2
             SpriteBatch.Begin();
             //Dessiner le joueur
             SpriteBatch.Draw(Texture, Position, null, Color.White, 0f, new Vector2(Texture.Width / 2, Texture.Height / 2), Scale, SpriteEffects.None, 0f);
+            
             //Dessiner le nombre de balles restantes dans le chargeur
             SpriteBatch.DrawString(SprintFont, Ammo.ToString(), AmmoCapacityLocation, AmmoStringColor);
             SpriteBatch.Draw(EntityConfig.Bullet.IconTexture, new Vector2(AmmoCapacityLocation.X - 30, AmmoCapacityLocation.Y + 5), null, Color.White, 0f, new Vector2(0,0) , 1.2f, SpriteEffects.None, 0f);
+            
             //Dessiner le nombre de vies restantes au joueur.
             // Repositionner la position du premier casque, à la position par défaut. Sinon les casques avanceront de 50 à chaque tic jusqu'à sortir de l'écran
             HealthSpritePosition = HEALTH_SPRITE_DEFAULT_POS;
@@ -90,6 +92,9 @@ namespace TankBattleV2
                 SpriteBatch.Draw(HealthPointTexture, HealthSpritePosition, null, Color.White, 0f, new Vector2(HealthPointTexture.Width / 2, HealthPointTexture.Height / 2), 1.5f, SpriteEffects.None, 0f);
                 HealthSpritePosition.X += 50;
             }
+
+            //Dessiner le temps restant avant le placement de la prochaine protection
+            SpriteBatch.DrawString(SprintFont, Math.Round(TimeBetweenEveryProtectionPlacement - TimeSinceLastProtectionPlaced).ToString(), new Vector2(Config.WINDOW_WIDTH - 50, Config.WINDOW_HEIGHT - 115), Color.White);
 
             SpriteBatch.End();
         }
@@ -164,7 +169,7 @@ namespace TankBattleV2
                     EntityManager.Add(new Protection(EntityConfig.Protection.Texture, SprintFont, SpriteBatch, GlobalHelpers.Input.GetMousePosition(), EntityConfig.Protection.HealthPoint, new Vector2(0, 0), EntityConfig.Protection.Scale, protectionHitBox));
                     structurePlaced++;
                 }
-                else
+                if (structurePlaced == 2)
                 {
                     //Activer le mode de placement unique
                     isInSinglePlacementMode = true;
