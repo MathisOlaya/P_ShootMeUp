@@ -20,10 +20,11 @@ namespace GlobalHelpers
                 direction.X -= 1;
             if (Keyboard.GetState().IsKeyDown(Keys.D))
                 direction.X += 1;
-
+            
             return direction;
         }
         public static bool isShooting() => Mouse.GetState().LeftButton == ButtonState.Pressed;
+        public static bool isPlacingProtection => Mouse.GetState().RightButton == ButtonState.Pressed;
         public static bool isReloading() => Keyboard.GetState().IsKeyDown(Keys.R);
     }
     public static class Random
