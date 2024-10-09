@@ -35,6 +35,8 @@ namespace TankBattleV2
             //Charger la texture de l'icone de vie du joueur 
             EntityConfig.Player.HealthPointTexture = content.Load<Texture2D>("Textures/HealthPoint/Player/player-healthpoint");
 
+            //Charger la texture de la protection 
+            EntityConfig.Protection.Texture = content.Load<Texture2D>("Textures/Protection/sand-bag");
         }
     }
 }

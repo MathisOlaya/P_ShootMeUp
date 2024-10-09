@@ -102,7 +102,7 @@ namespace EntityConfig
 
         public static int HealthPoint = 5;
 
-        public static float Scale = Player.Scale / 4;
+        public static float Scale = Player.Scale * 5;
 
         public static Rectangle HitBox;
 

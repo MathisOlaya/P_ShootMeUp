@@ -16,7 +16,8 @@ namespace TankBattleV2
 
         public override void Initialize()
         {
-            Console.WriteLine("Initialize");
+            //Calculer la hitbox
+            HitBox = new Rectangle((int)(Position.X - Texture.Width / 2 * Scale), (int)(Position.Y - Texture.Height / 2 * Scale), (int)(Texture.Width * Scale), (int)(Texture.Height * Scale));
         }
 
         public override void Update(GameTime gameTime)
@@ -27,6 +28,13 @@ namespace TankBattleV2
         {
             SpriteBatch.Begin();
             SpriteBatch.Draw(Texture, Position, null, Color.White, 0f, new Vector2(Texture.Width / 2, Texture.Height / 2), Scale, SpriteEffects.None, 0f);
+
+            // Dessiner la HitBox
+            Texture2D rectangleTexture = new Texture2D(SpriteBatch.GraphicsDevice, 1, 1);
+            rectangleTexture.SetData(new Color[] { Color.Red });
+
+            SpriteBatch.Draw(rectangleTexture, HitBox, Color.Red * 0.5f); // Le * 0.5f rend la couleur semi-transparente
+
             SpriteBatch.End();
         }
     }

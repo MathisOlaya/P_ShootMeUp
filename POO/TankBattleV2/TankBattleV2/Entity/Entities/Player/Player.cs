@@ -57,9 +57,9 @@ namespace TankBattleV2
             MovePlayer();
             Shoot(gameTime);
 
-            if(GlobalHelpers.Input.isPlacingProtection)
+            if (GlobalHelpers.Input.isPlacingProtection)
             {
-                EntityManager.Add(new Protection(EntityConfig.Protection.Texture, SprintFont, SpriteBatch, mouse.Position.ToVector2(), EntityConfig.Protection.HealthPoint, new Vector2(0, 0), EntityConfig.Protection.Scale, EntityConfig.Protection.HitBox));
+                EntityManager.Add(new Protection(EntityConfig.Protection.Texture, SprintFont, SpriteBatch, GlobalHelpers.Input.GetMousePosition(), EntityConfig.Protection.HealthPoint, new Vector2(0, 0), EntityConfig.Protection.Scale, EntityConfig.Protection.HitBox));
             }
         }
         public override void Draw(GameTime gameTime)
