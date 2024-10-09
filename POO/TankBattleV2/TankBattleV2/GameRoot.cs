@@ -12,6 +12,12 @@ namespace TankBattleV2
         public static SpriteBatch spriteBatch;
         public static SpriteFont spriteFont;
 
+        //Game
+        public static int Score { get; set; }
+        public static float GameTimer;
+
+        Level lvl;
+
         public GameRoot()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -26,7 +32,7 @@ namespace TankBattleV2
             _graphics.PreferredBackBufferHeight = Config.WINDOW_HEIGHT;
             //Appliquer les changements de taille.
             _graphics.ApplyChanges();
-            
+
             base.Initialize();
         }
 
@@ -38,9 +44,6 @@ namespace TankBattleV2
 
             //Charger toutes les textures dès le lancement
             Visuals.LoadTextures(Content);
-
-            //Initialiser les entités
-            EntityManager.Initialize();
         }
 
         protected override void Update(GameTime gameTime)
@@ -48,9 +51,14 @@ namespace TankBattleV2
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            //Update toutes les entités
-            EntityManager.Update(gameTime);
-
+            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            {
+                lvl = new Level(1);
+            }
+                
+            if(lvl != null)
+                lvl.Update(gameTime);
+            Game(gameTime);
             base.Update(gameTime);
         }
 
@@ -61,7 +69,16 @@ namespace TankBattleV2
             //Effectuer la méthode Draw pour chaque méthode
             EntityManager.Draw(gameTime);
 
+            spriteBatch.Begin();
+            spriteBatch.DrawString(spriteFont, Score.ToString(), new Vector2(Config.WINDOW_WIDTH - 50, Config.WINDOW_HEIGHT - 75), Color.White);
+            spriteBatch.End();
+
             base.Draw(gameTime);
+        }
+        private static void Game(GameTime gameTime)
+        {
+            GameTimer += (float)gameTime.ElapsedGameTime.TotalSeconds / 10;
+            Score += (int)GameTimer;
         }
     }
 }

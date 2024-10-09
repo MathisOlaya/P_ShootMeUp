@@ -16,10 +16,6 @@ namespace TankBattleV2
 
         public static Player Player;
 
-        //Game
-        public static int Score { get; set; }
-        public static float GameTimer;
-
         public static void Add(Entity entity)
         {
             Entities.Add(entity);
@@ -31,13 +27,13 @@ namespace TankBattleV2
         {
             Entities.Remove(entity);
         }
-        public static void Initialize()
+        public static void Initialize(int levelDifficulty)
         {
             //Add player
             Player = new Player(EntityConfig.Player.Texture, GameRoot.spriteFont, GameRoot.spriteBatch, EntityConfig.Player.Position, EntityConfig.Player.HealthPoint, EntityConfig.Player.HealthPointSpritePosition, EntityConfig.Player.Scale, EntityConfig.Player.HitBox, EntityConfig.Player.Speed, EntityConfig.Bullet.CoolDownShoot, EntityConfig.Player.AmmoCapacity, EntityConfig.Player.TimeForReloading, EntityConfig.Player.HealthPointTexture);
             Add(Player);
             //Add tank
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < levelDifficulty; i++)
             {
                 // Ajouter le nouveau tank avec la position valide
                 Add(new Tank(EntityConfig.Tank.Texture, GameRoot.spriteFont, GameRoot.spriteBatch, EntityConfig.Tank.Position, EntityConfig.Tank.HealthPoint, EntityConfig.Tank.HealthPointSpritePosition, EntityConfig.Tank.Scale, EntityConfig.Tank.HitBox, EntityConfig.Tank.LifeBarScale, EntityConfig.Shell.CoolDownShoot));
@@ -51,7 +47,6 @@ namespace TankBattleV2
                 entity.Update(gameTime);
             }
             CheckCollisions();
-            Game(gameTime);
         }
         public static void Draw(GameTime gameTime)
         {
@@ -102,7 +97,7 @@ namespace TankBattleV2
                 if (entity is Tank tank)
                 {
                     //Incrémenter le score
-                    Score += 500;
+                    GameRoot.Score += 500;
 
                     //Permet de changer la valeur "Value" à partir de la clé qui est un position.
                     EntityConfig.Tank.spawnPoints[new Vector2(tank.Position.X, -150)] = true;
@@ -110,11 +105,6 @@ namespace TankBattleV2
 
                 }
             }
-        }
-        private static void Game(GameTime gameTime)
-        {
-            GameTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            Score += (int)GameTimer;
         }
 
     }
