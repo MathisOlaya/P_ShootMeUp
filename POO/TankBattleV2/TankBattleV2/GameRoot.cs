@@ -1,11 +1,19 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
+
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
+using System.Collections.Generic;
+using TankBattleV2.Interace;
 
 namespace TankBattleV2
 {
+    public enum GameState
+    {
+        Menu,
+        Playing,
+        Paused,
+    }
     public class GameRoot : Game
     {
         private GraphicsDeviceManager _graphics;
@@ -15,8 +23,10 @@ namespace TankBattleV2
         //Game
         public static int Score { get; set; }
         public static float GameTimer;
+        public static GameState CurrentGameState = GameState.Menu;  //Par défaut il est dans le menu.
 
-        Level lvl;
+        public static Level lvl;
+        Menu menu;
 
         public GameRoot()
         {
@@ -32,6 +42,11 @@ namespace TankBattleV2
             _graphics.PreferredBackBufferHeight = Config.WINDOW_HEIGHT;
             //Appliquer les changements de taille.
             _graphics.ApplyChanges();
+
+            menu = new Menu(new List<string>
+            {
+                "ABC"
+            });
 
             base.Initialize();
         }
@@ -49,15 +64,24 @@ namespace TankBattleV2
         protected override void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+                CurrentGameState = GameState.Paused;
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            switch (CurrentGameState)
             {
-                lvl = new Level(1);
+                case GameState.Menu:
+                    menu.Update(gameTime);
+                    break;
+                case GameState.Playing:
+                    menu = null;
+                    lvl.Update(gameTime);
+                    break;
+                case GameState.Paused:
+                    //Créer un nouveau menu seulement s'il n'existe pas. Sinon cela va en créer une infinité.
+                    if(menu == null)
+                        menu = new Menu(new List<string>{"ABCD", "EFH"});
+                    menu.Update(gameTime);
+                    break;
             }
-                
-            if(lvl != null)
-                lvl.Update(gameTime);
             Game(gameTime);
             base.Update(gameTime);
         }
@@ -68,6 +92,8 @@ namespace TankBattleV2
 
             //Effectuer la méthode Draw pour chaque méthode
             EntityManager.Draw(gameTime);
+            if(menu != null)
+                menu.Draw(spriteBatch);
 
             spriteBatch.Begin();
             spriteBatch.DrawString(spriteFont, Score.ToString(), new Vector2(Config.WINDOW_WIDTH - 50, Config.WINDOW_HEIGHT - 75), Color.White);

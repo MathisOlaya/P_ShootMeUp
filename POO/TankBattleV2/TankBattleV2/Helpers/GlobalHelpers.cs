@@ -21,6 +21,7 @@ namespace GlobalHelpers
         public static Vector2 GetMousePosition() => Mouse.GetState().Position.ToVector2();
 
         public static MouseState GetMouseState() => Mouse.GetState();
+        public static bool isLeftClicking() => Mouse.GetState().LeftButton == ButtonState.Pressed;
         public static bool isShooting() => Mouse.GetState().LeftButton == ButtonState.Pressed;
         public static bool isPlacingProtection => Mouse.GetState().RightButton == ButtonState.Pressed;
         public static bool isReloading() => Keyboard.GetState().IsKeyDown(Keys.R);

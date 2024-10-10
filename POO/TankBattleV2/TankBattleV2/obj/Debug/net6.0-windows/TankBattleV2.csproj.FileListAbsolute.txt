@@ -142,3 +142,4 @@ C:\Users\pg24muu\Documents\GitHub\P_ShootMeUp\POO\TankBattleV2\TankBattleV2\obj\
 C:\Users\pg24muu\Documents\GitHub\P_ShootMeUp\POO\TankBattleV2\TankBattleV2\obj\Debug\net6.0-windows\TankBattleV2.pdb
 C:\Users\pg24muu\Documents\GitHub\P_ShootMeUp\POO\TankBattleV2\TankBattleV2\obj\Debug\net6.0-windows\TankBattleV2.genruntimeconfig.cache
 C:\Users\pg24muu\Documents\GitHub\P_ShootMeUp\POO\TankBattleV2\TankBattleV2\obj\Debug\net6.0-windows\ref\TankBattleV2.dll
+C:\Users\Mathis\Documents\GitHub\P_ShootMeUp\POO\TankBattleV2\TankBattleV2\bin\Debug\net6.0-windows\Content\Textures\Protection\sand-bag.xnb
