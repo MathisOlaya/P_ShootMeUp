@@ -42,12 +42,6 @@ namespace TankBattleV2
             _graphics.PreferredBackBufferHeight = Config.WINDOW_HEIGHT;
             //Appliquer les changements de taille.
             _graphics.ApplyChanges();
-
-            menu = new Menu(new List<string>
-            {
-                "ABC"
-            });
-
             base.Initialize();
         }
 
@@ -59,13 +53,17 @@ namespace TankBattleV2
 
             //Charger toutes les textures dès le lancement
             Visuals.LoadTextures(Content);
+
+            //Créer le menu du lancement du jeu.
+            menu = new Menu(new List<string>{"Start", "Settings (SOON)", "Exit"}, spriteFont);
+
         }
 
         protected override void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 CurrentGameState = GameState.Paused;
-
+            Console.WriteLine(CurrentGameState);
             switch (CurrentGameState)
             {
                 case GameState.Menu:
@@ -78,7 +76,7 @@ namespace TankBattleV2
                 case GameState.Paused:
                     //Créer un nouveau menu seulement s'il n'existe pas. Sinon cela va en créer une infinité.
                     if(menu == null)
-                        menu = new Menu(new List<string>{"ABCD", "EFH"});
+                        menu = new Menu(new List<string>{"Resume", "Exit"}, spriteFont);
                     menu.Update(gameTime);
                     break;
             }

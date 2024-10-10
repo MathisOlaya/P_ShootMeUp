@@ -17,36 +17,51 @@ namespace TankBattleV2.Interace
         //Liste contenant tout les boutons.
         private List<Rectangle> Buttons = new List<Rectangle>();
 
-        public Menu(List<string> buttonActionTitle)
+        //Coordoonées
+        int x, y, width, height;
+
+        //Ecrire
+        SpriteFont spriteFont;
+
+        public Menu(List<string> buttonActionTitle, SpriteFont sprifeFont)
         {
             ButtonActionTitle = buttonActionTitle;
+            this.spriteFont = sprifeFont;
             Initialize();
         }
 
         public void Initialize()
         {
-            //Créer un bouton en fonction du nombre de paramètre 
-            for(int i = 0; i < ButtonActionTitle.Count; i++)
+            height = 100;
+            int padding = 50; // Espace (vertical) entre chaque boutons.
+            int menuHeight = ButtonActionTitle.Count * height + (ButtonActionTitle.Count - 1) * padding; //calculer la hauteur de tout les boutons.
+
+            //Position Y le plus haut.
+            int defaultPosY = (Config.WINDOW_HEIGHT - menuHeight) / 2;
+
+            for (int i = 0; i < ButtonActionTitle.Count; i++)
             {
-                int width = 250;
-                int height = 100;
-                int x = Config.WINDOW_WIDTH / 2 - width;
-                int y = 100 * i + 200;
+                // Calculer la taille du texte pour ajuster la largeur du bouton.
+                Vector2 TextSize = spriteFont.MeasureString(ButtonActionTitle[i]);
+
+                // Largeur ajustée au texte, avec un minimum de 200 pixels.
+                width = (TextSize.X > 200 ? (int)(TextSize.X + 100) : 200);
+                x = Config.WINDOW_WIDTH / 2 - width / 2; // Centrer horizontalement
+                y = defaultPosY + i * (height + padding);     // Positionner chaque bouton verticalement
+
                 Rectangle mainbutton = new Rectangle(x, y, width, height);
                 Buttons.Add(mainbutton);
             }
         }
 
+
         public void Update(GameTime gameTime)
         {
-            foreach(Rectangle button in Buttons)
+            for (int i = 0; i < Buttons.Count; i++)
             {
-                if (button.Contains(GlobalHelpers.Input.GetMousePosition()) && GlobalHelpers.Input.isLeftClicking())
+                if (Buttons[i].Contains(GlobalHelpers.Input.GetMousePosition()) && GlobalHelpers.Input.isLeftClicking())
                 {
-                    if(GameRoot.CurrentGameState == GameState.Menu)
-                        GameRoot.lvl = new Level(1);
-
-                    GameRoot.CurrentGameState = GameState.Playing;
+                    OnClick(ButtonActionTitle[i]);
                 }
             }
         }
@@ -55,14 +70,39 @@ namespace TankBattleV2.Interace
             spriteBatch.Begin();
             // Dessiner la HitBox
             Texture2D rectangleTexture = new Texture2D(spriteBatch.GraphicsDevice, 1, 1);
-            rectangleTexture.SetData(new Color[] { Color.Red });
+            rectangleTexture.SetData(new Color[] { Color.Black });
 
-            foreach(Rectangle button in Buttons)
+            for(int i = 0; i < Buttons.Count; i++)
             {
-                spriteBatch.Draw(rectangleTexture, button, Color.Red * 0.5f);
+                spriteBatch.Draw(rectangleTexture, Buttons[i], Color.Red * 1f);
+
+                //Ecrire le texte du bouton, et le centrer en calculant la longueur du texte (pas le nbre de char).
+                spriteBatch.DrawString(spriteFont, ButtonActionTitle[i], 
+                    new Vector2(Buttons[i].X + (Buttons[i].Width - spriteFont.MeasureString(ButtonActionTitle[i]).X) / 2,
+                    Buttons[i].Y + (Buttons[i].Height - spriteFont.MeasureString(ButtonActionTitle[i]).Y) / 2), Color.White);
             }
             
             spriteBatch.End();
+        }
+        private void OnClick(string action)
+        {
+            switch (action)
+            {
+                case "Start":
+                    if (GameRoot.CurrentGameState == GameState.Menu)
+                        GameRoot.lvl = new Level(1);
+                    GameRoot.CurrentGameState = GameState.Playing;
+                    break;
+                case "Resume":
+                    GameRoot.CurrentGameState = GameState.Playing;
+                    break;
+                case "Exit":
+                    Environment.Exit(0);
+                    break;
+                case "Leave":
+                    GameRoot.CurrentGameState = GameState.Menu;
+                    break;
+            }
         }
     }
 }
