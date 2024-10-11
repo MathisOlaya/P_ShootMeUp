@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
-using TankBattleV2.Interace;
+using TankBattleV2;
 
 namespace TankBattleV2
 {
@@ -55,15 +55,14 @@ namespace TankBattleV2
             Visuals.LoadTextures(Content);
 
             //Créer le menu du lancement du jeu.
-            menu = new Menu(new List<string>{"Start", "Settings (SOON)", "Exit"}, spriteFont);
-
+            menu = new Menu(new List<Action> { Action.Start, Action.Exit }, spriteFont);
         }
 
         protected override void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 CurrentGameState = GameState.Paused;
-            Console.WriteLine(CurrentGameState);
+
             switch (CurrentGameState)
             {
                 case GameState.Menu:
@@ -76,7 +75,7 @@ namespace TankBattleV2
                 case GameState.Paused:
                     //Créer un nouveau menu seulement s'il n'existe pas. Sinon cela va en créer une infinité.
                     if(menu == null)
-                        menu = new Menu(new List<string>{"Resume", "Exit"}, spriteFont);
+                        menu = new Menu(new List<Action>{Action.Resume, Action.Exit}, spriteFont);
                     menu.Update(gameTime);
                     break;
             }

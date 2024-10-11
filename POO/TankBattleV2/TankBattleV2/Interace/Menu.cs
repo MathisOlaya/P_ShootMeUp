@@ -7,12 +7,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TankBattleV2.Interace
+namespace TankBattleV2
 {
+    public enum Action
+    {
+        Resume, 
+        Start,
+        Exit, 
+    }
     public class Menu
     {
         //Liste contenant tout les titre des actions.
-        private List<String> ButtonActionTitle = new List<string>();
+        private List<Action> ButtonActionTitle = new List<Action>();
 
         //Liste contenant tout les boutons.
         private List<Rectangle> Buttons = new List<Rectangle>();
@@ -23,7 +29,7 @@ namespace TankBattleV2.Interace
         //Ecrire
         SpriteFont spriteFont;
 
-        public Menu(List<string> buttonActionTitle, SpriteFont sprifeFont)
+        public Menu(List<Action> buttonActionTitle, SpriteFont sprifeFont)
         {
             ButtonActionTitle = buttonActionTitle;
             this.spriteFont = sprifeFont;
@@ -42,7 +48,7 @@ namespace TankBattleV2.Interace
             for (int i = 0; i < ButtonActionTitle.Count; i++)
             {
                 // Calculer la taille du texte pour ajuster la largeur du bouton.
-                Vector2 TextSize = spriteFont.MeasureString(ButtonActionTitle[i]);
+                Vector2 TextSize = spriteFont.MeasureString(ButtonActionTitle[i].ToString());
 
                 // Largeur ajustée au texte, avec un minimum de 200 pixels.
                 width = (TextSize.X > 200 ? (int)(TextSize.X + 100) : 200);
@@ -61,7 +67,7 @@ namespace TankBattleV2.Interace
             {
                 if (Buttons[i].Contains(GlobalHelpers.Input.GetMousePosition()) && GlobalHelpers.Input.isLeftClicking())
                 {
-                    OnClick(ButtonActionTitle[i]);
+                    OnClick(ButtonActionTitle[i].ToString());
                 }
             }
         }
@@ -77,9 +83,9 @@ namespace TankBattleV2.Interace
                 spriteBatch.Draw(rectangleTexture, Buttons[i], Color.Red * 1f);
 
                 //Ecrire le texte du bouton, et le centrer en calculant la longueur du texte (pas le nbre de char).
-                spriteBatch.DrawString(spriteFont, ButtonActionTitle[i], 
-                    new Vector2(Buttons[i].X + (Buttons[i].Width - spriteFont.MeasureString(ButtonActionTitle[i]).X) / 2,
-                    Buttons[i].Y + (Buttons[i].Height - spriteFont.MeasureString(ButtonActionTitle[i]).Y) / 2), Color.White);
+                spriteBatch.DrawString(spriteFont, ButtonActionTitle[i].ToString(), 
+                    new Vector2(Buttons[i].X + (Buttons[i].Width - spriteFont.MeasureString(ButtonActionTitle[i].ToString()).X) / 2,
+                    Buttons[i].Y + (Buttons[i].Height - spriteFont.MeasureString(ButtonActionTitle[i].ToString()).Y) / 2), Color.White);
             }
             
             spriteBatch.End();
