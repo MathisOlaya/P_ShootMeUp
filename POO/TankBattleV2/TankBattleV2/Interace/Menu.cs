@@ -14,6 +14,7 @@ namespace TankBattleV2
         Resume, 
         Start,
         Exit, 
+        Settings
     }
     public class Menu
     {
@@ -59,7 +60,7 @@ namespace TankBattleV2
                 Buttons.Add(mainbutton);
             }
         }
-
+        
 
         public void Update(GameTime gameTime)
         {
@@ -96,7 +97,7 @@ namespace TankBattleV2
             {
                 case Action.Start:
                     if (GameRoot.CurrentGameState == GameState.Menu)
-                        GameRoot.lvl = new Level(1);
+                        GameRoot.lvl = new Level(GameSettings.Difficulty);
                     GameRoot.CurrentGameState = GameState.Playing;
                     break;
                 case Action.Resume:

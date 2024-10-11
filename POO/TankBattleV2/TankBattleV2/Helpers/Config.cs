@@ -13,4 +13,8 @@ namespace TankBattleV2
         public static readonly int WINDOW_WIDTH = 1920;
         public static readonly int WINDOW_HEIGHT = 1080;
     }
+    public static class GameSettings
+    {
+        public static int Difficulty = 4;
+    }
 }

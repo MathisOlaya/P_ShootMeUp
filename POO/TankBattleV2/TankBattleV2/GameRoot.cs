@@ -55,7 +55,7 @@ namespace TankBattleV2
             Visuals.LoadTextures(Content);
 
             //Créer le menu du lancement du jeu.
-            menu = new Menu(new List<Action> { Action.Start, Action.Exit }, spriteFont);
+            menu = new Menu(new List<Action> { Action.Start, Action.Settings, Action.Exit }, spriteFont);
         }
 
         protected override void Update(GameTime gameTime)
@@ -93,15 +93,21 @@ namespace TankBattleV2
                 menu.Draw(spriteBatch);
 
             spriteBatch.Begin();
-            spriteBatch.DrawString(spriteFont, Score.ToString(), new Vector2(Config.WINDOW_WIDTH - 50, Config.WINDOW_HEIGHT - 75), Color.White);
+            //Seulement afficher quand il joue.
+            if(CurrentGameState == GameState.Playing)
+                spriteBatch.DrawString(spriteFont, Score.ToString(), new Vector2(Config.WINDOW_WIDTH - 50, Config.WINDOW_HEIGHT - 75), Color.White);
             spriteBatch.End();
 
             base.Draw(gameTime);
         }
         private static void Game(GameTime gameTime)
         {
-            GameTimer += (float)gameTime.ElapsedGameTime.TotalSeconds / 10;
-            Score += (int)GameTimer;
+            if(CurrentGameState == GameState.Playing)
+            {
+                GameTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                Score += (int)GameTimer;
+            }
+            
         }
     }
 }

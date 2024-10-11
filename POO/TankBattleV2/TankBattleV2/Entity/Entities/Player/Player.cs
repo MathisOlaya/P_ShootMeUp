@@ -95,7 +95,11 @@ namespace TankBattleV2
             }
 
             //Dessiner le temps restant avant le placement de la prochaine protection
-            SpriteBatch.DrawString(SprintFont, Math.Round(TimeBetweenEveryProtectionPlacement - TimeSinceLastProtectionPlaced).ToString(), new Vector2(Config.WINDOW_WIDTH - 50, Config.WINDOW_HEIGHT - 155), Color.White);
+            double TimeLeft = Math.Round(TimeBetweenEveryProtectionPlacement - TimeSinceLastProtectionPlaced);
+            if(TimeLeft > 0)
+                SpriteBatch.DrawString(SprintFont, TimeLeft.ToString(), new Vector2(Config.WINDOW_WIDTH - 50, Config.WINDOW_HEIGHT - 155), Color.White);
+            else
+                SpriteBatch.DrawString(SprintFont, 0.ToString(), new Vector2(Config.WINDOW_WIDTH - 50, Config.WINDOW_HEIGHT - 155), Color.White);
 
             SpriteBatch.End();
         }
