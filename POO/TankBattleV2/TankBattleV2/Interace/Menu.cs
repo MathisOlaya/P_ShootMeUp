@@ -67,7 +67,7 @@ namespace TankBattleV2
             {
                 if (Buttons[i].Contains(GlobalHelpers.Input.GetMousePosition()) && GlobalHelpers.Input.isLeftClicking())
                 {
-                    OnClick(ButtonActionTitle[i].ToString());
+                    OnClick(ButtonActionTitle[i]);
                 }
             }
         }
@@ -90,22 +90,22 @@ namespace TankBattleV2
             
             spriteBatch.End();
         }
-        private void OnClick(string action)
+        private void OnClick(Action action)
         {
             switch (action)
             {
-                case "Start":
+                case Action.Start:
                     if (GameRoot.CurrentGameState == GameState.Menu)
                         GameRoot.lvl = new Level(1);
                     GameRoot.CurrentGameState = GameState.Playing;
                     break;
-                case "Resume":
+                case Action.Resume:
                     GameRoot.CurrentGameState = GameState.Playing;
                     break;
-                case "Exit":
+                case Action.Exit:
                     Environment.Exit(0);
                     break;
-                case "Leave":
+                default:
                     GameRoot.CurrentGameState = GameState.Menu;
                     break;
             }
