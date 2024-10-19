@@ -79,7 +79,6 @@ namespace TankBattleV2
             SpriteBatch.Begin();
             //Dessiner le joueur
             SpriteBatch.Draw(Texture, Position, null, Color.White, 0f, new Vector2(Texture.Width / 2, Texture.Height / 2), Scale, SpriteEffects.None, 0f);
-            
             //Dessiner le nombre de balles restantes dans le chargeur
             SpriteBatch.DrawString(SprintFont, Ammo.ToString(), AmmoCapacityLocation, AmmoStringColor);
             SpriteBatch.Draw(EntityConfig.Bullet.IconTexture, new Vector2(AmmoCapacityLocation.X - 30, AmmoCapacityLocation.Y + 5), null, Color.White, 0f, new Vector2(0,0) , 1.2f, SpriteEffects.None, 0f);
@@ -100,7 +99,6 @@ namespace TankBattleV2
                 SpriteBatch.DrawString(SprintFont, TimeLeft.ToString(), new Vector2(Config.WINDOW_WIDTH - 50, Config.WINDOW_HEIGHT - 155), Color.White);
             else
                 SpriteBatch.DrawString(SprintFont, 0.ToString(), new Vector2(Config.WINDOW_WIDTH - 50, Config.WINDOW_HEIGHT - 155), Color.White);
-
             SpriteBatch.End();
         }
         private void MovePlayer()

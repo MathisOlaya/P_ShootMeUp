@@ -94,7 +94,7 @@ namespace TankBattleV2
 
             spriteBatch.Begin();
             //Seulement afficher quand il joue.
-            if(CurrentGameState == GameState.Playing)
+            if (CurrentGameState == GameState.Playing)
                 spriteBatch.DrawString(spriteFont, Score.ToString(), new Vector2(Config.WINDOW_WIDTH - 50, Config.WINDOW_HEIGHT - 75), Color.White);
             spriteBatch.End();
 

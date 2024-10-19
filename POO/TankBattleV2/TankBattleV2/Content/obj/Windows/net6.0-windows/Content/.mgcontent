@@ -12,11 +12,13 @@
     <File>C:/Users/Mathis/Documents/GitHub/P_ShootMeUp/POO/TankBattleV2/TankBattleV2/Content/Textures/HealthPoint/Tank/dead.png</File>
     <File>C:/Users/Mathis/Documents/GitHub/P_ShootMeUp/POO/TankBattleV2/TankBattleV2/Content/Textures/HealthPoint/Tank/full.png</File>
     <File>C:/Users/Mathis/Documents/GitHub/P_ShootMeUp/POO/TankBattleV2/TankBattleV2/Content/Textures/HealthPoint/Tank/mid.png</File>
+    <File>C:/Users/Mathis/Documents/GitHub/P_ShootMeUp/POO/TankBattleV2/TankBattleV2/Content/Textures/Map/map.png</File>
     <File>C:/Users/Mathis/Documents/GitHub/P_ShootMeUp/POO/TankBattleV2/TankBattleV2/Content/Textures/Player/player.png</File>
     <File>C:/Users/Mathis/Documents/GitHub/P_ShootMeUp/POO/TankBattleV2/TankBattleV2/Content/Textures/Protection/sand-bag.png</File>
     <File>C:/Users/Mathis/Documents/GitHub/P_ShootMeUp/POO/TankBattleV2/TankBattleV2/Content/Textures/Tank/ex.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

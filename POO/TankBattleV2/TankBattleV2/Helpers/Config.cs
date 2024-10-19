@@ -15,6 +15,7 @@ namespace TankBattleV2
     }
     public static class GameSettings
     {
+        public static Texture2D Map;
         public static int Difficulty = 4;
     }
 }

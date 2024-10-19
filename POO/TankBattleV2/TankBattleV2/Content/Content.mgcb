@@ -104,6 +104,18 @@
 /processorParam:TextureFormat=Color
 /build:Textures/HealthPoint/Tank/mid.png
 
+#begin Textures/Map/map.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/Map/map.png
+
 #begin Textures/Player/player.png
 /importer:TextureImporter
 /processor:TextureProcessor

@@ -37,6 +37,9 @@ namespace TankBattleV2
 
             //Charger la texture de la protection 
             EntityConfig.Protection.Texture = content.Load<Texture2D>("Textures/Protection/sand-bag");
+
+            //Charger la map
+            GameSettings.Map = content.Load<Texture2D>("Textures/Map/map");
         }
     }
 }
