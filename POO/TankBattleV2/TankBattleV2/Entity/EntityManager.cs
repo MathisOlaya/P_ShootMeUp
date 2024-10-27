@@ -16,6 +16,8 @@ namespace TankBattleV2
 
         public static Player Player;
 
+        private static int TankKilled = 0;
+
         public static void Add(Entity entity)
         {
             Entities.Add(entity);
@@ -29,9 +31,12 @@ namespace TankBattleV2
         }
         public static void Initialize(int levelDifficulty)
         {
-            //Add player
-            Player = new Player(EntityConfig.Player.Texture, GameRoot.spriteFont, GameRoot.spriteBatch, EntityConfig.Player.Position, EntityConfig.Player.HealthPoint, EntityConfig.Player.HealthPointSpritePosition, EntityConfig.Player.Scale, EntityConfig.Player.HitBox, EntityConfig.Player.Speed, EntityConfig.Bullet.CoolDownShoot, EntityConfig.Player.AmmoCapacity, EntityConfig.Player.TimeForReloading, EntityConfig.Player.HealthPointTexture);
-            Add(Player);
+            //Add player only if doesn't exist
+            if(Player == null)
+            {
+                Player = new Player(EntityConfig.Player.Texture, GameRoot.spriteFont, GameRoot.spriteBatch, EntityConfig.Player.Position, EntityConfig.Player.HealthPoint, EntityConfig.Player.HealthPointSpritePosition, EntityConfig.Player.Scale, EntityConfig.Player.HitBox, EntityConfig.Player.Speed, EntityConfig.Bullet.CoolDownShoot, EntityConfig.Player.AmmoCapacity, EntityConfig.Player.TimeForReloading, EntityConfig.Player.HealthPointTexture);
+                Add(Player);
+            }
             //Add tank
             for (int i = 0; i < levelDifficulty; i++)
             {
@@ -99,10 +104,32 @@ namespace TankBattleV2
                     //Incrémenter le score
                     GameRoot.Score += 500;
 
+                    //Incrementer le nombre de tank tuer.
+                    TankKilled++;
+
+                    //Si le mode infini est activé. Ajouter un tank à chaque mort.
+                    if (GameSettings.InfiniteMode)
+                        Add(new Tank(EntityConfig.Tank.Texture, GameRoot.spriteFont, GameRoot.spriteBatch, EntityConfig.Tank.Position, EntityConfig.Tank.HealthPoint, EntityConfig.Tank.HealthPointSpritePosition, EntityConfig.Tank.Scale, EntityConfig.Tank.HitBox, EntityConfig.Tank.LifeBarScale, EntityConfig.Shell.CoolDownShoot));
+
+
+                    //Vérifier si le joueur a tuer tous les tanks 
+                    if (TankKilled == GameSettings.Difficulty)
+                    {
+                        //Réinitialiser le nombre d'ennemi tuer.
+                        TankKilled = 0;
+
+                        //Augmenter la difficulté (+2 nmbre de tank) seulement s'il n'y a pas déjà 2 tanks. Sinon lancer le mode réaparition infinies.
+                        if (GameSettings.Difficulty != 8)
+                            GameSettings.Difficulty += 2;
+                        else
+                            GameSettings.InfiniteMode = true;                  
+
+                        //Créer le lvl.
+                        GameRoot.lvl = new Level(GameSettings.Difficulty);
+                    }
+
                     //Permet de changer la valeur "Value" à partir de la clé qui est un position.
                     EntityConfig.Tank.spawnPoints[new Vector2(tank.Position.X, -150)] = true;
-                    Add(new Tank(EntityConfig.Tank.Texture, GameRoot.spriteFont, GameRoot.spriteBatch, EntityConfig.Tank.Position, EntityConfig.Tank.HealthPoint, EntityConfig.Tank.HealthPointSpritePosition, EntityConfig.Tank.Scale, EntityConfig.Tank.HitBox, EntityConfig.Tank.LifeBarScale, EntityConfig.Shell.CoolDownShoot));
-
                 }
             }
         }
