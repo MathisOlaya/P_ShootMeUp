@@ -1,113 +1,115 @@
-/* Ce fichier SQL explique en détail chaque requêtes SQL. En premier temps, j'afficherai la consigne de la requête donnée par le chef de projet. Suivra ensuite la requête, puis finalement une 
-explication détaillée de celle-ci.*/
+/* Ce fichier SQL explique en dï¿½tail chaque requï¿½tes SQL. 
+En premier temps, j'afficherai la consigne de la requï¿½te donnï¿½e par le chef de projet. 
+Suivra ensuite la requï¿½te, puis finalement une explication dï¿½taillï¿½e de celle-ci.*/
 
 /*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-/*Requêtes 1 sur 10 : 
-    La première requête que l'on vous demande de réaliser est de sélectionner les 5 joueurs
-    qui ont le meilleur score c'est-à-dire qui ont le nombre de points le plus élevé. Les joueurs
-    doivent être classés dans l'ordre décroissant*/
+USE db_space_invaders;
+/*Requï¿½tes 1 sur 10 : 
+    La premiï¿½re requï¿½te que l'on vous demande de rï¿½aliser est de sï¿½lectionner les 5 joueurs
+    qui ont le meilleur score c'est-ï¿½-dire qui ont le nombre de points le plus ï¿½levï¿½. Les joueurs
+    doivent ï¿½tre classï¿½s dans l'ordre dï¿½croissant*/
 
-    SELECT idJoueur -- Permet de sélectionner uniquement l'id du joueur*/
-    FROM t_joueur -- Permet de préciser sur quelle table nous souhaitons récupérer l'id du joueur*/
-    ORDER BY jouNombrePoints -- Permet de trier les joueurs en fonction de leurs nombre de points, pour autant le nombre de point ne sera pas affiché. A noter que par défaut, c'est trier de manière croissante.*/ 
-    DESC LIMIT 5; -- Et finalement, cela permet de limiter le nombre de résultat à 5 maximum.*/
+    SELECT idJoueur -- Permet de sï¿½lectionner uniquement l'id du joueur*/
+    FROM t_joueur -- Permet de prï¿½ciser sur quelle table nous souhaitons rï¿½cupï¿½rer l'id du joueur*/
+    ORDER BY jouNombrePoints -- Permet de trier les joueurs en fonction de leurs nombre de points, pour autant le nombre de point ne sera pas affichï¿½. A noter que par dï¿½faut, c'est trier de maniï¿½re croissante.*/ 
+    DESC LIMIT 5; -- Et finalement, cela permet de limiter le nombre de rï¿½sultat ï¿½ 5 maximum.*/
 
-/*Requêtes 2 sur 10 : 
+/*Requï¿½tes 2 sur 10 : 
     Trouver le prix maximum, minimum et moyen des armes.
-    Les colonnes doivent avoir pour nom « PrixMaximum », « PrixMinimum » et « PrixMoyen)*/
+    Les colonnes doivent avoir pour nom ï¿½ PrixMaximum ï¿½, ï¿½ PrixMinimum ï¿½ et ï¿½ PrixMoyen)*/
 
-    SELECT MIN(armPrix) as PrixMinimum, -- Permet de sélectionner le prix minimum de l'attribut 'armPrix', puis je le renomme afin que la table soit plus lisible.*/
-    AVG(armPrix) as PrixMoyen , -- Permet de sélectionner la moyenne des prix de toute les armes, puis je le renomme en 'PrixMoyen' pour les mêmes raisons.*/
-    MAX(armPrix) as PrixMaximum -- Permet de sélectionner le prix maximum de l'attribut 'armPrix', puis à nouveau le renommer.*/
-    FROM t_arme; -- Permet de spécifier de quelle tables tous les attributs viennent.
+    SELECT MIN(armPrix) as PrixMinimum, -- Permet de sï¿½lectionner le prix minimum de l'attribut 'armPrix', puis je le renomme afin que la table soit plus lisible.*/
+    AVG(armPrix) as PrixMoyen , -- Permet de sï¿½lectionner la moyenne des prix de toute les armes, puis je le renomme en 'PrixMoyen' pour les mï¿½mes raisons.*/
+    MAX(armPrix) as PrixMaximum -- Permet de sï¿½lectionner le prix maximum de l'attribut 'armPrix', puis ï¿½ nouveau le renommer.*/
+    FROM t_arme; -- Permet de spï¿½cifier de quelle tables tous les attributs viennent.
 
-/*Requêtes 3 sur 10 :
+/*Requï¿½tes 3 sur 10 :
     Trouver le nombre total de commandes par joueur et trier du plus grand nombre au plus petit.
-    La 1ère colonne aura pour nom "IdJoueur", la 2ème colonne aura pour nom "NombreCommandes"*/
+    La 1ï¿½re colonne aura pour nom "IdJoueur", la 2ï¿½me colonne aura pour nom "NombreCommandes"*/
 
-    SELECT fkJoueur as idJoueur, -- Permet de sélectionner la fk du joueur que je renomme en idJoueur pour une meilleure compréhension.
-    COUNT(idCommande) as NombreCommandes -- Permet de sélectionner le nombre de fois que l'idcommande apparaît lorsque la requête s'effectue, je la renomme ensuite en 'NombreCommandes'.
-    FROM t_commande -- Spécifier de quelle table viennent les attributs ci-dessus.
+    SELECT fkJoueur as idJoueur, -- Permet de sï¿½lectionner la fk du joueur que je renomme en idJoueur pour une meilleure comprï¿½hension.
+    COUNT(idCommande) as NombreCommandes -- Permet de sï¿½lectionner le nombre de fois que l'idcommande apparaï¿½t lorsque la requï¿½te s'effectue, je la renomme ensuite en 'NombreCommandes'.
+    FROM t_commande -- Spï¿½cifier de quelle table viennent les attributs ci-dessus.
     GROUP BY idJoueur -- Permet de regrouper les lignes ayant des valeurs identiques dans la colonne idJoueur.
-    ORDER BY NombreCommandes DESC; -- Puis ordoner le résultat, en fonction de NombreCommande dans l'ordre décroissant.
+    ORDER BY NombreCommandes DESC; -- Puis ordoner le rï¿½sultat, en fonction de NombreCommande dans l'ordre dï¿½croissant.
 
-/*Requêtes 4 sur 10 : 
-    Trouver les joueurs qui ont passé plus de 2 commandes.
-    La 1ère colonne aura pour nom "IdJoueur", la 2ème colonne aura pour nom "NombreCommandes".*/
+/*Requï¿½tes 4 sur 10 : 
+    Trouver les joueurs qui ont passï¿½ plus de 2 commandes.
+    La 1ï¿½re colonne aura pour nom "IdJoueur", la 2ï¿½me colonne aura pour nom "NombreCommandes".*/
 
-    SELECT fkJoueur as idJoueur, -- Permet de sélectionner la fk du joueur puis la renommer en idJoueur pour une meilleure compréhension.
-    COUNT(idCommande) as NombreCommandes -- Permet de sélectionner le nombre de fois que l'idcommande apparaît lorsque la requête s'effectue, je la renomme ensuite en 'NombreCommandes'.
-    FROM t_commande -- Spécifier de quelle table viennent les attributs ci-dessus.
+    SELECT fkJoueur as idJoueur, -- Permet de sï¿½lectionner la fk du joueur puis la renommer en idJoueur pour une meilleure comprï¿½hension.
+    COUNT(idCommande) as NombreCommandes -- Permet de sï¿½lectionner le nombre de fois que l'idcommande apparaï¿½t lorsque la requï¿½te s'effectue, je la renomme ensuite en 'NombreCommandes'.
+    FROM t_commande -- Spï¿½cifier de quelle table viennent les attributs ci-dessus.
     GROUP BY idJoueur -- Permet de regrouper les lignes ayant des valeurs identiques dans la colonne idJoueur.
-    HAVING NombreCommandes > 2; -- Permet d'afficher le résultat seulement si le joueur a effectué plus que deux commandes.
+    HAVING NombreCommandes > 2; -- Permet d'afficher le rï¿½sultat seulement si le joueur a effectuï¿½ plus que deux commandes.
 
-/*Requêtes 5 sur 10 : 
+/*Requï¿½tes 5 sur 10 : 
     Trouver le pseudo du joueur et le nom de l'arme pour chaque commande*/
 
-    SELECT jouPseudo, arm.armNom -- Permet de sélectionner le pseudo du joueur ainsi que le nom de l'arme.
-    FROM t_joueur, t_commande co, t_detail_commande dc, t_arme arm -- Puis sélectionner toutes ces tables afin de pouvoir avoir accès à certains attributs. Puis les renommer afin d'y avoir accès plus rapidement.
-    WHERE idJoueur = co.fkJoueur -- Afficher les résultats seulement quand l'idJoueur est égal à la fkJoueur de la table t_commande qui est renommée en 'co'.
-    AND co.idCommande = dc.fkCommande -- ET quand l'idCommande de la table commande est égale à la fkCommande de la table T_detail_commande.
-    AND dc.fKArme = arm.idArme; -- ET quand la fkArme de la table t_detail_commande est égale à l'idArme de la table t_arme.
+    SELECT jouPseudo, arm.armNom -- Permet de sï¿½lectionner le pseudo du joueur ainsi que le nom de l'arme.
+    FROM t_joueur, t_commande co, t_detail_commande dc, t_arme arm -- Puis sï¿½lectionner toutes ces tables afin de pouvoir avoir accï¿½s ï¿½ certains attributs. Puis les renommer afin d'y avoir accï¿½s plus rapidement.
+    WHERE idJoueur = co.fkJoueur -- Afficher les rï¿½sultats seulement quand l'idJoueur est ï¿½gal ï¿½ la fkJoueur de la table t_commande qui est renommï¿½e en 'co'.
+    AND co.idCommande = dc.fkCommande -- ET quand l'idCommande de la table commande est ï¿½gale ï¿½ la fkCommande de la table T_detail_commande.
+    AND dc.fKArme = arm.idArme; -- ET quand la fkArme de la table t_detail_commande est ï¿½gale ï¿½ l'idArme de la table t_arme.
 
-/*Requêtes 6 sur 10 :
-    Trouver le total dépensé par chaque joueur en ordonnant par le montant le plus élevé en
+/*Requï¿½tes 6 sur 10 :
+    Trouver le total dï¿½pensï¿½ par chaque joueur en ordonnant par le montant le plus ï¿½levï¿½ en
     premier, et limiter aux 10 premiers joueurs.
-    La 1ère colonne doit avoir pour nom "IdJoueur" et la 2ème colonne "TotalDepense"*/
+    La 1ï¿½re colonne doit avoir pour nom "IdJoueur" et la 2ï¿½me colonne "TotalDepense"*/
 
-    SELECT idJoueur, -- Permet de sélectionner l'id du joueur. 
-    SUM(armPrix * dc.detQuantiteCommande) as PrixTotalDepense -- Permet d'avoir la somme chaque armes achetées par le joueur, puis de multiplier par la quantité, et finalement la renommer en 'PrixTotalDepense'
-    FROM t_joueur, t_commande co, t_detail_commande dc, t_arme arm -- Puis sélectionner toutes ces tables afin de pouvoir avoir accès à certains attributs. Puis les renommer afin d'y avoir accès plus rapidement.
-    WHERE idJoueur = co.fkJoueur -- Afficher seulement les résultats si l'idJoueur est égale à la fkJoueur de la table t_commande.
-    AND co.idCommande = dc.fkCommande -- ET quand l'idCommande de la table t_commande est égale à la fkCommande de la table t_detail_commande.
-    AND dc.fkArme = arm.idArme -- ET quand la fkArme de la table t_detail_commande est égale à l'idArme de la table t_arme.
+    SELECT idJoueur, -- Permet de sï¿½lectionner l'id du joueur. 
+    SUM(armPrix * dc.detQuantiteCommande) as PrixTotalDepense -- Permet d'avoir la somme chaque armes achetï¿½es par le joueur, puis de multiplier par la quantitï¿½, et finalement la renommer en 'PrixTotalDepense'
+    FROM t_joueur, t_commande co, t_detail_commande dc, t_arme arm -- Puis sï¿½lectionner toutes ces tables afin de pouvoir avoir accï¿½s ï¿½ certains attributs. Puis les renommer afin d'y avoir accï¿½s plus rapidement.
+    WHERE idJoueur = co.fkJoueur -- Afficher seulement les rï¿½sultats si l'idJoueur est ï¿½gale ï¿½ la fkJoueur de la table t_commande.
+    AND co.idCommande = dc.fkCommande -- ET quand l'idCommande de la table t_commande est ï¿½gale ï¿½ la fkCommande de la table t_detail_commande.
+    AND dc.fkArme = arm.idArme -- ET quand la fkArme de la table t_detail_commande est ï¿½gale ï¿½ l'idArme de la table t_arme.
     GROUP BY idJoueur -- Puis regrouper les lignes qui ont des valeurs identiques de la colonne idJoueur.
-    ORDER BY PrixTotalDepense -- Ordonner tout ce résultat dans l'ordre croissant (défault) en fonction de PrixTotalDepense.
-    DESC LIMIT 10; -- Et finalement, limiter le nombre de résultat à 10.
+    ORDER BY PrixTotalDepense -- Ordonner tout ce rï¿½sultat dans l'ordre croissant (dï¿½fault) en fonction de PrixTotalDepense.
+    DESC LIMIT 10; -- Et finalement, limiter le nombre de rï¿½sultat ï¿½ 10.
 
-/*Requêtes 7 sur 10 : 
-    Récupérez tous les joueurs et leurs commandes, même s'ils n'ont pas passé de commande.
-    Dans cet exemple, même si un joueur n'a jamais passé de commande, il sera quand
-    même listé, avec des valeurs `NULL` pour les champs de la table `t_commande`.*/
+/*Requï¿½tes 7 sur 10 : 
+    Rï¿½cupï¿½rez tous les joueurs et leurs commandes, mï¿½me s'ils n'ont pas passï¿½ de commande.
+    Dans cet exemple, mï¿½me si un joueur n'a jamais passï¿½ de commande, il sera quand
+    mï¿½me listï¿½, avec des valeurs `NULL` pour les champs de la table `t_commande`.*/
 
-    SELECT jou.*, co.* -- Permet de sélectionner tous les élements de la table joueur et de la table commande. '*' signifie tout. 'jou' et 'co' sont les diminutifs des tables.
-    FROM t_joueur jou -- Permet de spécifier de quelles tables proviennent ces élements, en l'occurence, uniquement t_joueur que l'on renomme en jou pour un accès simplifié.
-    LEFT JOIN t_commande co -- Permet de sélectionner tous les élements n'appartenant pas qu'exclusivement à t_commande que l'on renomme en co.
-    ON jou.idJoueur = co.fkJoueur -- Seulement lorsque l'id du joueur est égal à la clé étrangère de la commande.
-    LEFT JOIN t_detail_commande dc -- Comme précédemment, tous les éléments n'appartenant pas qu'exclusivement à t_detail_commande que l'on renomme en dc.s
-    ON co.idCommande = dc.fkCommande; -- Seulement quand l'id de la commande est égal à la clé étramgère de détail de la commande.
+    SELECT jou.*, co.* -- Permet de sï¿½lectionner tous les ï¿½lements de la table joueur et de la table commande. '*' signifie tout. 'jou' et 'co' sont les diminutifs des tables.
+    FROM t_joueur jou -- Permet de spï¿½cifier de quelles tables proviennent ces ï¿½lements, en l'occurence, uniquement t_joueur que l'on renomme en jou pour un accï¿½s simplifiï¿½.
+    LEFT JOIN t_commande co -- Permet de sï¿½lectionner tous les ï¿½lements n'appartenant pas qu'exclusivement ï¿½ t_commande que l'on renomme en co.
+    ON jou.idJoueur = co.fkJoueur -- Seulement lorsque l'id du joueur est ï¿½gal ï¿½ la clï¿½ ï¿½trangï¿½re de la commande.
+    LEFT JOIN t_detail_commande dc -- Comme prï¿½cï¿½demment, tous les ï¿½lï¿½ments n'appartenant pas qu'exclusivement ï¿½ t_detail_commande que l'on renomme en dc.s
+    ON co.idCommande = dc.fkCommande; -- Seulement quand l'id de la commande est ï¿½gal ï¿½ la clï¿½ ï¿½tramgï¿½re de dï¿½tail de la commande.
 
-/*Requêtes 8 sur 10 : 
-    Récupérer toutes les commandes et afficher le pseudo du joueur s?il existe, sinon afficher `NULL` pour le pseudo.*/
+/*Requï¿½tes 8 sur 10 : 
+    Rï¿½cupï¿½rer toutes les commandes et afficher le pseudo du joueur s?il existe, sinon afficher `NULL` pour le pseudo.*/
 
-     SELECT co.*, jou.* -- Permet de sélectionner tout les élements de la table commande et de la table joueur.
-     FROM t_commande co -- Spécifier la table d'ou provient les élements, en l'occurence, t_commande que l'on renomme en co.
-     LEFT JOIN t_joueur jou -- Sélectionner tous les élemets n'appartenant pas qu'exclusivement à t_joueur que l'on renomme en jou.
-     ON co.fkJoueur = jou.idJoueur; -- Seulement quand la clé étrangère du joueur est égale à l'id du joueur.
+     SELECT co.*, jou.* -- Permet de sï¿½lectionner tout les ï¿½lements de la table commande et de la table joueur.
+     FROM t_commande co -- Spï¿½cifier la table d'ou provient les ï¿½lements, en l'occurence, t_commande que l'on renomme en co.
+     LEFT JOIN t_joueur jou -- Sï¿½lectionner tous les ï¿½lemets n'appartenant pas qu'exclusivement ï¿½ t_joueur que l'on renomme en jou.
+     ON co.fkJoueur = jou.idJoueur; -- Seulement quand la clï¿½ ï¿½trangï¿½re du joueur est ï¿½gale ï¿½ l'id du joueur.
 
-/*Requêtes 9 sur 10 : 
-    Trouver le nombre total d'armes achetées par chaque joueur (même si ce joueur n'a acheté aucune Arme).*/
+/*Requï¿½tes 9 sur 10 : 
+    Trouver le nombre total d'armes achetï¿½es par chaque joueur (mï¿½me si ce joueur n'a achetï¿½ aucune Arme).*/
 
-    SELECT jouPseudo, -- Sélectionner le pseudo du joueur.
-    IFNULL(SUM(dc.detQuantiteCommande), 0) AS ArmeTotalesAchetees -- Sélectionner la somme de quantitée commandée de la table detailCommande seulement si la valeur n'est pas null, sinon lui attribuer 0. Puis la renommer en ArmeTotalesAchetees
-    FROM t_joueur jou -- Spécifier de quelle table proviennent les éléments.
-    LEFT JOIN t_commande c -- Sélectionner tous les élemets n'appartenant pas qu'exclusivement à t_commande que l'on renomme en 'c'.
-    ON c.fkJoueur = jou.idJoueur -- Seulement quand la clé étrangère du joueur est égale à l'id du joueur.
-    LEFT JOIN t_detail_commande dc  -- Sélectionner tous les élemets n'appartenant pas qu'exclusivement à t_detail_commande que l'on renomme en dc.
-    ON dc.fkCommande = c.idCommande -- Seulement quand la clé étrangère de detail commande est égale à l'id de la commande.
+    SELECT jouPseudo, -- Sï¿½lectionner le pseudo du joueur.
+    IFNULL(SUM(dc.detQuantiteCommande), 0) AS ArmeTotalesAchetees -- Sï¿½lectionner la somme de quantitï¿½e commandï¿½e de la table detailCommande seulement si la valeur n'est pas null, sinon lui attribuer 0. Puis la renommer en ArmeTotalesAchetees
+    FROM t_joueur jou -- Spï¿½cifier de quelle table proviennent les ï¿½lï¿½ments.
+    LEFT JOIN t_commande c -- Sï¿½lectionner tous les ï¿½lemets n'appartenant pas qu'exclusivement ï¿½ t_commande que l'on renomme en 'c'.
+    ON c.fkJoueur = jou.idJoueur -- Seulement quand la clï¿½ ï¿½trangï¿½re du joueur est ï¿½gale ï¿½ l'id du joueur.
+    LEFT JOIN t_detail_commande dc  -- Sï¿½lectionner tous les ï¿½lemets n'appartenant pas qu'exclusivement ï¿½ t_detail_commande que l'on renomme en dc.
+    ON dc.fkCommande = c.idCommande -- Seulement quand la clï¿½ ï¿½trangï¿½re de detail commande est ï¿½gale ï¿½ l'id de la commande.
     GROUP BY jou.jouPseudo; -- Puis regrouper les lignes qui ont des valeurs identiques de la colonne jouPseudo.
 
-/*Requêtes 10 sur 10 : 
-    Trouver les joueurs qui ont acheté plus de 3 types d'armes différentes*/
-    SELECT jou.jouPseudo, -- Sélectionner le pseudo du joueur.
-    COUNT(DISTINCT(dc.fkArme)) as ArmeDifferenteAchetees -- Compter le nombre d'id d'arme différentes et le renommer en armeDifferentesAchetees. 
-    FROM t_joueur jou -- Spécifier de quelle table.
-    LEFT JOIN t_commande c -- Sélectionner tous les élemets n'appartenant pas qu'exclusivement à t_commande que l'on renomme en c.
-    ON c.fkJoueur = jou.idJoueur -- Seulement quand la clé étrangère du joueur est égale à l'id du joueur.
-    LEFT JOIN t_detail_commande dc -- Pareil, mais pour la table t_detail_commande renommée en dc.
+/*Requï¿½tes 10 sur 10 : 
+    Trouver les joueurs qui ont achetï¿½ plus de 3 types d'armes diffï¿½rentes*/
+    SELECT jou.jouPseudo, -- Sï¿½lectionner le pseudo du joueur.
+    COUNT(DISTINCT(dc.fkArme)) as ArmeDifferenteAchetees -- Compter le nombre d'id d'arme diffï¿½rentes et le renommer en armeDifferentesAchetees. 
+    FROM t_joueur jou -- Spï¿½cifier de quelle table.
+    LEFT JOIN t_commande c -- Sï¿½lectionner tous les ï¿½lemets n'appartenant pas qu'exclusivement ï¿½ t_commande que l'on renomme en c.
+    ON c.fkJoueur = jou.idJoueur -- Seulement quand la clï¿½ ï¿½trangï¿½re du joueur est ï¿½gale ï¿½ l'id du joueur.
+    LEFT JOIN t_detail_commande dc -- Pareil, mais pour la table t_detail_commande renommï¿½e en dc.
     ON dc.fkCommande = c.idCommande -- Pareil, mais pour les attributs fkCommande et idCommande.
-    LEFT JOIN t_arme arm -- Pareil, mais pour la table t_arme renommée en arm.
+    LEFT JOIN t_arme arm -- Pareil, mais pour la table t_arme renommï¿½e en arm.
     ON arm.idArme = dc.fkArme -- Pareil, mais pour les attributs idArme et fkArme.
     GROUP BY jou.jouPseudo -- Puis regrouper les lignes qui ont des valeurs identiques de la colonne jouPseudo.
-    HAVING ArmeDifferenteAchetees > 3; -- Seulement quand le nombre de ligne est suppérieur à 3.
+    HAVING ArmeDifferenteAchetees > 3; -- Seulement quand le nombre de ligne du rÃ©sultat du GROUP BY est suppï¿½rieur ï¿½ 3.

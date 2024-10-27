@@ -1,25 +1,25 @@
 -----------------------------[ Gestion des utilisateurs ]------------------------------
-/*Pour la gestion des utilisateurs, j'ai créé des rôles. Cela me permet de définir une seule fois 
-les privilèges nécessaires. Ensuite, je peux créer les utilisateurs et leur attribuer ces rôles.
-Dans ce cas précis, l'utilisation d'un rôle peut sembler superflue, mais dans une base de données plus 
-grande avec davantage d'utilisateurs, cela réduit considérablement la charge de travail.
-De cette manière, tous les privilèges nécessaires sont regroupés dans un seul mot : le rôle.*/
+/*Pour la gestion des utilisateurs, j'ai crï¿½ï¿½ des rï¿½les. Cela me permet de dï¿½finir une seule fois 
+les privilï¿½ges nï¿½cessaires. Ensuite, je peux crï¿½er les utilisateurs et leur attribuer ces rï¿½les.
+Dans ce cas prï¿½cis, l'utilisation d'un rï¿½le peut sembler superflue, mais dans une base de donnï¿½es plus 
+grande avec davantage d'utilisateurs, cela rï¿½duit considï¿½rablement la charge de travail.
+De cette maniï¿½re, tous les privilï¿½ges nï¿½cessaires sont regroupï¿½s dans un seul mot : le rï¿½le.*/
 
-/*Pour la création de rôles et d'utilisateurs, on ne précise pas @localhost car nous travaillons dans 
-un environnement docker ce qui nous forcerait à utiliser l'adresse IP du docker. Nous utilisons donc 
-aucun paramètre, ce qui le place dans le nom d'hôte % qui sélectionne tous les hôtes par défaut.*/
+/*Pour la crï¿½ation de rï¿½les et d'utilisateurs, on ne prï¿½cise pas @localhost car nous travaillons dans 
+un environnement docker ce qui nous forcerait ï¿½ utiliser l'adresse IP du docker. Nous utilisons donc 
+aucun paramï¿½tre, ce qui le place dans le nom d'hï¿½te % qui sï¿½lectionne tous les hï¿½tes par dï¿½faut.*/
 
-use db_space_invaders;
+USE db_space_invaders;
 -- Administrateurs
     -- Role
     CREATE role "Administrateurs";
     -- Droits pour le role Administrateur
     GRANT CREATE, SELECT, UPDATE, DELETE ON * to "Administrateurs" WITH GRANT OPTION;
-    -- Créer l'utilisateur administrateur.
+    -- Crï¿½er l'utilisateur administrateur.
     CREATE USER "Administrateur" IDENTIFIED BY "AdminPass";
     -- Attribuer les droits 
     GRANT "Administrateurs" TO "Administrateur" ;
-    -- Activer le rôle
+    -- Activer le rï¿½le
     SET DEFAULT ROLE "Administrateurs" TO "Administrateur" ;
 
 
@@ -29,12 +29,12 @@ use db_space_invaders;
     -- Droits pour le role Joueur
     GRANT SELECT ON t_arme TO "Joueurs";
     GRANT CREATE, SELECT ON t_commande TO "Joueurs";
-    -- Créer l'utilisateur joueur
-    CREATE USER "Joueur" IDENTIFIED BY "JoueurPass";
+    -- Crï¿½er l'utilisateur joueur 
+    CREATE USER "Player01" IDENTIFIED BY "JoueurPass";
     -- Attribuer les droits
-    GRANT "Joueurs" TO "Joueur" ;
-    -- Activer le rôle
-    SET DEFAULT ROLE "Joueurs" TO "Joueur" ;
+    GRANT "Joueurs" TO "Player01" ;
+    -- Activer le rï¿½le
+    SET DEFAULT ROLE "Joueurs" TO "Player01" ;
 
 
 -- Gestionnaire de boutique
@@ -44,15 +44,15 @@ use db_space_invaders;
     GRANT SELECT ON t_joueur TO 'GestionnairesDeBoutique';
     GRANT UPDATE, SELECT, DELETE on t_arme TO "GestionnairesDeBoutique";
     GRANT SELECT on t_commande TO "GestionnairesDeBoutique";
-    -- Créer l'utlisateur Gestionnaire de boutique 
+    -- Crï¿½er l'utlisateur Gestionnaire de boutique 
     CREATE USER "GestionnaireDeBoutique" IDENTIFIED BY "GestionnairePass";
     -- Attribuer les droits
     GRANT "GestionnairesDeBoutique" TO "GestionnaireDeBoutique";
-    -- Activer le rôle
+    -- Activer le rï¿½le
     SET DEFAULT ROLE "GestionnairesDeBoutique" TO "GestionnaireDeBoutique";
 
 
--- Vérifier les privilèges de chaque rôle
+-- Vï¿½rifier les privilï¿½ges de chaque rï¿½le
     SHOW GRANTS FOR "Administrateurs" ;
     SHOW GRANTS FOR "Joueurs" ;
     SHOW GRANTS FOR "GestionnairesDeBoutique" ;
