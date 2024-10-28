@@ -1,15 +1,16 @@
------------------------------[ Gestion des utilisateurs ]------------------------------
-/* Pour la gestion des utilisateurs, j'ai cr�� des r�les. Cela me permet de d�finir une seule fois 
-les privil�ges n�cessaires. Ensuite, je peux cr�er les utilisateurs et leur attribuer ces r�les.
-Dans ce cas pr�cis, l'utilisation d'un r�le peut sembler superflue, mais dans une base de donn�es plus 
-grande avec davantage d'utilisateurs, cela r�duit consid�rablement la charge de travail.
-De cette mani�re, tous les privil�ges n�cessaires sont regroup�s dans un seul mot : le r�le. */
+-- ---------------------------[ Gestion des utilisateurs ]------------------------------
+-- Pour la gestion des utilisateurs, j'ai cr�� des r�les. Cela me permet de d�finir une seule fois 
+-- les privil�ges n�cessaires. Ensuite, je peux cr�er les utilisateurs et leur attribuer ces r�les.
+-- Dans ce cas pr�cis, l'utilisation d'un r�le peut sembler superflue, mais dans une base de donn�es plus 
+-- grande avec davantage d'utilisateurs, cela r�duit consid�rablement la charge de travail.
+-- De cette mani�re, tous les privil�ges n�cessaires sont regroup�s dans un seul mot : le r�le.
 
-/* Pour la cr�ation de r�les et d'utilisateurs, on ne pr�cise pas @localhost car nous travaillons dans 
-un environnement docker ce qui nous forcerait � utiliser l'adresse IP du docker. Nous utilisons donc 
-aucun param�tre, ce qui le place dans le nom d'h�te % qui s�lectionne tous les h�tes par d�faut. */
+-- Pour la cr�ation de r�les et d'utilisateurs, on ne pr�cise pas @localhost car nous travaillons dans 
+-- un environnement docker ce qui nous forcerait � utiliser l'adresse IP du docker. Nous utilisons donc 
+-- aucun param�tre, ce qui le place dans le nom d'h�te % qui s�lectionne tous les h�tes par d�faut.
 
 USE db_space_invaders;
+
 -- Administrateurs
     -- Role
     CREATE role IF NOT EXISTS "Administrateurs";

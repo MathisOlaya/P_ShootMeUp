@@ -1,6 +1,6 @@
-/* Ce fichier SQL explique en d�tail chaque requ�tes SQL. 
-En premier temps, j'afficherai la consigne de la requ�te donn�e par le chef de projet. 
-Suivra ensuite la requ�te, puis finalement une explication d�taill�e de celle-ci.*/
+-- Ce fichier SQL explique en d�tail chaque requ�tes SQL. 
+-- En premier temps, j'afficherai la consigne de la requ�te donn�e par le chef de projet. 
+-- Suivra ensuite la requ�te, puis finalement une explication d�taill�e de celle-ci.
 
 /*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
