@@ -12,11 +12,11 @@ aucun param�tre, ce qui le place dans le nom d'h�te % qui s�lectionne tous
 USE db_space_invaders;
 -- Administrateurs
     -- Role
-    CREATE role "Administrateurs";
+    CREATE role IF NOT EXISTS "Administrateurs";
     -- Droits pour le role Administrateur
     GRANT CREATE, SELECT, UPDATE, DELETE ON * to "Administrateurs" WITH GRANT OPTION;
     -- Cr�er l'utilisateur administrateur.
-    CREATE USER "Administrateur" IDENTIFIED BY "AdminPass";
+    CREATE USER IF NOT EXISTS "Administrateur" IDENTIFIED BY "AdminPass";
     -- Attribuer les droits 
     GRANT "Administrateurs" TO "Administrateur" ;
     -- Activer le r�le
@@ -25,12 +25,12 @@ USE db_space_invaders;
 
 -- Joueur
     -- Role
-    CREATE role "Joueurs";
+    CREATE role IF NOT EXISTS "Joueurs";
     -- Droits pour le role Joueur
     GRANT SELECT ON t_arme TO "Joueurs";
     GRANT CREATE, SELECT ON t_commande TO "Joueurs";
     -- Cr�er l'utilisateur joueur 
-    CREATE USER "Player01" IDENTIFIED BY "JoueurPass";
+    CREATE USER IF NOT EXISTS "Player01" IDENTIFIED BY "JoueurPass";
     -- Attribuer les droits
     GRANT "Joueurs" TO "Player01" ;
     -- Activer le r�le
@@ -39,13 +39,13 @@ USE db_space_invaders;
 
 -- Gestionnaire de boutique
     -- Role
-    CREATE role "GestionnairesDeBoutique";
+    CREATE role IF NOT EXISTS "GestionnairesDeBoutique";
     -- Droits pour le role Gestionnaire de boutique
     GRANT SELECT ON t_joueur TO 'GestionnairesDeBoutique';
     GRANT UPDATE, SELECT, DELETE on t_arme TO "GestionnairesDeBoutique";
     GRANT SELECT on t_commande TO "GestionnairesDeBoutique";
     -- Cr�er l'utlisateur Gestionnaire de boutique 
-    CREATE USER "GestionnaireDeBoutique" IDENTIFIED BY "GestionnairePass";
+    CREATE USER IF NOT EXISTS "GestionnaireDeBoutique" IDENTIFIED BY "GestionnairePass";
     -- Attribuer les droits
     GRANT "GestionnairesDeBoutique" TO "GestionnaireDeBoutique";
     -- Activer le r�le
