@@ -18,7 +18,7 @@ pas le mot clé INDEX. */
                     1) Chaque index occupe plus de stockage et augmente donc la taille de la base de données.
                     2) Les différentes opérations tels qu'INSERT, UPDATE et DELETE sont ralentis sur une table indexée car à chaque modification, les index doivent être mis à jour.*/
                 
---3     Sur quel champ (de quelle table), cela pourrait être pertinent d?ajouter un index ?
+-- 3     Sur quel champ (de quelle table), cela pourrait être pertinent d?ajouter un index ?
 
       /*Sur les tables contenant beaucoup de données, ou qu'on appelle fréquemment. Dans notre cas
       sur le champ jouPseudo de la table t_joueur. Car ce champ est appelé à chaque connexion du joueur et est généralement unique.*/
