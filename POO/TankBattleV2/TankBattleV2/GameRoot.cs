@@ -85,17 +85,19 @@ namespace TankBattleV2
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
+            GraphicsDevice.Clear(Color.Red);
+            spriteBatch.Begin();
+            spriteBatch.Draw(GameSettings.Map, Vector2.Zero, null, Color.White , 0f, Vector2.Zero, ((float)Config.WINDOW_WIDTH / (float)GameSettings.Map.Width), SpriteEffects.None, 0f);
             //Effectuer la méthode Draw pour chaque méthode
             EntityManager.Draw(gameTime);
             if(menu != null)
                 menu.Draw(spriteBatch);
 
-            spriteBatch.Begin();
+            
             //Seulement afficher quand il joue.
             if (CurrentGameState == GameState.Playing)
                 spriteBatch.DrawString(spriteFont, Score.ToString(), new Vector2(Config.WINDOW_WIDTH - 50, Config.WINDOW_HEIGHT - 75), Color.White);
+            
             spriteBatch.End();
 
             base.Draw(gameTime);

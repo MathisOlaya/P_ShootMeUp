@@ -71,8 +71,6 @@ namespace TankBattleV2
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Begin();
-
             for (int i = 0; i < Buttons.Count; i++)
             {
                 Texture2D rectangleTexture;
@@ -101,8 +99,6 @@ namespace TankBattleV2
                     new Vector2(Button.X + (Button.Width - spriteFont.MeasureString(ButtonActionTitle[i].ToString()).X) / 2,
                     Button.Y + (Button.Height - spriteFont.MeasureString(ButtonActionTitle[i].ToString()).Y) / 2), Color.White);
             }
-            
-            spriteBatch.End();
         }
         private void OnClick(Action action)
         {
