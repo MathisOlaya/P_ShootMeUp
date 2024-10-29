@@ -129,6 +129,7 @@ namespace TankBattleV2
                     GameRoot.Score = 0;
                     EntityManager.TankKilled = 0;
                     EntityManager.Player.HealthPoint = 3;
+                    EntityManager.LevelID = 1;
                     GameSettings.Difficulty = 2; //difficulté par défaut
                     GameSettings.InfiniteMode = false;
 
@@ -139,14 +140,11 @@ namespace TankBattleV2
                     //Afficher l'instance du joueur comme nul
                     EntityManager.Player = null;
 
+                    //Reset le dictionnaire des positions des tanks
+                    EntityConfig.Tank.SetDefaultSpawnPoints();
+
                     // Recréer le niveau
                     GameRoot.lvl = new Level(GameSettings.Difficulty);
-
-                    //Reset le dictionnaire des positions des tanks
-                    foreach (var key in EntityConfig.Tank.spawnPoints.Keys.ToList())
-                    {
-                        EntityConfig.Tank.spawnPoints[key] = true;
-                    }
 
                     //Joueur
                     GameRoot.CurrentGameState = GameState.Playing;

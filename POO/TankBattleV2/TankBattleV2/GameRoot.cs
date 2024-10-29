@@ -43,6 +43,7 @@ namespace TankBattleV2
             //Appliquer les changements de taille.
             _graphics.ApplyChanges();
             base.Initialize();
+            EntityConfig.Tank.SetDefaultSpawnPoints();
         }
 
         protected override void LoadContent()
@@ -90,6 +91,8 @@ namespace TankBattleV2
                     menu.Update(gameTime);
                     break;
             }
+
+            
             base.Update(gameTime);
         }
 
@@ -103,7 +106,9 @@ namespace TankBattleV2
             if(menu != null)
                 menu.Draw(spriteBatch);
 
-            
+            //Si il y a un nouveau lvl, l'écrire
+            spriteBatch.DrawString(spriteFont, EntityManager.LevelID.ToString(), new Vector2(50, 50), Color.White);
+
             //Seulement afficher quand il joue.
             if (CurrentGameState == GameState.Playing)
                 spriteBatch.DrawString(spriteFont, Score.ToString(), new Vector2(Config.WINDOW_WIDTH - 50, Config.WINDOW_HEIGHT - 75), Color.White);

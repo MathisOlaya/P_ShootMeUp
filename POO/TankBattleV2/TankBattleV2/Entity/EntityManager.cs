@@ -18,6 +18,9 @@ namespace TankBattleV2
 
         public static int TankKilled = 0;
 
+        public static int LevelID = 1;
+
+
         public static void Add(Entity entity)
         {
             Entities.Add(entity);
@@ -139,20 +142,19 @@ namespace TankBattleV2
 
                         //Créer le lvl.
                         GameRoot.lvl = new Level(GameSettings.Difficulty);
+                        LevelID++;
                     }
 
                     if (EntityConfig.Tank.spawnPoints.ContainsKey(tank.SpawnPoint))
                     {
-                        // Mettre à jour la valeur si la clé existe
+                        // Mettre à jour la valeur
                         EntityConfig.Tank.spawnPoints[tank.SpawnPoint] = true;
                     }
                     Console.Clear();
                     foreach (var kvp in EntityConfig.Tank.spawnPoints)
                     {
-                        // `kvp.Key` est la clé, et `kvp.Value` est la valeur
                         Console.WriteLine($"Key: {kvp.Key}, Value: {kvp.Value}");
                     }
-                    Console.WriteLine("\n\n" + tank.SpawnPoint.ToString());
                 }
             }
         }

@@ -71,18 +71,23 @@ namespace EntityConfig
 
         public static float Speed = 15;
 
-        public static Dictionary<Vector2, bool> spawnPoints = new Dictionary<Vector2, bool>()
+        public static Dictionary<Vector2, bool> spawnPoints;
+
+        public static void SetDefaultSpawnPoints()
         {
-            { new Vector2(100, -125), true },
-            { new Vector2(325, -170), true }, 
-            { new Vector2(530, -140), true },
-            { new Vector2(710, -125), true }, 
-            { new Vector2(900, -180), true },
-            { new Vector2(1100, -105), true },
-            { new Vector2(1320, -150), true }, 
-            { new Vector2(1570, -155), true },
-            { new Vector2(1800, -190), true }  
-        };
+            spawnPoints = new Dictionary<Vector2, bool>()
+            {
+                { new Vector2(100, -125), true },
+                { new Vector2(325, -170), true },
+                { new Vector2(530, -140), true },
+                { new Vector2(710, -125), true },
+                { new Vector2(900, -180), true },
+                { new Vector2(1100, -105), true },
+                { new Vector2(1320, -150), true },
+                { new Vector2(1570, -155), true },
+                { new Vector2(1800, -190), true }
+            };
+        }
     }
     public static class Shell
     {
