@@ -5,6 +5,8 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TankBattleV2", "TankBattleV2\TankBattleV2.csproj", "{89F5B395-F5B3-4F97-8242-2ADB4FED46FB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TankBattleTests", "TankBattleTests\TankBattleTests.csproj", "{286BAF9A-0636-4E8D-9EB4-89FC52EB976D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{89F5B395-F5B3-4F97-8242-2ADB4FED46FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89F5B395-F5B3-4F97-8242-2ADB4FED46FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89F5B395-F5B3-4F97-8242-2ADB4FED46FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{286BAF9A-0636-4E8D-9EB4-89FC52EB976D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{286BAF9A-0636-4E8D-9EB4-89FC52EB976D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{286BAF9A-0636-4E8D-9EB4-89FC52EB976D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{286BAF9A-0636-4E8D-9EB4-89FC52EB976D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
