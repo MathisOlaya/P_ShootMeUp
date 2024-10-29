@@ -16,7 +16,7 @@ namespace TankBattleV2
 
         public static Player Player;
 
-        private static int TankKilled = 0;
+        public static int TankKilled = 0;
 
         public static void Add(Entity entity)
         {
@@ -43,7 +43,13 @@ namespace TankBattleV2
                 // Ajouter le nouveau tank avec la position valide
                 Add(new Tank(EntityConfig.Tank.Texture, GameRoot.spriteFont, GameRoot.spriteBatch, EntityConfig.Tank.Position, EntityConfig.Tank.HealthPoint, EntityConfig.Tank.HealthPointSpritePosition, EntityConfig.Tank.Scale, EntityConfig.Tank.HitBox, EntityConfig.Tank.LifeBarScale, EntityConfig.Shell.CoolDownShoot));
             }
-
+            Console.Clear();
+            foreach (var kvp in EntityConfig.Tank.spawnPoints)
+            {
+                // `kvp.Key` est la clé, et `kvp.Value` est la valeur
+                Console.WriteLine($"Key: {kvp.Key}, Value: {kvp.Value}");
+            }
+            
         }
         public static void Update(GameTime gameTime)
         {
@@ -59,6 +65,11 @@ namespace TankBattleV2
             {
                 entity.Draw(gameTime);
             }
+        }
+        public static void DeleteEntity()
+        {
+            //Supprimer chaque entité
+            Entities.Clear();
         }
         private static void CheckCollisions()
         {
@@ -112,7 +123,7 @@ namespace TankBattleV2
                         Add(new Tank(EntityConfig.Tank.Texture, GameRoot.spriteFont, GameRoot.spriteBatch, EntityConfig.Tank.Position, EntityConfig.Tank.HealthPoint, EntityConfig.Tank.HealthPointSpritePosition, EntityConfig.Tank.Scale, EntityConfig.Tank.HitBox, EntityConfig.Tank.LifeBarScale, EntityConfig.Shell.CoolDownShoot));
 
                     //Vérifier si le joueur a tuer tous les tanks 
-                    if (TankKilled == GameSettings.Difficulty && !GameSettings.InfiniteMode)
+                    if (TankKilled >= GameSettings.Difficulty && !GameSettings.InfiniteMode)
                     {
                         //Supprimer le lvl 
                         GameRoot.lvl = null;
@@ -124,14 +135,24 @@ namespace TankBattleV2
                         if (GameSettings.Difficulty != 8)
                             GameSettings.Difficulty += 2;
                         else
-                            GameSettings.InfiniteMode = true;                  
+                            GameSettings.InfiniteMode = true;
 
                         //Créer le lvl.
                         GameRoot.lvl = new Level(GameSettings.Difficulty);
                     }
 
-                    //Permet de changer la valeur "Value" à partir de la clé qui est un position. (Y - HowLongHeAdvanced) Permet d'obtenir la position de départ
-                    EntityConfig.Tank.spawnPoints[new Vector2(tank.Position.X, tank.Position.Y - tank.HowLongHeAdvanced)] = true;
+                    if (EntityConfig.Tank.spawnPoints.ContainsKey(tank.SpawnPoint))
+                    {
+                        // Mettre à jour la valeur si la clé existe
+                        EntityConfig.Tank.spawnPoints[tank.SpawnPoint] = true;
+                    }
+                    Console.Clear();
+                    foreach (var kvp in EntityConfig.Tank.spawnPoints)
+                    {
+                        // `kvp.Key` est la clé, et `kvp.Value` est la valeur
+                        Console.WriteLine($"Key: {kvp.Key}, Value: {kvp.Value}");
+                    }
+                    Console.WriteLine("\n\n" + tank.SpawnPoint.ToString());
                 }
             }
         }

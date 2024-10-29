@@ -15,7 +15,7 @@ namespace TankBattleV2
         public float TimeSinceLastShot { get; set; }
         public float TimeBetweenEveryShot { get; set; }
         public Vector2 Direction { get; set; }
-        public int HowLongHeAdvanced { get; set; }
+        public Vector2 SpawnPoint { get; private set; }
 
         private float LifeBarScale;
 
@@ -32,26 +32,35 @@ namespace TankBattleV2
             étant donné que cette technologie n'avait pas encore été vue en cours. *Les commentaires ont été réalisé par moi.**/
 
             //Permet de créer une liste en sélectionnant uniquement les positions étant non-occupées (donc dont le booléan attribué est true).
-            var availableSpawnPoints = EntityConfig.Tank.spawnPoints
-                .Where(sp => sp.Value) //Seulement les positions non-occupées.
-                .Select(sp => sp.Key) //Renseigner quel élement enregistrer dans la liste.
-                .ToList(); //Spécifier le format.
+            // Créer une liste pour stocker les points d'apparition disponibles
+            List<Vector2> availableSpawnPoints = new List<Vector2>();
 
-            //Permet de vérifier si des points d'apparitions sont disponibles. Sinon, ils sont tous utilisés.
+            // Vérifier les points d'apparition et ajouter ceux qui sont disponibles
+            foreach (var kvp in EntityConfig.Tank.spawnPoints)
+            {
+                if (kvp.Value) // Seulement les positions non-occupées
+                {
+                    availableSpawnPoints.Add(kvp.Key);
+                }
+            }
+
+            // Vérifier si des points d'apparition sont disponibles
             if (availableSpawnPoints.Count > 0)
             {
-                //Si il y a des points d'apparations disponibles, en choisir un aléatoirement afin d'éviter de prendre celui le plus à gauche à chaque fois.
+                // Choisir un index aléatoire pour une position disponible
                 int randomIndex = GlobalHelpers.Random.Next(0, availableSpawnPoints.Count);
-                Position = availableSpawnPoints[randomIndex]; //Attribuer une position a partir de la liste de positions disponible en utilisant un index aléatoire.
+                Position = availableSpawnPoints[randomIndex]; // Attribuer une position aléatoire
 
-                //Puis, marquer le point d'apparation en indisponible, donc en changeant le bool.
+                // Marquer le point d'apparition en indisponible
                 EntityConfig.Tank.spawnPoints[Position] = false;
             }
             else
             {
-                //Si il n'y a plus de place,  supprimer le tank, sinon il va se superposer sur les autres.
+                // Si aucun point d'apparition n'est disponible, supprimer le tank
                 EntityManager.Remove(this);
             }
+
+            SpawnPoint = Position;
             HitBox = new Rectangle((int)(Position.X - Texture.Width / 2 * Scale), (int)(Position.Y - Texture.Height / 2 * Scale), (int)(Texture.Width * Scale), (int)(Texture.Height * Scale - 65));    //-65 afin d'éviter de prendre le canon en tant que collision, étant donné que c'est un rectangle, les parties vides se trouvant à cotér créeront des collisions inexistantes.
         }
 
@@ -72,9 +81,6 @@ namespace TankBattleV2
             //Les tanks apparaissent avec une position négative en dehors de l'écran. Ils avancent jusqu'a une position Y précise, puis commencent à tirer.
             Position += new Vector2(0, (Position.Y < EntityConfig.Tank.LIMITE_POSITION_Y) ? 1 : 0);
             HitBox.Location = new Point((int)(Position.X - Texture.Width / 2 * Scale), (int)(Position.Y - Texture.Height / 2 * Scale));
-
-            if (Position.Y < EntityConfig.Tank.LIMITE_POSITION_Y)
-                HowLongHeAdvanced += 1;
 
             //Dès qu'il arrive, lancer le timer de délai entre chaque tir.
             if (Position.Y == EntityConfig.Tank.LIMITE_POSITION_Y)

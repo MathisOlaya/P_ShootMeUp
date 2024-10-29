@@ -15,7 +15,8 @@ namespace TankBattleV2
         Resume, 
         Start,
         Exit, 
-        Settings
+        Settings,
+        Restart,
     }
     public class Menu
     {
@@ -40,6 +41,9 @@ namespace TankBattleV2
 
         public void Initialize()
         {
+            //Reset la liste de boutons
+            Buttons.Clear();
+
             //Créer un nouveau bouton, qui ajoutera automatique au dictionnaire.
             Buttons buttons = new Buttons(100, 50, ButtonActionTitle, spriteFont);
         }
@@ -119,6 +123,33 @@ namespace TankBattleV2
                     break;
                 case Action.Exit:
                     Environment.Exit(0);
+                    break;
+                case Action.Restart:
+                    // Réinitialiser les variables de jeu importantes
+                    GameRoot.Score = 0;
+                    EntityManager.TankKilled = 0;
+                    EntityManager.Player.HealthPoint = 3;
+                    GameSettings.Difficulty = 2; //difficulté par défaut
+                    GameSettings.InfiniteMode = false;
+
+                    //Supprimer toutes les entités et le lvl
+                    EntityManager.DeleteEntity();
+                    GameRoot.lvl = null;
+
+                    //Afficher l'instance du joueur comme nul
+                    EntityManager.Player = null;
+
+                    // Recréer le niveau
+                    GameRoot.lvl = new Level(GameSettings.Difficulty);
+
+                    //Reset le dictionnaire des positions des tanks
+                    foreach (var key in EntityConfig.Tank.spawnPoints.Keys.ToList())
+                    {
+                        EntityConfig.Tank.spawnPoints[key] = true;
+                    }
+
+                    //Joueur
+                    GameRoot.CurrentGameState = GameState.Playing;
                     break;
                 case Action.Settings:
                     break;

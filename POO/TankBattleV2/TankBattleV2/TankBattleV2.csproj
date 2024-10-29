@@ -10,6 +10,7 @@
   <PropertyGroup>
     <ApplicationManifest>Program\app.manifest</ApplicationManifest>
     <ApplicationIcon>Content\Icon.ico</ApplicationIcon>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="Content\Icon.ico" />

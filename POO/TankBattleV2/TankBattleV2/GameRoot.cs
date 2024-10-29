@@ -13,6 +13,7 @@ namespace TankBattleV2
         Menu,
         Playing,
         Paused,
+        DeadScreen,
     }
     public class GameRoot : Game
     {
@@ -25,7 +26,7 @@ namespace TankBattleV2
         public static GameState CurrentGameState = GameState.Menu;  //Par défaut il est dans le menu.
 
         public static Level lvl;
-        Menu menu;
+        public static Menu menu;
 
         public GameRoot()
         {
@@ -59,8 +60,13 @@ namespace TankBattleV2
 
         protected override void Update(GameTime gameTime)
         {
+            //Si le joueur appuie sur ESC, mettre pause
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 CurrentGameState = GameState.Paused;
+            //Si le joueur est mort et qu'il existe evidemment (au debut il n'existe pas de suite)
+            if(EntityManager.Player != null)
+                if (EntityManager.Player.HealthPoint <= 0)
+                    CurrentGameState = GameState.DeadScreen;
 
             switch (CurrentGameState)
             {
@@ -75,6 +81,12 @@ namespace TankBattleV2
                     //Créer un nouveau menu seulement s'il n'existe pas. Sinon cela va en créer une infinité.
                     if(menu == null)
                         menu = new Menu(new List<Action>{Action.Resume, Action.Exit}, spriteFont);
+                    menu.Update(gameTime);
+                    break;
+                case GameState.DeadScreen:
+                    //Créer un nouveau menu seulement s'il n'existe pas. Sinon cela va en créer une infinité.
+                    if (menu == null)
+                        menu = new Menu(new List<Action> { Action.Restart, Action.Exit }, spriteFont);
                     menu.Update(gameTime);
                     break;
             }
