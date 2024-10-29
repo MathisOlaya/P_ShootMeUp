@@ -47,7 +47,7 @@ namespace EntityConfig
 
         public static float Speed = 15f;
 
-        public static float CoolDownShoot = 0.2f;
+        public static float CoolDownShoot = 0.4f;
     }
     public static class Tank
     {
@@ -73,15 +73,15 @@ namespace EntityConfig
 
         public static Dictionary<Vector2, bool> spawnPoints = new Dictionary<Vector2, bool>()
         {
-            {new Vector2(100, -150), true},
-            {new Vector2(325, -150), true},
-            {new Vector2(530, -150), true},
-            {new Vector2(710, -150), true},
-            {new Vector2(900, -150), true},
-            {new Vector2(1100, -150), true},
-            {new Vector2(1320, -150), true},
+            {new Vector2(100, -265), true},
+            {new Vector2(325, -225), true},
+            {new Vector2(530, -340), true},
+            {new Vector2(710, -120), true},
+            {new Vector2(900, -290), true},
+            {new Vector2(1100, -175), true},
+            {new Vector2(1320, -350), true},
             {new Vector2(1570, -150), true},
-            {new Vector2(1800, -150), true},
+            {new Vector2(1800, -250), true},
         };
     }
     public static class Shell
