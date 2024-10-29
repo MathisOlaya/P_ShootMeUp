@@ -102,7 +102,7 @@ namespace TankBattleV2
                 if (entity is Tank tank)
                 {
                     //Incrémenter le score
-                    GameRoot.Score += 500;
+                    GameRoot.Score += 5;
 
                     //Incrementer le nombre de tank tuer.
                     TankKilled++;

@@ -22,7 +22,6 @@ namespace TankBattleV2
 
         //Game
         public static int Score { get; set; }
-        public static float GameTimer;
         public static GameState CurrentGameState = GameState.Menu;  //Par défaut il est dans le menu.
 
         public static Level lvl;
@@ -79,7 +78,6 @@ namespace TankBattleV2
                     menu.Update(gameTime);
                     break;
             }
-            Game(gameTime);
             base.Update(gameTime);
         }
 
@@ -101,15 +99,6 @@ namespace TankBattleV2
             spriteBatch.End();
 
             base.Draw(gameTime);
-        }
-        private static void Game(GameTime gameTime)
-        {
-            if(CurrentGameState == GameState.Playing)
-            {
-                GameTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                Score += (int)GameTimer;
-            }
-            
         }
     }
 }
