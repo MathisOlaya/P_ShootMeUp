@@ -111,10 +111,12 @@ namespace TankBattleV2
                     if (GameSettings.InfiniteMode)
                         Add(new Tank(EntityConfig.Tank.Texture, GameRoot.spriteFont, GameRoot.spriteBatch, EntityConfig.Tank.Position, EntityConfig.Tank.HealthPoint, EntityConfig.Tank.HealthPointSpritePosition, EntityConfig.Tank.Scale, EntityConfig.Tank.HitBox, EntityConfig.Tank.LifeBarScale, EntityConfig.Shell.CoolDownShoot));
 
-
                     //Vérifier si le joueur a tuer tous les tanks 
-                    if (TankKilled == GameSettings.Difficulty)
+                    if (TankKilled == GameSettings.Difficulty && !GameSettings.InfiniteMode)
                     {
+                        //Supprimer le lvl 
+                        GameRoot.lvl = null;
+
                         //Réinitialiser le nombre d'ennemi tuer.
                         TankKilled = 0;
 
@@ -128,8 +130,8 @@ namespace TankBattleV2
                         GameRoot.lvl = new Level(GameSettings.Difficulty);
                     }
 
-                    //Permet de changer la valeur "Value" à partir de la clé qui est un position.
-                    EntityConfig.Tank.spawnPoints[new Vector2(tank.Position.X, -150)] = true;
+                    //Permet de changer la valeur "Value" à partir de la clé qui est un position. (Y - HowLongHeAdvanced) Permet d'obtenir la position de départ
+                    EntityConfig.Tank.spawnPoints[new Vector2(tank.Position.X, tank.Position.Y - tank.HowLongHeAdvanced)] = true;
                 }
             }
         }

@@ -73,15 +73,15 @@ namespace EntityConfig
 
         public static Dictionary<Vector2, bool> spawnPoints = new Dictionary<Vector2, bool>()
         {
-            {new Vector2(100, -265), true},
-            {new Vector2(325, -225), true},
-            {new Vector2(530, -340), true},
-            {new Vector2(710, -120), true},
-            {new Vector2(900, -290), true},
-            {new Vector2(1100, -175), true},
-            {new Vector2(1320, -350), true},
-            {new Vector2(1570, -150), true},
-            {new Vector2(1800, -250), true},
+            { new Vector2(100, -125), true },
+            { new Vector2(325, -100), true }, 
+            { new Vector2(530, -140), true },
+            { new Vector2(710, -80), true }, 
+            { new Vector2(900, -70), true },
+            { new Vector2(1100, -105), true },
+            { new Vector2(1320, -90), true }, 
+            { new Vector2(1570, -110), true },
+            { new Vector2(1800, -120), true }  
         };
     }
     public static class Shell

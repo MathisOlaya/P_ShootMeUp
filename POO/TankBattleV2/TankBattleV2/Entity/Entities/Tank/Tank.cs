@@ -15,6 +15,7 @@ namespace TankBattleV2
         public float TimeSinceLastShot { get; set; }
         public float TimeBetweenEveryShot { get; set; }
         public Vector2 Direction { get; set; }
+        public int HowLongHeAdvanced { get; set; }
 
         private float LifeBarScale;
 
@@ -71,6 +72,9 @@ namespace TankBattleV2
             //Les tanks apparaissent avec une position négative en dehors de l'écran. Ils avancent jusqu'a une position Y précise, puis commencent à tirer.
             Position += new Vector2(0, (Position.Y < EntityConfig.Tank.LIMITE_POSITION_Y) ? 1 : 0);
             HitBox.Location = new Point((int)(Position.X - Texture.Width / 2 * Scale), (int)(Position.Y - Texture.Height / 2 * Scale));
+
+            if (Position.Y < EntityConfig.Tank.LIMITE_POSITION_Y)
+                HowLongHeAdvanced += 1;
 
             //Dès qu'il arrive, lancer le timer de délai entre chaque tir.
             if (Position.Y == EntityConfig.Tank.LIMITE_POSITION_Y)
