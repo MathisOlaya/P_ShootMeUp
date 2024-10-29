@@ -8,6 +8,9 @@ using TankBattleV2;
 
 namespace TankBattleV2
 {
+    /// <summary>
+    /// Défini l'état de la partie
+    /// </summary>
     public enum GameState
     {
         Menu,
@@ -15,6 +18,9 @@ namespace TankBattleV2
         Paused,
         DeadScreen,
     }
+    /// <summary>
+    /// Racine du jeu, elle contrôle l'entièrté du jeu
+    /// </summary>
     public class GameRoot : Game
     {
         private GraphicsDeviceManager _graphics;
@@ -28,6 +34,9 @@ namespace TankBattleV2
         public static Level lvl;
         public static Menu menu;
 
+        /// <summary>
+        /// Constructeur de Gameroot
+        /// </summary>
         public GameRoot()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -35,6 +44,9 @@ namespace TankBattleV2
             IsMouseVisible = true;
         }
 
+        /// <summary>
+        /// Méthode s'effectuant 
+        /// </summary>
         protected override void Initialize()
         {
             //Changer la taille de la fenêtre.
@@ -45,7 +57,9 @@ namespace TankBattleV2
             base.Initialize();
             EntityConfig.Tank.SetDefaultSpawnPoints();
         }
-
+        /// <summary>
+        /// Méthode étant utilisée pour charger les assets et d'autre choses
+        /// </summary>
         protected override void LoadContent()
         {
             //Charger la font. 
@@ -59,6 +73,10 @@ namespace TankBattleV2
             menu = new Menu(new List<Action> { Action.Start, Action.Settings, Action.Exit }, spriteFont);
         }
 
+        /// <summary>
+        /// Méthode s'effectuant à chaque tics, et est utilisée pour les calculs et actions.
+        /// </summary>
+        /// <param name="gameTime">Délai entre chaque utilisation de la méthode</param>
         protected override void Update(GameTime gameTime)
         {
             //Si le joueur appuie sur ESC, mettre pause
@@ -91,11 +109,13 @@ namespace TankBattleV2
                     menu.Update(gameTime);
                     break;
             }
-
-            
             base.Update(gameTime);
         }
 
+        /// <summary>
+        /// Méthode servant à dessiner les différentes entités, éléments etc...
+        /// </summary>
+        /// <param name="gameTime">Délai entre chaque utilisation de la méthode</param>
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Red);

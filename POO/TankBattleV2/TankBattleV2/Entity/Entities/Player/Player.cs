@@ -7,6 +7,9 @@ using System;
 
 namespace TankBattleV2
 {
+    /// <summary>
+    /// Cette classe contient toute la logique du joueur et hérite de deux interfaces, permettant de bouger et tirer.
+    /// </summary>
     public class Player : Entity, IMovable, IShootable
     {
         private Vector2 MarginSide = new Vector2(50, Config.WINDOW_WIDTH - 50);     //Variable contenant la marge max entre la limite de la map et le joueur.
@@ -43,6 +46,22 @@ namespace TankBattleV2
         private const int MAX_STRUCTURE = 2;            //Limite de structure avant que le single mod s'active.
         private Rectangle placementProtectionLimit;     //Concerne une zone ou le joueur peut poser des protections, étant donné qu'il ne peut pas les placer partout (ex: derrière le tank = impossible)
 
+        /// <summary>
+        /// Constructeur de la classe Player.
+        /// </summary>
+        /// <param name="texture">Texture du joueur.</param>
+        /// <param name="spriteFont">Police pour le texte.</param>
+        /// <param name="spriteBatch">Groupe de sprites à dessiner.</param>
+        /// <param name="position">Position initiale du joueur.</param>
+        /// <param name="healthPoint">Points de vie initiaux.</param>
+        /// <param name="healthSpritePosition">Position de la texture de vie.</param>
+        /// <param name="scale">Échelle du joueur.</param>
+        /// <param name="hitBox">Hitbox du joueur.</param>
+        /// <param name="speed">Vitesse de déplacement.</param>
+        /// <param name="coolDownShoot">Temps d'attente entre chaque tir.</param>
+        /// <param name="ammo">Munitions initiales.</param>
+        /// <param name="timeForReloading">Temps de rechargement.</param>
+        /// <param name="healthPointTexture">Texture des points de vie.</param>
         public Player(Texture2D texture, SpriteFont spriteFont, SpriteBatch spriteBatch, Vector2 position, int healthPoint, Vector2 healthSpritePosition, float scale, Rectangle hitBox, float speed, float coolDownShoot, int ammo, float timeForReloading, Texture2D healthPointTexture) : base(texture, spriteFont, spriteBatch, position, healthPoint, healthSpritePosition, scale, hitBox)
         {
             Speed = speed;
@@ -54,6 +73,9 @@ namespace TankBattleV2
             TimeBetweenEveryProtectionPlacement = EntityConfig.Protection.CoolDownProtectionPose;
         }
 
+        /// <summary>
+        /// Méthode exécutant le code lors de la création du Joueur.
+        /// </summary>
         public override void Initialize()
         {
             //La munition du joueur va tout le temps vers le haut.
