@@ -47,7 +47,7 @@ namespace EntityConfig
 
         public static float Speed = 15f;
 
-        public static float CoolDownShoot = 0.4f;
+        public static float CoolDownShoot = 0.2f;
     }
     public static class Tank
     {
@@ -96,7 +96,7 @@ namespace EntityConfig
 
         public static float Speed = 8f;
 
-        public static float CoolDownShoot = 1.2f;
+        public static float CoolDownShoot = 1.8f;
     }
     public static class Protection
     {
