@@ -150,11 +150,6 @@ namespace TankBattleV2
                         // Mettre à jour la valeur
                         EntityConfig.Tank.spawnPoints[tank.SpawnPoint] = true;
                     }
-                    Console.Clear();
-                    foreach (var kvp in EntityConfig.Tank.spawnPoints)
-                    {
-                        Console.WriteLine($"Key: {kvp.Key}, Value: {kvp.Value}");
-                    }
                 }
             }
         }
