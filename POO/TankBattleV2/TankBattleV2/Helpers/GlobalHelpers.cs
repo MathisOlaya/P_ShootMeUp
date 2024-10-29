@@ -4,6 +4,9 @@ using System;
 
 namespace GlobalHelpers
 {
+    /// <summary>
+    /// Classe permettant à l'utilisateur d'obtenir certaines infromations sur les entrées du clavier et de la souris..
+    /// </summary>
     public static class Input
     {
         public static Vector2 GetMovementDirection()
@@ -26,9 +29,18 @@ namespace GlobalHelpers
         public static bool isPlacingProtection => Mouse.GetState().RightButton == ButtonState.Pressed;
         public static bool isReloading() => Keyboard.GetState().IsKeyDown(Keys.R);
     }
+    /// <summary>
+    /// Classe permettant d'utiliser l'aléatoire.
+    /// </summary>
     public static class Random
     {
         static System.Random rnd = new System.Random();
+        /// <summary>
+        /// Méthode générant une valeur aléatoire comprise entre deux valeurs.
+        /// </summary>
+        /// <param name="minValue">Valeur minimale</param>
+        /// <param name="maxValue">Valeur maximale</param>
+        /// <returns></returns>
         public static int Next(int minValue, int maxValue)
         {
             return rnd.Next(minValue, maxValue);

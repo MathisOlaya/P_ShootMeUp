@@ -26,7 +26,7 @@ namespace TankBattleV2
         private GraphicsDeviceManager _graphics;
         public static SpriteBatch spriteBatch;
         public static SpriteFont spriteFont;
-
+        
         //Game
         public static int Score { get; set; }
         public static GameState CurrentGameState = GameState.Menu;  //Par défaut il est dans le menu.
@@ -43,7 +43,7 @@ namespace TankBattleV2
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
         }
-
+        
         /// <summary>
         /// Méthode s'effectuant 
         /// </summary>
@@ -65,7 +65,7 @@ namespace TankBattleV2
             //Charger la font. 
             spriteFont = Content.Load<SpriteFont>("Fonts/Font");
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            
             //Charger toutes les textures dès le lancement
             Visuals.LoadTextures(Content);
 

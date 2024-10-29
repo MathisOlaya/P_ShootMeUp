@@ -8,8 +8,15 @@ using System.Threading.Tasks;
 
 namespace TankBattleV2
 {
+    /// <summary>
+    /// Classe permettant de charger les aspects visuels 
+    /// </summary>
     public static class Visuals
     {
+        /// <summary>
+        /// Méthode s'occupant de charger les textures.
+        /// </summary>
+        /// <param name="content"></param>
         public static void LoadTextures(ContentManager content)
         {
             //Charger la texture du joueur.

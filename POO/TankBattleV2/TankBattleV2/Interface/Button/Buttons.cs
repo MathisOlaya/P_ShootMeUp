@@ -5,6 +5,9 @@ using System.Collections.Generic;
 
 namespace TankBattleV2
 {
+    /// <summary>
+    /// Classe permettant la création de bouton.
+    /// </summary>
     public class Buttons
     {
         private int Height, Width;
@@ -15,6 +18,13 @@ namespace TankBattleV2
 
         public Rectangle button { get; private set; }
 
+        /// <summary>
+        /// COnstructeur de la classe bouton.
+        /// </summary>
+        /// <param name="height">Hauteur du bouton.</param>
+        /// <param name="padding">Espace</param>
+        /// <param name="buttonActionTitle">Nom du bouton</param>
+        /// <param name="spriteFont">Font d'écriture</param>
         public Buttons(int height, int padding, List<Action> buttonActionTitle, SpriteFont spriteFont)
         {
             Height = height;
@@ -24,6 +34,9 @@ namespace TankBattleV2
 
             Initialize();
         }
+        /// <summary>
+        /// Méthode s'effectuant lors de la création et s'occupant de créer les divers bouton.
+        /// </summary>
         private void Initialize()
         {
             int menuHeight = ButtonActionTitle.Count * Height + (ButtonActionTitle.Count - 1) * Padding; //calculer la hauteur de tout les boutons.

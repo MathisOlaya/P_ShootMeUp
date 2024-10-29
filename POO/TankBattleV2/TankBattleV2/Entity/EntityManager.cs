@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace TankBattleV2
 {
+    /// <summary>
+    /// Classe servant à gérér toutes les entités, créer, supprimer, initialiser, etc...
+    /// </summary>
     public static class EntityManager
     {
         //Contient toutes les méthodes que les entités doivent exécuter.
@@ -20,7 +23,10 @@ namespace TankBattleV2
 
         public static int LevelID = 1;
 
-
+        /// <summary>
+        /// Permet d'ajouter à la liste une entité
+        /// </summary>
+        /// <param name="entity">Entité qui sera ajoutée à la liste.</param>
         public static void Add(Entity entity)
         {
             Entities.Add(entity);
@@ -28,10 +34,18 @@ namespace TankBattleV2
             //A chaque création, effectuer la méthode Initialize
             entity.Initialize();
         }
+        /// <summary>
+        /// Méthode permettant la suppresion d'une entité de la liste.
+        /// </summary>
+        /// <param name="entity">Entité qui sera supprimée.</param>
         public static void Remove(Entity entity)
         {
             Entities.Remove(entity);
         }
+        /// <summary>
+        /// Méthode initialisant les nouvelles entitées.
+        /// </summary>
+        /// <param name="levelDifficulty"></param>
         public static void Initialize(int levelDifficulty)
         {
             //Add player only if doesn't exist
@@ -46,14 +60,12 @@ namespace TankBattleV2
                 // Ajouter le nouveau tank avec la position valide
                 Add(new Tank(EntityConfig.Tank.Position));
             }
-            Console.Clear();
-            foreach (var kvp in EntityConfig.Tank.spawnPoints)
-            {
-                // `kvp.Key` est la clé, et `kvp.Value` est la valeur
-                Console.WriteLine($"Key: {kvp.Key}, Value: {kvp.Value}");
-            }
             
         }
+        /// <summary>
+        /// Méthode effectuant les méthodes qui s'effectuent à chaque tics.
+        /// </summary>
+        /// <param name="gameTime"></param>
         public static void Update(GameTime gameTime)
         {
             foreach (Entity entity in Entities.ToArray())
@@ -62,6 +74,10 @@ namespace TankBattleV2
             }
             CheckCollisions();
         }
+        /// <summary>
+        /// Méthode dessinant chaque élement.
+        /// </summary>
+        /// <param name="gameTime"></param>
         public static void Draw(GameTime gameTime)
         {
             foreach (Entity entity in Entities.ToArray())
@@ -69,11 +85,17 @@ namespace TankBattleV2
                 entity.Draw(gameTime);
             }
         }
+        /// <summary>
+        /// Méthode permettant de complètement supprimer l'entièrté du contenu de la liste des entités
+        /// </summary>
         public static void DeleteEntity()
         {
             //Supprimer chaque entité
             Entities.Clear();
         }
+        /// <summary>
+        /// Méthode vérifiant s'il y a une collision avec d'autre entité, et d'effectuer des actions en conséquences.
+        /// </summary>
         private static void CheckCollisions()
         {
             // Liste pour stocker les entités à supprimer

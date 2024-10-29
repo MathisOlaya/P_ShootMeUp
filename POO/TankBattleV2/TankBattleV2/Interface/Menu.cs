@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace TankBattleV2
 {
+    /// <summary>
+    /// Enumère les différentes action qu'un bouton peut effectuer.
+    /// </summary>
     public enum Action
     {
         Resume, 
@@ -32,6 +35,11 @@ namespace TankBattleV2
         //Ecrire
         SpriteFont spriteFont;
 
+        /// <summary>
+        /// Constructeur de la classe Menu
+        /// </summary>
+        /// <param name="buttonActionTitle">Liste d'action contenant donc chaque "Boutons"</param>
+        /// <param name="sprifeFont">Font d'écriture</param>
         public Menu(List<Action> buttonActionTitle, SpriteFont sprifeFont)
         {
             ButtonActionTitle = buttonActionTitle;
@@ -39,6 +47,9 @@ namespace TankBattleV2
             Initialize();
         }
 
+        /// <summary>
+        /// Méthode s'effectuant au lancement et créant les boutons du menu.
+        /// </summary>
         public void Initialize()
         {
             //Reset la liste de boutons
@@ -48,7 +59,10 @@ namespace TankBattleV2
             Buttons buttons = new Buttons(100, 50, ButtonActionTitle, spriteFont);
         }
         
-
+        /// <summary>
+        /// Méthode vérifiant si à chaque tics, le joueur n'a pas survolé et ou cliquer sur le bouton.
+        /// </summary>
+        /// <param name="gameTime"></param>
         public void Update(GameTime gameTime)
         {
 
@@ -73,6 +87,10 @@ namespace TankBattleV2
                 }
             }
         }
+        /// <summary>
+        /// Permet de dessiner les boutons.
+        /// </summary>
+        /// <param name="spriteBatch"></param>
         public void Draw(SpriteBatch spriteBatch)
         {
             for (int i = 0; i < Buttons.Count; i++)
@@ -104,7 +122,11 @@ namespace TankBattleV2
                     Button.Y + (Button.Height - spriteFont.MeasureString(ButtonActionTitle[i].ToString()).Y) / 2), Color.White);
             }
         }
-        private void OnClick(Action action)
+        /// <summary>
+        /// Méthode s'occupant de l'action a effectuer lorsque l'utilisateur clique sur un bouton.
+        /// </summary>
+        /// <param name="action">Action du clic</param>
+        public void OnClick(Action action)
         {
             switch (action)
             {

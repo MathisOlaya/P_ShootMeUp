@@ -10,6 +10,9 @@ using TankBattleV2;
 
 namespace EntityConfig
 {
+    /// <summary>
+    /// Classe définissant les différents attributs du joueur.
+    /// </summary>
     public static class Player
     {
         public static Texture2D Texture;
@@ -33,6 +36,9 @@ namespace EntityConfig
 
         public static float TimeForReloading = 1.5f;
     }
+    /// <summary>
+    /// Classe définissant les différents attributs de la munition du joueur.
+    /// </summary>
     public static class Bullet
     {
         public static Texture2D Texture;
@@ -49,6 +55,9 @@ namespace EntityConfig
 
         public static float CoolDownShoot = 0.2f;
     }
+    /// <summary>
+    /// Classe définissant les différents attributs du tank.
+    /// </summary>
     public static class Tank
     {
         public static Texture2D Texture;
@@ -73,6 +82,9 @@ namespace EntityConfig
 
         public static Dictionary<Vector2, bool> spawnPoints;
 
+        /// <summary>
+        /// Méthode permettant d'initialiser et/ou de réinitialiser le contenu du dictionnaire.
+        /// </summary>
         public static void SetDefaultSpawnPoints()
         {
             spawnPoints = new Dictionary<Vector2, bool>()
@@ -89,6 +101,9 @@ namespace EntityConfig
             };
         }
     }
+    /// <summary>
+    /// Classe définissant les différents attributs du missile du tank.
+    /// </summary>
     public static class Shell
     {
         public static Texture2D Texture;
@@ -103,6 +118,9 @@ namespace EntityConfig
 
         public static float CoolDownShoot = 1.8f;
     }
+    /// <summary>
+    /// Classe définissant les différents attributs d'une protection..
+    /// </summary>
     public static class Protection
     {
         public static Texture2D Texture;

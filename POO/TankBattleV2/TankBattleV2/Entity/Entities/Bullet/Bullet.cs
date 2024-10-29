@@ -20,18 +20,12 @@ namespace TankBattleV2
         private Vector2 Direction;
 
         /// <summary>
-        /// Constructeur de la bullet avec ses différents paramètres.
+        /// Constructeur de la bullet.
         /// </summary>
-        /// <param name="texture"></param>
-        /// <param name="sprifeFont"></param>
-        /// <param name="spriteBatch"></param>
-        /// <param name="position"></param>
-        /// <param name="healthPoint"></param>
-        /// <param name="healthPointPosition"></param>
-        /// <param name="scale"></param>
-        /// <param name="hitBox"></param>
-        /// <param name="direction"></param>
-        /// <param name="speed"></param>
+        /// <param name="position">Position de départ de la munition</param>
+        /// <param name="direction">Direction de la munition</param>
+        /// <param name="texture">Texture de la munition</param>
+        
         public Bullet(Vector2 position, Vector2 direction, Texture2D texture) : base(position)
         {
             Texture = texture;

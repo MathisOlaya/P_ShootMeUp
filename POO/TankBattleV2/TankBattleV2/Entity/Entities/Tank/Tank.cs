@@ -8,7 +8,10 @@ using System.Threading.Tasks;
 
 namespace TankBattleV2
 {
-    internal class Tank : Entity, IMovable, IShootable
+    /// <summary>
+    /// Classe qui contient toute la logique du tank, en comprenant les déplacements, tir, vie etc...
+    /// </summary>
+    public class Tank : Entity, IMovable, IShootable
     {
         public Vector2 Velocity { get; set; }
         public float Speed { get; set; }
@@ -19,6 +22,10 @@ namespace TankBattleV2
 
         private float LifeBarScale;
 
+        /// <summary>
+        /// Constructeur de la classe tank
+        /// </summary>
+        /// <param name="position">Position du tank.</param>
         public Tank(Vector2 position) : base(position)
         {
             Texture = EntityConfig.Tank.Texture;
@@ -29,7 +36,9 @@ namespace TankBattleV2
             LifeBarScale = EntityConfig.Tank.LifeBarScale;
             TimeBetweenEveryShot = EntityConfig.Shell.CoolDownShoot;
         }
-
+        /// <summary>
+        /// Méthode qui s'effectue lors de la création du tank. S'occupe de choisir la position du tank selon un dictionnaire.
+        /// </summary>
         public override void Initialize()
         {
             /* Durant cette partie de génération aléatoire de position, ChatGPT m'est venu en aide car je ne savais comment utiliser cette outil (dictionnaire). 
@@ -69,18 +78,29 @@ namespace TankBattleV2
             HitBox = new Rectangle((int)(Position.X - Texture.Width / 2 * Scale), (int)(Position.Y - Texture.Height / 2 * Scale), (int)(Texture.Width * Scale), (int)(Texture.Height * Scale - 65));    //-65 afin d'éviter de prendre le canon en tant que collision, étant donné que c'est un rectangle, les parties vides se trouvant à cotér créeront des collisions inexistantes.
         }
 
+        /// <summary>
+        /// Méthode s'effectuant à chaque tic. S'occupe de le déplacer et de le faire tirer.
+        /// </summary>
+        /// <param name="gameTime"></param>
         public override void Update(GameTime gameTime)
         {
             MoveToScene(gameTime);
             Shoot(gameTime);
         }
+        /// <summary>
+        /// Méthode dessinant le tank et ses différents attributs.
+        /// </summary>
+        /// <param name="gameTime"></param>
         public override void Draw(GameTime gameTime)
         {
             SpriteBatch.Draw(Texture, Position, null, Color.White, MathF.PI, new Vector2(Texture.Width / 2, Texture.Height / 2), Scale, SpriteEffects.None, 0f);
             //Dessiner la healthBar du tank
             SpriteBatch.Draw(EntityConfig.Tank.LifeBarTextures[HealthPoint], new Vector2(Position.X, Position.Y - 55 * LifeBarScale), null, Color.White, 0f, new Vector2(EntityConfig.Tank.LifeBarTextures[HealthPoint].Width / 2, EntityConfig.Tank.LifeBarTextures[HealthPoint].Height / 2), LifeBarScale, SpriteEffects.None, 0f);
         }
-
+        /// <summary>
+        /// Permet de faire avancer le tank sur la scène.
+        /// </summary>
+        /// <param name="gameTime"></param>
         private void MoveToScene(GameTime gameTime)
         {
             //Les tanks apparaissent avec une position négative en dehors de l'écran. Ils avancent jusqu'a une position Y précise, puis commencent à tirer.
@@ -91,6 +111,10 @@ namespace TankBattleV2
             if (Position.Y == EntityConfig.Tank.LIMITE_POSITION_Y)
                 TimeSinceLastShot += (float)gameTime.ElapsedGameTime.TotalSeconds;
         }
+        /// <summary>
+        /// Permet de faire tirer le tank.
+        /// </summary>
+        /// <param name="gameTime"></param>
         private void Shoot(GameTime gameTime)
         {
             //Si le temps entre le dernier tir est plus grand ou égal au temps requis entre chaque tir.

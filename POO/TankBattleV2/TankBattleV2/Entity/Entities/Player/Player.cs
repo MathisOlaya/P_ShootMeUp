@@ -47,21 +47,9 @@ namespace TankBattleV2
         private Rectangle placementProtectionLimit;     //Concerne une zone ou le joueur peut poser des protections, étant donné qu'il ne peut pas les placer partout (ex: derrière le tank = impossible)
 
         /// <summary>
-        /// Constructeur de la classe Player.
+        /// Constructeur de la classe Player
         /// </summary>
-        /// <param name="texture">Texture du joueur.</param>
-        /// <param name="spriteFont">Police pour le texte.</param>
-        /// <param name="spriteBatch">Groupe de sprites à dessiner.</param>
-        /// <param name="position">Position initiale du joueur.</param>
-        /// <param name="healthPoint">Points de vie initiaux.</param>
-        /// <param name="healthSpritePosition">Position de la texture de vie.</param>
-        /// <param name="scale">Échelle du joueur.</param>
-        /// <param name="hitBox">Hitbox du joueur.</param>
-        /// <param name="speed">Vitesse de déplacement.</param>
-        /// <param name="coolDownShoot">Temps d'attente entre chaque tir.</param>
-        /// <param name="ammo">Munitions initiales.</param>
-        /// <param name="timeForReloading">Temps de rechargement.</param>
-        /// <param name="healthPointTexture">Texture des points de vie.</param>
+        /// <param name="position">Position du joueur.</param>
         public Player(Vector2 position) : base(position)
         {
             Texture = EntityConfig.Player.Texture;
@@ -97,12 +85,20 @@ namespace TankBattleV2
             
         }
 
+        /// <summary>
+        /// Méthode s'effectuant a chaque tic, permet de bouger le joueur, le faire tirer, et poser des protections
+        /// </summary>
+        /// <param name="gameTime"></param>
         public override void Update(GameTime gameTime)
         {
             MovePlayer();
             Shoot(gameTime);
             Protection(gameTime);
         }
+        /// <summary>
+        /// Méthode dessinant le joueur et différents objets.
+        /// </summary>
+        /// <param name="gameTime"></param>
         public override void Draw(GameTime gameTime)
         {
             //Dessiner le joueur
@@ -129,13 +125,20 @@ namespace TankBattleV2
                 SpriteBatch.DrawString(SpriteFont, 0.ToString(), new Vector2(Config.WINDOW_WIDTH - 50, Config.WINDOW_HEIGHT - 155), Color.White);
             
         }
-        private void MovePlayer()
+        /// <summary>
+        /// Méthode vérifiant si le joueur appuie sur une touche pour avancer, et le faire avancer si oui.
+        /// </summary>
+        public void MovePlayer()
         {
             Velocity = GlobalHelpers.Input.GetMovementDirection() * Speed;
             Position += Velocity.ToPoint().ToVector2();
             Position = Vector2.Clamp(Position, new Vector2(MarginSide.X, Position.Y), new Vector2(MarginSide.Y, Position.Y));
             HitBox.Location = new Point((int)(Position.X - Texture.Width / 2 * Scale), (int)(Position.Y - Texture.Height / 2 * Scale));
         }
+        /// <summary>
+        /// Méthode permettant au joueur de tirer, recharger etc...
+        /// </summary>
+        /// <param name="gameTime"></param>
         private void Shoot(GameTime gameTime)
         {
             //Regarder si le joueur est en train de recharger
@@ -188,6 +191,10 @@ namespace TankBattleV2
                 Ammo--;
             }
         }
+        /// <summary>
+        /// Méthode permettant de poser des protections.
+        /// </summary>
+        /// <param name="gameTime"></param>
         private void Protection(GameTime gameTime)
         {
             //Calculer la hitbox de la protection pour vérifier qu'elle soit dans la zone.
