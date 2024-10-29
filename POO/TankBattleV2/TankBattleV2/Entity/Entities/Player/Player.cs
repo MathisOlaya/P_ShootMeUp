@@ -22,7 +22,7 @@ namespace TankBattleV2
         public float TimeSinceLastShot { get; set; }
         public float TimeBetweenEveryShot { get; set; }
         public Vector2 Direction { get; set; }
-
+        
 
         //Munitions
         private int Ammo;
@@ -62,14 +62,21 @@ namespace TankBattleV2
         /// <param name="ammo">Munitions initiales.</param>
         /// <param name="timeForReloading">Temps de rechargement.</param>
         /// <param name="healthPointTexture">Texture des points de vie.</param>
-        public Player(Texture2D texture, SpriteFont spriteFont, SpriteBatch spriteBatch, Vector2 position, int healthPoint, Vector2 healthSpritePosition, float scale, Rectangle hitBox, float speed, float coolDownShoot, int ammo, float timeForReloading, Texture2D healthPointTexture) : base(texture, spriteFont, spriteBatch, position, healthPoint, healthSpritePosition, scale, hitBox)
+        public Player(Vector2 position) : base(position)
         {
-            Speed = speed;
-            TimeBetweenEveryShot = coolDownShoot;
-            Ammo = ammo;
-            TimeForReloading = timeForReloading;
-            HEALTH_SPRITE_DEFAULT_POS = healthSpritePosition;
-            HealthPointTexture = healthPointTexture;
+            Texture = EntityConfig.Player.Texture;
+            SpriteFont = GameRoot.spriteFont;
+            SpriteBatch = GameRoot.spriteBatch;
+            HealthPoint = EntityConfig.Player.HealthPoint;
+            HealthSpritePosition = EntityConfig.Player.HealthPointSpritePosition;
+            Scale = EntityConfig.Player.Scale;
+            HitBox = EntityConfig.Player.HitBox;
+            Speed = EntityConfig.Player.Speed;
+            TimeBetweenEveryShot = EntityConfig.Bullet.CoolDownShoot;
+            Ammo = EntityConfig.Player.AmmoCapacity;
+            TimeForReloading = EntityConfig.Player.TimeForReloading;
+            HealthPointTexture = EntityConfig.Player.HealthPointTexture;
+            HEALTH_SPRITE_DEFAULT_POS = EntityConfig.Player.HealthPointSpritePosition;
             TimeBetweenEveryProtectionPlacement = EntityConfig.Protection.CoolDownProtectionPose;
         }
 
@@ -101,7 +108,7 @@ namespace TankBattleV2
             //Dessiner le joueur
             SpriteBatch.Draw(Texture, Position, null, Color.White, 0f, new Vector2(Texture.Width / 2, Texture.Height / 2), Scale, SpriteEffects.None, 0f);
             //Dessiner le nombre de balles restantes dans le chargeur
-            SpriteBatch.DrawString(SprintFont, Ammo.ToString(), AmmoCapacityLocation, AmmoStringColor);
+            SpriteBatch.DrawString(SpriteFont, Ammo.ToString(), AmmoCapacityLocation, AmmoStringColor);
             SpriteBatch.Draw(EntityConfig.Bullet.IconTexture, new Vector2(AmmoCapacityLocation.X - 30, AmmoCapacityLocation.Y + 5), null, Color.White, 0f, new Vector2(0,0) , 1.2f, SpriteEffects.None, 0f);
             
             //Dessiner le nombre de vies restantes au joueur.
@@ -117,9 +124,9 @@ namespace TankBattleV2
             //Dessiner le temps restant avant le placement de la prochaine protection
             double TimeLeft = Math.Round(TimeBetweenEveryProtectionPlacement - TimeSinceLastProtectionPlaced);
             if(TimeLeft > 0)
-                SpriteBatch.DrawString(SprintFont, TimeLeft.ToString(), new Vector2(Config.WINDOW_WIDTH - 50, Config.WINDOW_HEIGHT - 155), Color.White);
+                SpriteBatch.DrawString(SpriteFont, TimeLeft.ToString(), new Vector2(Config.WINDOW_WIDTH - 50, Config.WINDOW_HEIGHT - 155), Color.White);
             else
-                SpriteBatch.DrawString(SprintFont, 0.ToString(), new Vector2(Config.WINDOW_WIDTH - 50, Config.WINDOW_HEIGHT - 155), Color.White);
+                SpriteBatch.DrawString(SpriteFont, 0.ToString(), new Vector2(Config.WINDOW_WIDTH - 50, Config.WINDOW_HEIGHT - 155), Color.White);
             
         }
         private void MovePlayer()
@@ -175,7 +182,7 @@ namespace TankBattleV2
                 Vector2 CanonPosition = new Vector2(Position.X + 28 * EntityConfig.Player.Scale, Position.Y - 120 * EntityConfig.Player.Scale);
 
                 //Créer une munition
-                EntityManager.Add(new Bullet(EntityConfig.Bullet.Texture, SprintFont, GameRoot.spriteBatch, CanonPosition, EntityConfig.Bullet.HealthPoint, new Vector2(0, 0), EntityConfig.Bullet.Scale, EntityConfig.Bullet.HitBox, Direction, EntityConfig.Bullet.Speed));
+                EntityManager.Add(new Bullet(CanonPosition, Direction, EntityConfig.Bullet.Texture));
 
                 //Retirer une munition du chargeur 
                 Ammo--;
@@ -190,7 +197,7 @@ namespace TankBattleV2
             {
                 if (structurePlaced < MAX_STRUCTURE)
                 {
-                    EntityManager.Add(new Protection(EntityConfig.Protection.Texture, SprintFont, SpriteBatch, GlobalHelpers.Input.GetMousePosition(), EntityConfig.Protection.HealthPoint, new Vector2(0, 0), EntityConfig.Protection.Scale, protectionHitBox));
+                    EntityManager.Add(new Protection(GlobalHelpers.Input.GetMousePosition(), protectionHitBox));
                     structurePlaced++;
                 }
                 if (structurePlaced == 2)
@@ -203,7 +210,7 @@ namespace TankBattleV2
                 if(isInSinglePlacementMode && TimeSinceLastProtectionPlaced >= TimeBetweenEveryProtectionPlacement)
                 {
                     //Alors poser une structure
-                    EntityManager.Add(new Protection(EntityConfig.Protection.Texture, SprintFont, SpriteBatch, GlobalHelpers.Input.GetMousePosition(), EntityConfig.Protection.HealthPoint, new Vector2(0, 0), EntityConfig.Protection.Scale, protectionHitBox));
+                    EntityManager.Add(new Protection(GlobalHelpers.Input.GetMousePosition(), protectionHitBox));
 
                     //Reset le timer 
                     TimeSinceLastProtectionPlaced = 0;

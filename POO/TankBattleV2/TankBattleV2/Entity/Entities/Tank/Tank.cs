@@ -19,10 +19,15 @@ namespace TankBattleV2
 
         private float LifeBarScale;
 
-        public Tank(Texture2D texture, SpriteFont spriteFont, SpriteBatch spriteBatch, Vector2 position, int healthPoint, Vector2 healthSpritePosition, float scale, Rectangle hitBox, float lifeBarScale, float coolDownShoot) : base(texture, spriteFont, spriteBatch, position, healthPoint, healthSpritePosition, scale, hitBox)
+        public Tank(Vector2 position) : base(position)
         {
-            LifeBarScale = lifeBarScale;
-            TimeBetweenEveryShot = coolDownShoot;
+            Texture = EntityConfig.Tank.Texture;
+            SpriteFont = GameRoot.spriteFont;
+            SpriteBatch = GameRoot.spriteBatch;
+            HealthPoint = EntityConfig.Tank.HealthPoint;
+            Scale = EntityConfig.Tank.Scale;
+            LifeBarScale = EntityConfig.Tank.LifeBarScale;
+            TimeBetweenEveryShot = EntityConfig.Shell.CoolDownShoot;
         }
 
         public override void Initialize()
@@ -102,7 +107,7 @@ namespace TankBattleV2
                 Vector2 CanonPosition = new Vector2(Position.X, Position.Y + 1800 * Scale);
 
                 //Lancer un missile.
-                EntityManager.Add(new Bullet(EntityConfig.Shell.Texture, SprintFont, SpriteBatch, CanonPosition, EntityConfig.Shell.HealthPoint, new Vector2(0, 0), EntityConfig.Shell.Scale, EntityConfig.Shell.HitBox, Direction, EntityConfig.Shell.Speed));
+                EntityManager.Add(new Bullet(CanonPosition, Direction, EntityConfig.Shell.Texture));
             }
         }
     }

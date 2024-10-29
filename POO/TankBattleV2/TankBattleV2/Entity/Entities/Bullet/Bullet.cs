@@ -32,9 +32,15 @@ namespace TankBattleV2
         /// <param name="hitBox"></param>
         /// <param name="direction"></param>
         /// <param name="speed"></param>
-        public Bullet(Texture2D texture, SpriteFont sprifeFont, SpriteBatch spriteBatch, Vector2 position, int healthPoint, Vector2 healthPointPosition, float scale, Rectangle hitBox, Vector2 direction, float speed) : base(texture, sprifeFont, spriteBatch, position, healthPoint, healthPointPosition, scale, hitBox)
+        public Bullet(Vector2 position, Vector2 direction, Texture2D texture) : base(position)
         {
-            Speed = speed;
+            Texture = texture;
+            SpriteFont = GameRoot.spriteFont;
+            SpriteBatch = GameRoot.spriteBatch;
+            HealthPoint = EntityConfig.Bullet.HealthPoint;
+            Scale = EntityConfig.Bullet.Scale;
+            HitBox = EntityConfig.Bullet.HitBox;
+            Speed = EntityConfig.Bullet.Speed;
             Direction = new Vector2();
             Position = position;
             Direction = direction;

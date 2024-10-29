@@ -37,14 +37,14 @@ namespace TankBattleV2
             //Add player only if doesn't exist
             if(Player == null)
             {
-                Player = new Player(EntityConfig.Player.Texture, GameRoot.spriteFont, GameRoot.spriteBatch, EntityConfig.Player.Position, EntityConfig.Player.HealthPoint, EntityConfig.Player.HealthPointSpritePosition, EntityConfig.Player.Scale, EntityConfig.Player.HitBox, EntityConfig.Player.Speed, EntityConfig.Bullet.CoolDownShoot, EntityConfig.Player.AmmoCapacity, EntityConfig.Player.TimeForReloading, EntityConfig.Player.HealthPointTexture);
+                Player = new Player(EntityConfig.Player.Position);
                 Add(Player);
             }
             //Add tank
             for (int i = 0; i < levelDifficulty; i++)
             {
                 // Ajouter le nouveau tank avec la position valide
-                Add(new Tank(EntityConfig.Tank.Texture, GameRoot.spriteFont, GameRoot.spriteBatch, EntityConfig.Tank.Position, EntityConfig.Tank.HealthPoint, EntityConfig.Tank.HealthPointSpritePosition, EntityConfig.Tank.Scale, EntityConfig.Tank.HitBox, EntityConfig.Tank.LifeBarScale, EntityConfig.Shell.CoolDownShoot));
+                Add(new Tank(EntityConfig.Tank.Position));
             }
             Console.Clear();
             foreach (var kvp in EntityConfig.Tank.spawnPoints)
@@ -123,7 +123,7 @@ namespace TankBattleV2
 
                     //Si le mode infini est activé. Ajouter un tank à chaque mort.
                     if (GameSettings.InfiniteMode)
-                        Add(new Tank(EntityConfig.Tank.Texture, GameRoot.spriteFont, GameRoot.spriteBatch, EntityConfig.Tank.Position, EntityConfig.Tank.HealthPoint, EntityConfig.Tank.HealthPointSpritePosition, EntityConfig.Tank.Scale, EntityConfig.Tank.HitBox, EntityConfig.Tank.LifeBarScale, EntityConfig.Shell.CoolDownShoot));
+                        Add(new Tank(EntityConfig.Tank.Position));
 
                     //Vérifier si le joueur a tuer tous les tanks 
                     if (TankKilled >= GameSettings.Difficulty && !GameSettings.InfiniteMode)

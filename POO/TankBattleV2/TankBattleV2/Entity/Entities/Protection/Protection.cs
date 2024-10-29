@@ -10,8 +10,14 @@ namespace TankBattleV2
 {
     public class Protection : Entity
     {
-        public Protection(Texture2D texture, SpriteFont spriteFont, SpriteBatch spriteBatch, Vector2 position, int healthPoint, Vector2 healthSpritePosition, float scale, Rectangle hitBox) : base(texture, spriteFont, spriteBatch, position, healthPoint, healthSpritePosition, scale, hitBox)
+        public Protection(Vector2 position, Rectangle hitBox) : base(position)
         {
+            Texture = EntityConfig.Protection.Texture;
+            SpriteFont = GameRoot.spriteFont;
+            SpriteBatch = GameRoot.spriteBatch;
+            HealthPoint = EntityConfig.Protection.HealthPoint;
+            Scale = EntityConfig.Protection.Scale;
+            HitBox = hitBox;
         }
 
         public override void Initialize()

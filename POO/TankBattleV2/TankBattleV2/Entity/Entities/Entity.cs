@@ -13,7 +13,7 @@ namespace TankBattleV2
         //Contient toutes les variables, ... à donner au entités enfants.
         //Visibles
         protected Texture2D Texture;
-        protected SpriteFont SprintFont;
+        protected SpriteFont SpriteFont;
         protected SpriteBatch SpriteBatch;
 
         //Localisation
@@ -29,16 +29,9 @@ namespace TankBattleV2
         //HitBox 
         public Rectangle HitBox;
 
-        public Entity(Texture2D texture, SpriteFont spriteFont, SpriteBatch spriteBatch, Vector2 position, int healthPoint, Vector2 healthSpritePosition, float scale, Rectangle hitBox)
+        public Entity(Vector2 position)
         {
-            Texture = texture;
-            SprintFont = spriteFont;
-            SpriteBatch = spriteBatch;
             Position = position;
-            HealthPoint = healthPoint;
-            HealthSpritePosition = healthSpritePosition;
-            Scale = scale;
-            HitBox = hitBox;
         }
         public abstract void Draw(GameTime gameTime);
 
