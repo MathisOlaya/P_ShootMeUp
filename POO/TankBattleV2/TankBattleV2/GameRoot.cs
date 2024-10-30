@@ -13,9 +13,21 @@ namespace TankBattleV2
     /// </summary>
     public enum GameState
     {
+        /// <summary>
+        /// Le joueur se trouve dans le menu de départ.
+        /// </summary>
         Menu,
+        /// <summary>
+        /// Le joueur se trouve dans la partie.
+        /// </summary>
         Playing,
+        /// <summary>
+        /// Le joueur a mis pause à la partie.
+        /// </summary>
         Paused,
+        /// <summary>
+        /// Le joueur est mort.
+        /// </summary>
         DeadScreen,
     }
     /// <summary>
@@ -23,15 +35,38 @@ namespace TankBattleV2
     /// </summary>
     public class GameRoot : Game
     {
+        /// <summary>
+        /// Gestion de la configuration d'affichage graphique du jeu.
+        /// </summary>
         private GraphicsDeviceManager _graphics;
+
+        /// <summary>
+        /// Gestionnaire de rendu des éléments visuels à l'écran.
+        /// </summary>
         public static SpriteBatch spriteBatch;
+
+        /// <summary>
+        /// Police utilisée pour afficher du texte dans le jeu.
+        /// </summary>
         public static SpriteFont spriteFont;
-        
+
         //Game
+        /// <summary>
+        /// Propriété contenant le score actuelle de la partie.
+        /// </summary>
         public static int Score { get; set; }
+        /// <summary>
+        /// Propriété contenant l'état actuelle de la partie. Par défaut il arrive dans le menu.
+        /// </summary>
         public static GameState CurrentGameState = GameState.Menu;  //Par défaut il est dans le menu.
 
+        /// <summary>
+        /// Instance du lvl, permettant de créer des niveaux a partir d'une difficulté prédéfinies.
+        /// </summary>
         public static Level lvl;
+        /// <summary>
+        /// Instance du menu, permettant de créer des interfaces.
+        /// </summary>
         public static Menu menu;
 
         /// <summary>
@@ -70,7 +105,7 @@ namespace TankBattleV2
             Visuals.LoadTextures(Content);
 
             //Créer le menu du lancement du jeu.
-            menu = new Menu(new List<Action> { Action.Start, Action.Settings, Action.Exit }, spriteFont);
+            menu = new Menu(new List<Action> { Action.Start, Action.Exit }, spriteFont);
         }
 
         /// <summary>

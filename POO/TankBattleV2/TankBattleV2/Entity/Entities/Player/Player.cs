@@ -15,12 +15,27 @@ namespace TankBattleV2
         private Vector2 MarginSide = new Vector2(50, Config.WINDOW_WIDTH - 50);     //Variable contenant la marge max entre la limite de la map et le joueur.
 
         //Proviens de l'interface IMovable
+        /// <summary>
+        /// Propriété vélocité issue de l'interface IMovable
+        /// </summary>
         public Vector2 Velocity { get; set; }
+        /// <summary>
+        /// Propriété de la vitesse issue de l'interface IMovable
+        /// </summary>
         public float Speed { get; set; }
 
         //Proviens de l'interface IShootable
+        /// <summary>
+        /// Temps définissant le temps entre le dernier tir, issu de l'interface IShootable.
+        /// </summary>
         public float TimeSinceLastShot { get; set; }
+        /// <summary>
+        /// Temps requis minimum entre chaque tir, issu de l'interface IShootable.
+        /// </summary>
         public float TimeBetweenEveryShot { get; set; }
+        /// <summary>
+        /// Propriété définissant la direction du projectile. Issu de l'interface IShootable.
+        /// </summary>
         public Vector2 Direction { get; set; }
         
 

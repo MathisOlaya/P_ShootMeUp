@@ -9,6 +9,10 @@ namespace GlobalHelpers
     /// </summary>
     public static class Input
     {
+        /// <summary>
+        /// Méthode donnant la direction X du joueur. Soit gauche, soit droite.
+        /// </summary>
+        /// <returns>Retourn un vecteur, modifié uniquement sur l'axe X</returns>
         public static Vector2 GetMovementDirection()
         {
             //Variable contenant la direction du joueur
@@ -21,12 +25,39 @@ namespace GlobalHelpers
             
             return direction;
         }
+        /// <summary>
+        /// Méthode retournant la position du curseur.
+        /// </summary>
+        /// <returns>Un vecteur 2.</returns>
         public static Vector2 GetMousePosition() => Mouse.GetState().Position.ToVector2();
 
+        /// <summary>
+        /// Méthode donnant l'état actuelle de la souris.
+        /// </summary>
+        /// <returns>Un état de la souris.</returns>
         public static MouseState GetMouseState() => Mouse.GetState();
+
+        /// <summary>
+        /// Méthode retournant si oui ou non, le joueur est entrain de cliquer (gauche).
+        /// </summary>
+        /// <returns>True si oui, et False si non.</returns>
         public static bool isLeftClicking() => Mouse.GetState().LeftButton == ButtonState.Pressed;
+
+        /// <summary>
+        /// Méthode retournant si oui ou non, le joueur est en train de tirer.
+        /// </summary>
+        /// <returns>True si oui, et False si non.</returns>
         public static bool isShooting() => Mouse.GetState().LeftButton == ButtonState.Pressed;
+
+        /// <summary>
+        /// Propriété définissant si oui ou non le joueur est en train de poser une protection avec le clic droit.
+        /// </summary>
         public static bool isPlacingProtection => Mouse.GetState().RightButton == ButtonState.Pressed;
+
+        /// <summary>
+        /// Propriété définissant si oui ou non le joueur est en train de recharger en appuyant sur 'R'.
+        /// </summary>
+        /// <returns></returns>
         public static bool isReloading() => Keyboard.GetState().IsKeyDown(Keys.R);
     }
     /// <summary>

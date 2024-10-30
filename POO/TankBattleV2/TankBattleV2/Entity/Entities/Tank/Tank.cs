@@ -13,11 +13,29 @@ namespace TankBattleV2
     /// </summary>
     public class Tank : Entity, IMovable, IShootable
     {
+        /// <summary>
+        /// Propriété vélocité issue de l'interface IMovable
+        /// </summary>
         public Vector2 Velocity { get; set; }
+        /// <summary>
+        /// Propriété de la vitesse issue de l'interface IMovable
+        /// </summary>
         public float Speed { get; set; }
+        /// <summary>
+        /// Temps définissant le temps entre le dernier tir, issu de l'interface IShootable.
+        /// </summary>
         public float TimeSinceLastShot { get; set; }
+        /// <summary>
+        /// Temps requis minimum entre chaque tir, issu de l'interface IShootable.
+        /// </summary>
         public float TimeBetweenEveryShot { get; set; }
+        /// <summary>
+        /// Propriété définissant la direction du projectile. Issu de l'interface IShootable.
+        /// </summary>
         public Vector2 Direction { get; set; }
+        /// <summary>
+        /// Propriété contenant le point d'apparition du Tank
+        /// </summary>
         public Vector2 SpawnPoint { get; private set; }
 
         private float LifeBarScale;

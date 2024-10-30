@@ -14,7 +14,13 @@ namespace TankBattleV2
     /// </summary>
     public class Bullet : Entity, IMovable
     {
+        /// <summary>
+        /// Propriété vélocité issue de l'interface IMovable
+        /// </summary>
         public Vector2 Velocity { get; set; }
+        /// <summary>
+        /// Propriété de la vitesse issue de l'interface IMovable.
+        /// </summary>
         public float Speed { get; set; }
 
         private Vector2 Direction;

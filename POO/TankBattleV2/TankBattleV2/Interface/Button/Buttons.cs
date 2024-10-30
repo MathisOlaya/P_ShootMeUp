@@ -16,7 +16,10 @@ namespace TankBattleV2
         List<Action> ButtonActionTitle;
         SpriteFont SpriteFont;
 
-        public Rectangle button { get; private set; }
+        /// <summary>
+        /// Rectangle définissant la surface du bouton.
+        /// </summary>
+        public Rectangle Button { get; private set; }
 
         /// <summary>
         /// COnstructeur de la classe bouton.
@@ -54,10 +57,10 @@ namespace TankBattleV2
                 X = Config.WINDOW_WIDTH / 2 - Width / 2; // Centrer horizontalement
                 Y = defaultPosY + i * (Height + Padding);     // Positionner chaque bouton verticalement
 
-                button = new Rectangle(X, Y, Width, Height);
+                Button = new Rectangle(X, Y, Width, Height);
 
                 //Ajouter au dictionnaire. Sachant que par défaut, il est faux.
-                Menu.Buttons.Add(button, false);
+                Menu.Buttons.Add(Button, false);
             }
 
 

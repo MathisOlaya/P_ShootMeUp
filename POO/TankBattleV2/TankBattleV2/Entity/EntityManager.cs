@@ -15,12 +15,24 @@ namespace TankBattleV2
     {
         //Contient toutes les méthodes que les entités doivent exécuter.
         //Liste qui contient chaque entités 
+        /// <summary>
+        /// Liste static contenant toutes les entités actuellement en vie de la partie.
+        /// </summary>
         public static List<Entity> Entities = new List<Entity>();
 
+        /// <summary>
+        /// Instance unique du joueur.
+        /// </summary>
         public static Player Player;
 
+        /// <summary>
+        /// Nombre de tank éliminé. Permet de vérifier quand un joueur termine le niveau.
+        /// </summary>
         public static int TankKilled = 0;
 
+        /// <summary>
+        /// Correspond au niveau actuel.
+        /// </summary>
         public static int LevelID = 1;
 
         /// <summary>

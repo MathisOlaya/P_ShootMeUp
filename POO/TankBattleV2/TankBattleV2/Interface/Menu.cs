@@ -15,22 +15,35 @@ namespace TankBattleV2
     /// </summary>
     public enum Action
     {
+        /// <summary>
+        /// Permet de revenir à la partie.
+        /// </summary>
         Resume, 
+        /// <summary>
+        /// Permet de lancer la partie.
+        /// </summary>
         Start,
+        /// <summary>
+        /// Permet de quitter le jeu.
+        /// </summary>
         Exit, 
-        Settings,
+        /// <summary>
+        /// Permet de relancer une partie lorsque le joueur meurt.
+        /// </summary>
         Restart,
     }
+    /// <summary>
+    /// Classe menu permettant la création d'une interface avec différents boutons, avec des actions précises.
+    /// </summary>
     public class Menu
     {
         //Liste contenant tout les titre des actions.
         private List<Action> ButtonActionTitle = new List<Action>();
 
-        //Liste contenant tout les boutons, avec un bool attribué regardant si le curseur se trouve dessus isHover.
+        /// <summary>
+        /// Dictionnaire contenant tout les boutons, avec un bool attribué regardant si le curseur se trouve dessus (isHover).
+        /// </summary>
         public static Dictionary<Rectangle, bool> Buttons = new Dictionary<Rectangle, bool>();
-
-        //Coordoonées
-        int x, y, width, height;
 
         //Ecrire
         SpriteFont spriteFont;
@@ -170,8 +183,6 @@ namespace TankBattleV2
 
                     //Joueur
                     GameRoot.CurrentGameState = GameState.Playing;
-                    break;
-                case Action.Settings:
                     break;
             }
         }
