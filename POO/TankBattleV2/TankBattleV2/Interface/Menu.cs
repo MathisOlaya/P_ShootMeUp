@@ -113,7 +113,7 @@ namespace TankBattleV2
                 if (Buttons[Buttons.Keys.ElementAt(i)] == true)
                 {
                     rectangleTexture = new Texture2D(spriteBatch.GraphicsDevice, 1, 1);
-                    rectangleTexture.SetData(new Color[] { Color.LightGreen });
+                    rectangleTexture.SetData(new Color[] { Color.ForestGreen });
                 }
                 else
                 {
@@ -124,7 +124,7 @@ namespace TankBattleV2
 
                 //Si le rectangle à la valeur true pour le hover, alors on dessine plus clair.
                 if (Buttons[Buttons.Keys.ElementAt(i)] == true)
-                    spriteBatch.Draw(rectangleTexture, Buttons.Keys.ElementAt(i), Color.LightGreen * 1f);
+                    spriteBatch.Draw(rectangleTexture, Buttons.Keys.ElementAt(i), Color.ForestGreen * 1f);
                 else if (Buttons[Buttons.Keys.ElementAt(i)] == false)
                     spriteBatch.Draw(rectangleTexture, Buttons.Keys.ElementAt(i), Color.Green * 1f);
 
