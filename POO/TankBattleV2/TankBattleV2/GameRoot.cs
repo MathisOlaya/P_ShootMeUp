@@ -106,7 +106,6 @@ namespace TankBattleV2
             //Créer le fichier contenant son meilleur score s'il n'existe pas. Using permet de fermer le flux après la création. Sinon cela peut generer des erreurs.
             if(!File.Exists(Config.SAVE_PATH_DATA_SCORE))
                 using (File.Create(Config.SAVE_PATH_DATA_SCORE)) { }
-
         }
         /// <summary>
         /// Méthode étant utilisée pour charger les assets et d'autre choses
@@ -193,13 +192,53 @@ namespace TankBattleV2
             //Seulement afficher quand il joue ou quand  il est mort 
             if (CurrentGameState == GameState.Playing)
                 spriteBatch.DrawString(spriteFont, Score.ToString(), new Vector2(Config.WINDOW_WIDTH - 50, Config.WINDOW_HEIGHT - 75), Color.White);
+            //S'il est mort, afficher son meilleur score, et son score actuel.
             if (CurrentGameState == GameState.DeadScreen)
-                spriteBatch.DrawString(spriteFont, Score.ToString(), new Vector2(Config.WINDOW_WIDTH /2 - spriteFont.MeasureString(Score.ToString()).X / 2 * 2, Config.WINDOW_HEIGHT /2 -250), Color.Red, 0f, Vector2.Zero, 2f, SpriteEffects.None, 0f);
+            {
+                //PB
+                spriteBatch.DrawString(spriteFont, "Score : " + Score.ToString(), new Vector2(Config.WINDOW_WIDTH / 2 - spriteFont.MeasureString("Score : " + Score.ToString()).X / 2 * 2, Config.WINDOW_HEIGHT / 2 - 325), Color.YellowGreen, 0f, Vector2.Zero, 2f, SpriteEffects.None, 0f);
+                //Actuel
+                spriteBatch.DrawString(spriteFont, "HiScore : " + GetBestScore(), new Vector2(Config.WINDOW_WIDTH / 2 - spriteFont.MeasureString("HiScore : " + GetBestScore()).X / 2 * 2, Config.WINDOW_HEIGHT / 2 - 250), Color.Yellow, 0f, Vector2.Zero, 2f, SpriteEffects.None, 0f);
+            }
 
 
             spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+        /// <summary>
+        /// Permet de retourner le meilleur score du joueur
+        /// </summary>
+        /// <returns>Chaine de caractère</returns>
+        private string GetBestScore()
+        {
+            //Liste contenant tout les scores du fichier txt.
+            List<string> Scores = new List<string>(); 
+
+            int HighestScore = 0;
+            int Score = 0;  
+
+            //Ajouter chaque ligne a la liste
+            foreach(var line in File.ReadAllLines(Config.SAVE_PATH_DATA_SCORE))
+            {
+                Scores.Add(line);
+            }
+            
+            //Sauvegarder l'entier le plus haut
+            foreach(string  line in Scores)
+            {
+                try
+                {
+                    //Essayer de convertir la ligne en entier
+                    Score = int.Parse(line);
+
+                    //Comparer si le score est plus grand que le highScore, si oui le save
+                    if(Score >= HighestScore)
+                        HighestScore = Score;
+                }
+                catch { }
+            }
+            return HighestScore.ToString();
         }
     }
 }
