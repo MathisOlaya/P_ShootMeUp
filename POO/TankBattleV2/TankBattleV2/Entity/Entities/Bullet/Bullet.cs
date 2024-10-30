@@ -32,13 +32,13 @@ namespace TankBattleV2
         /// <param name="direction">Direction de la munition</param>
         /// <param name="texture">Texture de la munition</param>
         
-        public Bullet(Vector2 position, Vector2 direction, Texture2D texture) : base(position)
+        public Bullet(Vector2 position, Vector2 direction, Texture2D texture, float scale) : base(position)
         {
             Texture = texture;
             SpriteFont = GameRoot.spriteFont;
             SpriteBatch = GameRoot.spriteBatch;
             HealthPoint = EntityConfig.Bullet.HealthPoint;
-            Scale = EntityConfig.Bullet.Scale;
+            Scale = scale;
             HitBox = EntityConfig.Bullet.HitBox;
             Speed = EntityConfig.Bullet.Speed;
             Direction = new Vector2();

@@ -149,7 +149,7 @@ namespace TankBattleV2
                 Vector2 CanonPosition = new Vector2(Position.X, Position.Y + 1800 * Scale);
 
                 //Lancer un missile.
-                EntityManager.Add(new Bullet(CanonPosition, Direction, EntityConfig.Shell.Texture));
+                EntityManager.Add(new Bullet(CanonPosition, Direction, EntityConfig.Shell.Texture, EntityConfig.Shell.Scale));
             }
         }
     }

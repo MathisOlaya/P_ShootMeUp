@@ -200,7 +200,7 @@ namespace TankBattleV2
                 Vector2 CanonPosition = new Vector2(Position.X + 28 * EntityConfig.Player.Scale, Position.Y - 120 * EntityConfig.Player.Scale);
 
                 //Créer une munition
-                EntityManager.Add(new Bullet(CanonPosition, Direction, EntityConfig.Bullet.Texture));
+                EntityManager.Add(new Bullet(CanonPosition, Direction, EntityConfig.Bullet.Texture, EntityConfig.Bullet.Scale));
 
                 //Retirer une munition du chargeur 
                 Ammo--;
