@@ -92,6 +92,7 @@ namespace TankBattleV2
             //Changer la taille de la fenêtre.
             _graphics.PreferredBackBufferWidth = Config.WINDOW_WIDTH;
             _graphics.PreferredBackBufferHeight = Config.WINDOW_HEIGHT;
+            _graphics.IsFullScreen = true;
             //Appliquer les changements de taille.
             _graphics.ApplyChanges();
             base.Initialize();
