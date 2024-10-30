@@ -159,7 +159,7 @@ namespace TankBattleV2
                 case GameState.Paused:
                     //Créer un nouveau menu seulement s'il n'existe pas. Sinon cela va en créer une infinité.
                     if(menu == null)
-                        menu = new Menu(new List<Action>{Action.Resume, Action.Exit}, spriteFont);
+                        menu = new Menu(new List<Action>{Action.Resume, Action.Restart, Action.Exit}, spriteFont);
                     menu.Update(gameTime);
                     break;
                 case GameState.DeadScreen:

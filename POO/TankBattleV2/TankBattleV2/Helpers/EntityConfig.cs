@@ -218,7 +218,7 @@ namespace EntityConfig
         /// <summary>
         /// Propriété définissant le temps d'attente entre chaque tir du tank.
         /// </summary>
-        public static float CoolDownShoot = 2.2f;
+        public static float CoolDownShoot = 2f;
     }
     /// <summary>
     /// Classe définissant les différents attributs d'une protection..
