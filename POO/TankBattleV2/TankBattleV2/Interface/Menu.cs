@@ -113,20 +113,20 @@ namespace TankBattleV2
                 if (Buttons[Buttons.Keys.ElementAt(i)] == true)
                 {
                     rectangleTexture = new Texture2D(spriteBatch.GraphicsDevice, 1, 1);
-                    rectangleTexture.SetData(new Color[] { Color.Gray });
+                    rectangleTexture.SetData(new Color[] { Color.LightGreen });
                 }
                 else
                 {
                     rectangleTexture = new Texture2D(spriteBatch.GraphicsDevice, 1, 1);
-                    rectangleTexture.SetData(new Color[] { Color.Black });
+                    rectangleTexture.SetData(new Color[] { Color.Green });
                 }
                 
 
                 //Si le rectangle à la valeur true pour le hover, alors on dessine plus clair.
                 if (Buttons[Buttons.Keys.ElementAt(i)] == true)
-                    spriteBatch.Draw(rectangleTexture, Buttons.Keys.ElementAt(i), Color.Gray * 1f);
+                    spriteBatch.Draw(rectangleTexture, Buttons.Keys.ElementAt(i), Color.LightGreen * 1f);
                 else if (Buttons[Buttons.Keys.ElementAt(i)] == false)
-                    spriteBatch.Draw(rectangleTexture, Buttons.Keys.ElementAt(i), Color.Black * 1f);
+                    spriteBatch.Draw(rectangleTexture, Buttons.Keys.ElementAt(i), Color.Green * 1f);
 
                 //Ecrire le texte du bouton, et le centrer en calculant la longueur du texte (pas le nbre de char).
                 Rectangle Button = Buttons.Keys.ElementAt(i);

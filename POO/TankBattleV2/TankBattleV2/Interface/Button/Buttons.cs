@@ -52,8 +52,8 @@ namespace TankBattleV2
                 // Calculer la taille du texte pour ajuster la largeur du bouton.
                 Vector2 TextSize = SpriteFont.MeasureString(ButtonActionTitle[i].ToString());
 
-                // Largeur ajustée au texte, avec un minimum de 200 pixels.
-                Width = (TextSize.X > 200 ? (int)(TextSize.X + 100) : 200);
+                // Largeur ajustée au texte, avec un minimum de 400 pixels.
+                Width = (TextSize.X > 200 ? (int)(TextSize.X + 150) : 300);
                 X = Config.WINDOW_WIDTH / 2 - Width / 2; // Centrer horizontalement
                 Y = defaultPosY + i * (Height + Padding);     // Positionner chaque bouton verticalement
 
