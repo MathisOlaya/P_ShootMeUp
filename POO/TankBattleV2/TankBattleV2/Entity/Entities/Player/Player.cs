@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
+using System.Collections.Generic;
 
 
 
@@ -48,6 +49,9 @@ namespace TankBattleV2
         private Color AmmoStringColor = Color.White;
 
         //Life
+        /// <summary>
+        /// Booléen définissant si le joueur est encore en vie.
+        /// </summary>
         public bool isAlive = true;
         private Texture2D HealthPointTexture;
         private readonly Vector2 HEALTH_SPRITE_DEFAULT_POS;
@@ -219,8 +223,8 @@ namespace TankBattleV2
             {
                 if (structurePlaced < MAX_STRUCTURE)
                 {
-                    EntityManager.Add(new Protection(GlobalHelpers.Input.GetMousePosition(), protectionHitBox));
-                    structurePlaced++;
+                    if(PlaceProtection(protectionHitBox))
+                        structurePlaced++;
                 }
                 if (structurePlaced == 2)
                 {
@@ -232,10 +236,11 @@ namespace TankBattleV2
                 if(isInSinglePlacementMode && TimeSinceLastProtectionPlaced >= TimeBetweenEveryProtectionPlacement)
                 {
                     //Alors poser une structure
-                    EntityManager.Add(new Protection(GlobalHelpers.Input.GetMousePosition(), protectionHitBox));
-
-                    //Reset le timer 
-                    TimeSinceLastProtectionPlaced = 0;
+                    if (PlaceProtection(protectionHitBox))
+                    {
+                        //Reset le timer 
+                        TimeSinceLastProtectionPlaced = 0;
+                    }
                 }
 
             }
@@ -247,6 +252,35 @@ namespace TankBattleV2
             }
             //Enregistrer l'état précédent de la souris. Permet de s'assure que le joueur à bien relacher le clic droit avant d'en reposer un.
             _previousMouseState = GlobalHelpers.Input.GetMouseState();
+        }
+        private bool PlaceProtection(Rectangle hitbox)
+        {
+            //Par défaut, on part du principe qu'il peut poser.
+            bool canPlace = true;
+
+            // Vérifier s'il y a des protections déjà posées et si la nouvelle protection intersecte avec une existante.
+            if (EntityManager.Protections.Count > 0)
+            {
+                foreach (Protection p in EntityManager.Protections)
+                {
+                    if (hitbox.Intersects(p.HitBox))
+                    {
+                        canPlace = false;
+                        return false;
+                    }
+                }
+            }
+
+            // Si aucune intersection n'a été trouvée, on ajoute la nouvelle protection.
+            if (canPlace)
+            {
+                Protection protection = new Protection(GlobalHelpers.Input.GetMousePosition(), hitbox);
+                EntityManager.Add(protection);
+                return true;
+            }
+
+            //return false par défaut
+            return false;
         }
     }
 }

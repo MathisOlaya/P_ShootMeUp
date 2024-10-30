@@ -21,6 +21,11 @@ namespace TankBattleV2
         public static List<Entity> Entities = new List<Entity>();
 
         /// <summary>
+        /// Liste de protections, contenant chaque protection encore en vie.
+        /// </summary>
+        public static List<Protection> Protections = new List<Protection>();
+
+        /// <summary>
         /// Instance unique du joueur.
         /// </summary>
         public static Player Player;
@@ -42,6 +47,10 @@ namespace TankBattleV2
         public static void Add(Entity entity)
         {
             Entities.Add(entity);
+
+            //Si l'entité est une protection, l'ajouter à la liste des Protections.
+            if(entity is Protection p)
+                Protections.Add(p);
 
             //A chaque création, effectuer la méthode Initialize
             entity.Initialize();
@@ -185,6 +194,10 @@ namespace TankBattleV2
                         EntityConfig.Tank.spawnPoints[tank.SpawnPoint] = true;
                     }
                 }
+
+                //Si c'est une protection, la supprimer de la liste 
+                if (entity is Protection p)
+                    Protections.Remove(p);
             }
         }
 
