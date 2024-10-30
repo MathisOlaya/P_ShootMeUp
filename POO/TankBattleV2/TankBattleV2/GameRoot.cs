@@ -1,5 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-
+using System.IO;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -50,6 +50,11 @@ namespace TankBattleV2
         /// </summary>
         public static SpriteFont spriteFont;
 
+        /// <summary>
+        /// Bool qui dit si oui ou non le score a été sauvegardé.
+        /// </summary>
+        public static bool isScoreSave = false;
+
         //Game
         /// <summary>
         /// Propriété contenant le score actuelle de la partie.
@@ -91,6 +96,17 @@ namespace TankBattleV2
             _graphics.ApplyChanges();
             base.Initialize();
             EntityConfig.Tank.SetDefaultSpawnPoints();
+
+            //Créer le dossier TankBattle s'il n'existe pas.
+            if (!Directory.Exists(Config.SAVE_PATH_TANKBATTLE))
+                Directory.CreateDirectory(Config.SAVE_PATH_TANKBATTLE);
+            if(!Directory.Exists(Config.SAVE_PATH_DATA))
+                Directory.CreateDirectory(Config.SAVE_PATH_DATA);
+
+            //Créer le fichier contenant son meilleur score s'il n'existe pas. Using permet de fermer le flux après la création. Sinon cela peut generer des erreurs.
+            if(!File.Exists(Config.SAVE_PATH_DATA_SCORE))
+                using (File.Create(Config.SAVE_PATH_DATA_SCORE)) { }
+
         }
         /// <summary>
         /// Méthode étant utilisée pour charger les assets et d'autre choses
@@ -120,7 +136,17 @@ namespace TankBattleV2
             //Si le joueur est mort et qu'il existe evidemment (au debut il n'existe pas de suite)
             if(EntityManager.Player != null)
                 if (EntityManager.Player.HealthPoint <= 0)
+                {
                     CurrentGameState = GameState.DeadScreen;
+
+                    //Sauvegarder son score.
+                    if (!isScoreSave)
+                    {
+                        File.AppendAllText(Config.SAVE_PATH_DATA_SCORE, Score.ToString() + Environment.NewLine);
+                        isScoreSave = true;
+                    }
+                }
+                    
 
             switch (CurrentGameState)
             {

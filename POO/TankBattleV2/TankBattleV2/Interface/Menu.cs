@@ -164,6 +164,7 @@ namespace TankBattleV2
                     GameRoot.Score = 0;
                     EntityManager.TankKilled = 0;
                     EntityManager.Player.HealthPoint = 3;
+                    GameRoot.isScoreSave = false;   
                     EntityManager.LevelID = 1;
                     GameSettings.Difficulty = 2; //difficulté par défaut
                     GameSettings.InfiniteMode = false;
@@ -183,6 +184,7 @@ namespace TankBattleV2
 
                     //Joueur
                     GameRoot.CurrentGameState = GameState.Playing;
+
                     break;
             }
         }

@@ -21,6 +21,18 @@ namespace TankBattleV2
         /// Propriété retournant la hauteur de l'écran.
         /// </summary>
         public static readonly int WINDOW_HEIGHT = 1080;
+        /// <summary>
+        /// String contenant le path du dossier TankBattle
+        /// </summary>
+        public static readonly string SAVE_PATH_TANKBATTLE = "C:\\TankBattle";
+        /// <summary>
+        /// Path du dossier contenant toutes les données du jeu
+        /// </summary>
+        public static readonly string SAVE_PATH_DATA = "C:\\TankBattle\\data";
+        /// <summary>
+        /// Path du fichier contenant tout les scores du joueur.
+        /// </summary>
+        public static readonly string SAVE_PATH_DATA_SCORE = "C:\\TankBattle\\data\\score.txt";
     }
     /// <summary>
     /// Classe concernant les paramètres de la partie.
