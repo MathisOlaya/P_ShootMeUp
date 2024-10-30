@@ -259,17 +259,15 @@ namespace TankBattleV2
             bool canPlace = true;
 
             // Vérifier s'il y a des protections déjà posées et si la nouvelle protection intersecte avec une existante.
-            if (EntityManager.Protections.Count > 0)
+            foreach (Protection p in EntityManager.Protections)
             {
-                foreach (Protection p in EntityManager.Protections)
+                if (hitbox.Intersects(p.HitBox))
                 {
-                    if (hitbox.Intersects(p.HitBox))
-                    {
-                        canPlace = false;
-                        return false;
-                    }
+                    canPlace = false;
+                    return false;
                 }
             }
+            
 
             // Si aucune intersection n'a été trouvée, on ajoute la nouvelle protection.
             if (canPlace)
