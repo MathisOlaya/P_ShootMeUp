@@ -1,10 +1,54 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Mathis\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattleV2\\",
+  "WorkspaceRootPath": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattleV2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{89F5B395-F5B3-4F97-8242-2ADB4FED46FB}|TankBattleV2\\TankBattleV2.csproj|c:\\users\\mathis\\documents\\github\\p_shootmeup\\poo\\tankbattlev2\\tankbattlev2\\gameroot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{89F5B395-F5B3-4F97-8242-2ADB4FED46FB}|TankBattleV2\\TankBattleV2.csproj|c:\\users\\pg24muu\\documents\\github\\p_shootmeup\\poo\\tankbattlev2\\tankbattlev2\\entity\\entities\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{89F5B395-F5B3-4F97-8242-2ADB4FED46FB}|TankBattleV2\\TankBattleV2.csproj|solutionrelative:tankbattlev2\\entity\\entities\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89F5B395-F5B3-4F97-8242-2ADB4FED46FB}|TankBattleV2\\TankBattleV2.csproj|c:\\users\\pg24muu\\documents\\github\\p_shootmeup\\poo\\tankbattlev2\\tankbattlev2\\entity\\entities\\protection\\protection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{89F5B395-F5B3-4F97-8242-2ADB4FED46FB}|TankBattleV2\\TankBattleV2.csproj|solutionrelative:tankbattlev2\\entity\\entities\\protection\\protection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89F5B395-F5B3-4F97-8242-2ADB4FED46FB}|TankBattleV2\\TankBattleV2.csproj|c:\\users\\pg24muu\\documents\\github\\p_shootmeup\\poo\\tankbattlev2\\tankbattlev2\\program\\app.manifest||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{89F5B395-F5B3-4F97-8242-2ADB4FED46FB}|TankBattleV2\\TankBattleV2.csproj|solutionrelative:tankbattlev2\\program\\app.manifest||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89F5B395-F5B3-4F97-8242-2ADB4FED46FB}|TankBattleV2\\TankBattleV2.csproj|c:\\users\\pg24muu\\documents\\github\\p_shootmeup\\poo\\tankbattlev2\\tankbattlev2\\gameroot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{89F5B395-F5B3-4F97-8242-2ADB4FED46FB}|TankBattleV2\\TankBattleV2.csproj|solutionrelative:tankbattlev2\\gameroot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89F5B395-F5B3-4F97-8242-2ADB4FED46FB}|TankBattleV2\\TankBattleV2.csproj|c:\\users\\pg24muu\\documents\\github\\p_shootmeup\\poo\\tankbattlev2\\tankbattlev2\\interface\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{89F5B395-F5B3-4F97-8242-2ADB4FED46FB}|TankBattleV2\\TankBattleV2.csproj|solutionrelative:tankbattlev2\\interface\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89F5B395-F5B3-4F97-8242-2ADB4FED46FB}|TankBattleV2\\TankBattleV2.csproj|c:\\users\\pg24muu\\documents\\github\\p_shootmeup\\poo\\tankbattlev2\\tankbattlev2\\program\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{89F5B395-F5B3-4F97-8242-2ADB4FED46FB}|TankBattleV2\\TankBattleV2.csproj|solutionrelative:tankbattlev2\\program\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89F5B395-F5B3-4F97-8242-2ADB4FED46FB}|TankBattleV2\\TankBattleV2.csproj|c:\\users\\pg24muu\\documents\\github\\p_shootmeup\\poo\\tankbattlev2\\tankbattlev2\\helpers\\globalhelpers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{89F5B395-F5B3-4F97-8242-2ADB4FED46FB}|TankBattleV2\\TankBattleV2.csproj|solutionrelative:tankbattlev2\\helpers\\globalhelpers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89F5B395-F5B3-4F97-8242-2ADB4FED46FB}|TankBattleV2\\TankBattleV2.csproj|c:\\users\\pg24muu\\documents\\github\\p_shootmeup\\poo\\tankbattlev2\\tankbattlev2\\entity\\interfaces\\ishootable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{89F5B395-F5B3-4F97-8242-2ADB4FED46FB}|TankBattleV2\\TankBattleV2.csproj|solutionrelative:tankbattlev2\\entity\\interfaces\\ishootable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89F5B395-F5B3-4F97-8242-2ADB4FED46FB}|TankBattleV2\\TankBattleV2.csproj|c:\\users\\pg24muu\\documents\\github\\p_shootmeup\\poo\\tankbattlev2\\tankbattlev2\\helpers\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{89F5B395-F5B3-4F97-8242-2ADB4FED46FB}|TankBattleV2\\TankBattleV2.csproj|solutionrelative:tankbattlev2\\helpers\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89F5B395-F5B3-4F97-8242-2ADB4FED46FB}|TankBattleV2\\TankBattleV2.csproj|c:\\users\\pg24muu\\documents\\github\\p_shootmeup\\poo\\tankbattlev2\\tankbattlev2\\entity\\interfaces\\imovable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{89F5B395-F5B3-4F97-8242-2ADB4FED46FB}|TankBattleV2\\TankBattleV2.csproj|solutionrelative:tankbattlev2\\entity\\interfaces\\imovable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89F5B395-F5B3-4F97-8242-2ADB4FED46FB}|TankBattleV2\\TankBattleV2.csproj|c:\\users\\pg24muu\\documents\\github\\p_shootmeup\\poo\\tankbattlev2\\tankbattlev2\\entity\\interfaces\\ientity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{89F5B395-F5B3-4F97-8242-2ADB4FED46FB}|TankBattleV2\\TankBattleV2.csproj|solutionrelative:tankbattlev2\\entity\\interfaces\\ientity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89F5B395-F5B3-4F97-8242-2ADB4FED46FB}|TankBattleV2\\TankBattleV2.csproj|c:\\users\\pg24muu\\documents\\github\\p_shootmeup\\poo\\tankbattlev2\\tankbattlev2\\entity\\entities\\bullet\\bullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{89F5B395-F5B3-4F97-8242-2ADB4FED46FB}|TankBattleV2\\TankBattleV2.csproj|solutionrelative:tankbattlev2\\entity\\entities\\bullet\\bullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -17,18 +61,157 @@
           "SelectedChildIndex": 1,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Protection.cs",
+              "DocumentMoniker": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattleV2\\TankBattleV2\\Entity\\Entities\\Protection\\Protection.cs",
+              "RelativeDocumentMoniker": "TankBattleV2\\Entity\\Entities\\Protection\\Protection.cs",
+              "ToolTip": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattleV2\\TankBattleV2\\Entity\\Entities\\Protection\\Protection.cs",
+              "RelativeToolTip": "TankBattleV2\\Entity\\Entities\\Protection\\Protection.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T13:19:00.582Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Player.cs",
+              "DocumentMoniker": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattleV2\\TankBattleV2\\Entity\\Entities\\Player\\Player.cs",
+              "RelativeDocumentMoniker": "TankBattleV2\\Entity\\Entities\\Player\\Player.cs",
+              "ToolTip": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattleV2\\TankBattleV2\\Entity\\Entities\\Player\\Player.cs*",
+              "RelativeToolTip": "TankBattleV2\\Entity\\Entities\\Player\\Player.cs*",
+              "ViewState": "AQIAADEAAAAAAAAAAAAcwEAAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T12:52:15.591Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "app.manifest",
+              "DocumentMoniker": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattleV2\\TankBattleV2\\Program\\app.manifest",
+              "RelativeDocumentMoniker": "TankBattleV2\\Program\\app.manifest",
+              "ToolTip": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattleV2\\TankBattleV2\\Program\\app.manifest",
+              "RelativeToolTip": "TankBattleV2\\Program\\app.manifest",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001203|",
+              "WhenOpened": "2024-10-30T12:48:47.319Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattleV2\\TankBattleV2\\Program\\Program.cs",
+              "RelativeDocumentMoniker": "TankBattleV2\\Program\\Program.cs",
+              "ToolTip": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattleV2\\TankBattleV2\\Program\\Program.cs",
+              "RelativeToolTip": "TankBattleV2\\Program\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T12:46:42.829Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Menu.cs",
+              "DocumentMoniker": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattleV2\\TankBattleV2\\Interface\\Menu.cs",
+              "RelativeDocumentMoniker": "TankBattleV2\\Interface\\Menu.cs",
+              "ToolTip": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattleV2\\TankBattleV2\\Interface\\Menu.cs",
+              "RelativeToolTip": "TankBattleV2\\Interface\\Menu.cs",
+              "ViewState": "AQIAAHIAAAAAAAAAAAAqwIUAAABNAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T12:46:26.162Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "GlobalHelpers.cs",
+              "DocumentMoniker": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattleV2\\TankBattleV2\\Helpers\\GlobalHelpers.cs",
+              "RelativeDocumentMoniker": "TankBattleV2\\Helpers\\GlobalHelpers.cs",
+              "ToolTip": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattleV2\\TankBattleV2\\Helpers\\GlobalHelpers.cs",
+              "RelativeToolTip": "TankBattleV2\\Helpers\\GlobalHelpers.cs",
+              "ViewState": "AQIAACwAAAAAAAAAAAAIwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T12:41:15.683Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Config.cs",
+              "DocumentMoniker": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattleV2\\TankBattleV2\\Helpers\\Config.cs",
+              "RelativeDocumentMoniker": "TankBattleV2\\Helpers\\Config.cs",
+              "ToolTip": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattleV2\\TankBattleV2\\Helpers\\Config.cs",
+              "RelativeToolTip": "TankBattleV2\\Helpers\\Config.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAQwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T12:39:37.731Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IMovable.cs",
+              "DocumentMoniker": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattleV2\\TankBattleV2\\Entity\\Interfaces\\IMovable.cs",
+              "RelativeDocumentMoniker": "TankBattleV2\\Entity\\Interfaces\\IMovable.cs",
+              "ToolTip": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattleV2\\TankBattleV2\\Entity\\Interfaces\\IMovable.cs",
+              "RelativeToolTip": "TankBattleV2\\Entity\\Interfaces\\IMovable.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T12:36:46.744Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IShootable.cs",
+              "DocumentMoniker": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattleV2\\TankBattleV2\\Entity\\Interfaces\\IShootable.cs",
+              "RelativeDocumentMoniker": "TankBattleV2\\Entity\\Interfaces\\IShootable.cs",
+              "ToolTip": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattleV2\\TankBattleV2\\Entity\\Interfaces\\IShootable.cs",
+              "RelativeToolTip": "TankBattleV2\\Entity\\Interfaces\\IShootable.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T12:36:46.21Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "IEntity.cs",
+              "DocumentMoniker": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattleV2\\TankBattleV2\\Entity\\Interfaces\\IEntity.cs",
+              "RelativeDocumentMoniker": "TankBattleV2\\Entity\\Interfaces\\IEntity.cs",
+              "ToolTip": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattleV2\\TankBattleV2\\Entity\\Interfaces\\IEntity.cs",
+              "RelativeToolTip": "TankBattleV2\\Entity\\Interfaces\\IEntity.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T12:34:31.291Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Bullet.cs",
+              "DocumentMoniker": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattleV2\\TankBattleV2\\Entity\\Entities\\Bullet\\Bullet.cs",
+              "RelativeDocumentMoniker": "TankBattleV2\\Entity\\Entities\\Bullet\\Bullet.cs",
+              "ToolTip": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattleV2\\TankBattleV2\\Entity\\Entities\\Bullet\\Bullet.cs",
+              "RelativeToolTip": "TankBattleV2\\Entity\\Entities\\Bullet\\Bullet.cs",
+              "ViewState": "AQIAAEAAAAAAAAAAAAAcwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T12:19:30.679Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "GameRoot.cs",
-              "DocumentMoniker": "C:\\Users\\Mathis\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattleV2\\TankBattleV2\\GameRoot.cs",
+              "DocumentMoniker": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattleV2\\TankBattleV2\\GameRoot.cs",
               "RelativeDocumentMoniker": "TankBattleV2\\GameRoot.cs",
-              "ToolTip": "C:\\Users\\Mathis\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattleV2\\TankBattleV2\\GameRoot.cs",
+              "ToolTip": "C:\\Users\\pg24muu\\Documents\\GitHub\\P_ShootMeUp\\POO\\TankBattleV2\\TankBattleV2\\GameRoot.cs",
               "RelativeToolTip": "TankBattleV2\\GameRoot.cs",
-              "ViewState": "AQIAAG0AAAAAAAAAAAAcwIcAAAAeAAAA",
+              "ViewState": "AQIAAE8AAAAAAAAAAAAswGIAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-29T20:41:24.663Z",
               "EditorCaption": ""

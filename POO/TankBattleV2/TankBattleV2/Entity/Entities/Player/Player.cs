@@ -226,7 +226,7 @@ namespace TankBattleV2
                     if(PlaceProtection(protectionHitBox))
                         structurePlaced++;
                 }
-                if (structurePlaced == 2)
+                if (structurePlaced == MAX_STRUCTURE)
                 {
                     //Activer le mode de placement unique
                     isInSinglePlacementMode = true;

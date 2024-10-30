@@ -164,10 +164,13 @@ namespace TankBattleV2
             //Si il y a un nouveau lvl, l'écrire
             spriteBatch.DrawString(spriteFont, EntityManager.LevelID.ToString(), new Vector2(50, 50), Color.White);
 
-            //Seulement afficher quand il joue.
+            //Seulement afficher quand il joue ou quand  il est mort 
             if (CurrentGameState == GameState.Playing)
                 spriteBatch.DrawString(spriteFont, Score.ToString(), new Vector2(Config.WINDOW_WIDTH - 50, Config.WINDOW_HEIGHT - 75), Color.White);
-            
+            if (CurrentGameState == GameState.DeadScreen)
+                spriteBatch.DrawString(spriteFont, Score.ToString(), new Vector2(Config.WINDOW_WIDTH /2 - spriteFont.MeasureString(Score.ToString()).X / 2 * 2, Config.WINDOW_HEIGHT /2 -250), Color.Red, 0f, Vector2.Zero, 2f, SpriteEffects.None, 0f);
+
+
             spriteBatch.End();
 
             base.Draw(gameTime);

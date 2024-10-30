@@ -1,1 +1,42 @@
-<?xml version="1.0" encoding="utf-8"?><PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><SourceFile>C:/Users/pg24muu/Documents/GitHub/P_ShootMeUp/POO/TankBattleV2/TankBattleV2/Content/Textures/HealthPoint/Tank/mid.png</SourceFile><SourceTime>2024-10-30T08:11:14.5961991+01:00</SourceTime><DestFile>C:/Users/pg24muu/Documents/GitHub/P_ShootMeUp/POO/TankBattleV2/TankBattleV2/Content/bin/Windows/Content/Textures/HealthPoint/Tank/mid.xnb</DestFile><DestTime>2024-10-30T08:13:47.2564971+01:00</DestTime><Importer>TextureImporter</Importer><ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime><Processor>TextureProcessor</Processor><ProcessorTime>2022-07-26T13:44:56+02:00</ProcessorTime><Parameters><Key>ColorKeyColor</Key><Value>255,0,255,255</Value></Parameters><Parameters><Key>ColorKeyEnabled</Key><Value>True</Value></Parameters><Parameters><Key>GenerateMipmaps</Key><Value>False</Value></Parameters><Parameters><Key>PremultiplyAlpha</Key><Value>True</Value></Parameters><Parameters><Key>ResizeToPowerOfTwo</Key><Value>False</Value></Parameters><Parameters><Key>MakeSquare</Key><Value>False</Value></Parameters><Parameters><Key>TextureFormat</Key><Value>Color</Value></Parameters><Dependencies /><BuildAsset /><BuildOutput /></PipelineBuildEvent>
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SourceFile>C:/Users/pg24muu/Documents/GitHub/P_ShootMeUp/POO/TankBattleV2/TankBattleV2/Content/Textures/HealthPoint/Tank/mid.png</SourceFile>
+  <SourceTime>2024-10-07T09:13:30.6512335+02:00</SourceTime>
+  <DestFile>C:/Users/pg24muu/Documents/GitHub/P_ShootMeUp/POO/TankBattleV2/TankBattleV2/Content/bin/Windows/Content/Textures/HealthPoint/Tank/mid.xnb</DestFile>
+  <DestTime>2024-10-30T13:11:14.8788642+01:00</DestTime>
+  <Importer>TextureImporter</Importer>
+  <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
+  <Processor>TextureProcessor</Processor>
+  <ProcessorTime>2022-07-26T13:44:56+02:00</ProcessorTime>
+  <Parameters>
+    <Key>ColorKeyColor</Key>
+    <Value>255,0,255,255</Value>
+  </Parameters>
+  <Parameters>
+    <Key>ColorKeyEnabled</Key>
+    <Value>True</Value>
+  </Parameters>
+  <Parameters>
+    <Key>GenerateMipmaps</Key>
+    <Value>False</Value>
+  </Parameters>
+  <Parameters>
+    <Key>PremultiplyAlpha</Key>
+    <Value>True</Value>
+  </Parameters>
+  <Parameters>
+    <Key>ResizeToPowerOfTwo</Key>
+    <Value>False</Value>
+  </Parameters>
+  <Parameters>
+    <Key>MakeSquare</Key>
+    <Value>False</Value>
+  </Parameters>
+  <Parameters>
+    <Key>TextureFormat</Key>
+    <Value>Color</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>
