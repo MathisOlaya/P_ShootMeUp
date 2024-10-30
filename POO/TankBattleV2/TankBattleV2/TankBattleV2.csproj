@@ -9,17 +9,15 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>Program\app.manifest</ApplicationManifest>
-    <ApplicationIcon>Content\Icon.ico</ApplicationIcon>
+    <ApplicationIcon>Content\Icone\Icone.ico</ApplicationIcon>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
-  <ItemGroup>
-    <Content Include="Content\Icon.ico" />
-  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MonoGame.Framework.WindowsDX" Version="3.8.1.303" />
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Content\Icone\" />
     <Folder Include="Content\Textures\Bullets\" />
   </ItemGroup>
   <Target Name="RestoreDotnetTools" BeforeTargets="Restore">

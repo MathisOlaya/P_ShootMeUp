@@ -148,3 +148,4 @@ C:\Users\pg24muu\Documents\GitHub\P_ShootMeUp\POO\TankBattleV2\TankBattleV2\obj\
 C:\Users\pg24muu\Documents\GitHub\P_ShootMeUp\POO\TankBattleV2\TankBattleV2\bin\Debug\net6.0-windows\Content\shootSound.xnb
 C:\Users\pg24muu\Documents\GitHub\P_ShootMeUp\POO\TankBattleV2\TankBattleV2\obj\Debug\net6.0-windows\TankBattleV2.sourcelink.json
 C:\Users\pg24muu\Documents\GitHub\P_ShootMeUp\POO\TankBattleV2\TankBattleV2\obj\Debug\net6.0-windows\TankBatt.5756250E.Up2Date
+C:\Users\pg24muu\Documents\GitHub\P_ShootMeUp\POO\TankBattleV2\TankBattleV2\bin\Debug\net6.0-windows\Content\Icone\Icone.xnb

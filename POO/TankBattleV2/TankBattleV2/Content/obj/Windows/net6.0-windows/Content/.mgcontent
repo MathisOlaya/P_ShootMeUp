@@ -5,6 +5,7 @@
   <Config />
   <SourceFiles>
     <File>C:/Users/pg24muu/Documents/GitHub/P_ShootMeUp/POO/TankBattleV2/TankBattleV2/Content/Fonts/Font.spritefont</File>
+    <File>C:/Users/pg24muu/Documents/GitHub/P_ShootMeUp/POO/TankBattleV2/TankBattleV2/Content/Icone/Icone.ico</File>
     <File>C:/Users/pg24muu/Documents/GitHub/P_ShootMeUp/POO/TankBattleV2/TankBattleV2/Content/Textures/Bullets/icon-bullet.png</File>
     <File>C:/Users/pg24muu/Documents/GitHub/P_ShootMeUp/POO/TankBattleV2/TankBattleV2/Content/Textures/Bullets/PlayerBullet.png</File>
     <File>C:/Users/pg24muu/Documents/GitHub/P_ShootMeUp/POO/TankBattleV2/TankBattleV2/Content/Textures/Bullets/TankBullet.png</File>
@@ -18,6 +19,7 @@
     <File>C:/Users/pg24muu/Documents/GitHub/P_ShootMeUp/POO/TankBattleV2/TankBattleV2/Content/Textures/Tank/ex.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
