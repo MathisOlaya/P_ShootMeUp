@@ -1,0 +1,1000 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TankBattleV2</name>
+    </assembly>
+    <members>
+        <member name="T:TankBattleV2.Bullet">
+            <summary>
+            Classe servant à créer les munitions joueurs et/ou tanks
+            </summary>
+        </member>
+        <member name="P:TankBattleV2.Bullet.Velocity">
+            <summary>
+            Propriété vélocité issue de l'interface IMovable
+            </summary>
+        </member>
+        <member name="P:TankBattleV2.Bullet.Speed">
+            <summary>
+            Propriété de la vitesse issue de l'interface IMovable.
+            </summary>
+        </member>
+        <member name="M:TankBattleV2.Bullet.#ctor(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Graphics.Texture2D,System.Single)">
+            <summary>
+            Constructeur de la bullet.
+            </summary>
+            <param name="position">Position de départ de la munition</param>
+            <param name="direction">Direction de la munition</param>
+            <param name="texture">Texture de la munition</param>
+            <param name="scale">Echelle de la munition</param>
+        </member>
+        <member name="M:TankBattleV2.Bullet.Initialize">
+            <summary>
+            Méthode étant effectuée lors de la création de la bullet.
+            </summary>
+        </member>
+        <member name="M:TankBattleV2.Bullet.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Méthode étant effectuée à chaque tics, cette méthode est propore à chaque instance de bullet.
+            </summary>
+            <param name="gameTime"></param>
+        </member>
+        <member name="M:TankBattleV2.Bullet.Draw(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Méthode qui dessine la bullet.
+            </summary>
+            <param name="gameTime"></param>
+        </member>
+        <member name="M:TankBattleV2.Bullet.UpdatePosition">
+            <summary>
+            Méthode qui update la position de la munition, appelée à chaque tics.
+            </summary>
+        </member>
+        <member name="M:TankBattleV2.Bullet.CheckLimitePosition">
+            <summary>
+            Méthode regardant à chaque tic si la munition est encore dans l'écran, sinon la supprimer.
+            </summary>
+        </member>
+        <member name="P:TankBattleV2.Bullet.isOutOfBounds">
+            <summary>
+            Propriété retournant si la Position est dans la limite ou pas.
+            </summary>
+            <returns>True si elle est en dehors de l'écran.</returns>
+        </member>
+        <member name="T:TankBattleV2.Entity">
+            <summary>
+            Classe Entité, qui défini les propriétés de base qu'une entité doit avoir.
+            </summary>
+        </member>
+        <member name="F:TankBattleV2.Entity.Texture">
+            <summary>
+            Contient la texture qu'une entité possède
+            </summary>
+        </member>
+        <member name="F:TankBattleV2.Entity.SpriteFont">
+            <summary>
+            Font d'écriture.
+            </summary>
+        </member>
+        <member name="F:TankBattleV2.Entity.SpriteBatch">
+            <summary>
+            Propriété contenant le SpriteBatch du projet.
+            </summary>
+        </member>
+        <member name="P:TankBattleV2.Entity.Position">
+            <summary>
+            Vector2 contenant la position X et Y de l'entité
+            </summary>
+        </member>
+        <member name="F:TankBattleV2.Entity.HealthPoint">
+            <summary>
+            Propriété contenant le nombre de point de vie de l'entité
+            </summary>
+        </member>
+        <member name="F:TankBattleV2.Entity.HealthSpritePosition">
+            <summary>
+            Correspond à une location de la bar de vie de l'entité
+            </summary>
+        </member>
+        <member name="F:TankBattleV2.Entity.Scale">
+            <summary>
+            Propriété correspondant à l'échelle utilisée pour la taille de l'entité.
+            </summary>
+        </member>
+        <member name="F:TankBattleV2.Entity.HitBox">
+            <summary>
+            Rectangle définissant la HitBox de l'entité.
+            </summary>
+        </member>
+        <member name="M:TankBattleV2.Entity.#ctor(Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Constructeur de base d'une entité
+            </summary>
+            <param name="position"></param>
+        </member>
+        <member name="M:TankBattleV2.Entity.Draw(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Permet de dessiner certains élements choisi.
+            </summary>
+            <param name="gameTime"></param>
+        </member>
+        <member name="M:TankBattleV2.Entity.Initialize">
+            <summary>
+            Méthode permettant de faire des calculs et qui s'effectue lors de la création de l'entité
+            </summary>
+        </member>
+        <member name="M:TankBattleV2.Entity.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Méthode s'effectuant à chaque tic, et permettant de faire des calculs, actions, etc...
+            </summary>
+            <param name="gameTime"></param>
+        </member>
+        <member name="T:TankBattleV2.Player">
+            <summary>
+            Cette classe contient toute la logique du joueur et hérite de deux interfaces, permettant de bouger et tirer.
+            </summary>
+        </member>
+        <member name="P:TankBattleV2.Player.Velocity">
+            <summary>
+            Propriété vélocité issue de l'interface IMovable
+            </summary>
+        </member>
+        <member name="P:TankBattleV2.Player.Speed">
+            <summary>
+            Propriété de la vitesse issue de l'interface IMovable
+            </summary>
+        </member>
+        <member name="P:TankBattleV2.Player.TimeSinceLastShot">
+            <summary>
+            Temps définissant le temps entre le dernier tir, issu de l'interface IShootable.
+            </summary>
+        </member>
+        <member name="P:TankBattleV2.Player.TimeBetweenEveryShot">
+            <summary>
+            Temps requis minimum entre chaque tir, issu de l'interface IShootable.
+            </summary>
+        </member>
+        <member name="P:TankBattleV2.Player.Direction">
+            <summary>
+            Propriété définissant la direction du projectile. Issu de l'interface IShootable.
+            </summary>
+        </member>
+        <member name="F:TankBattleV2.Player.isAlive">
+            <summary>
+            Booléen définissant si le joueur est encore en vie.
+            </summary>
+        </member>
+        <member name="M:TankBattleV2.Player.#ctor(Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Constructeur de la classe Player
+            </summary>
+            <param name="position">Position du joueur.</param>
+        </member>
+        <member name="M:TankBattleV2.Player.Initialize">
+            <summary>
+            Méthode exécutant le code lors de la création du Joueur.
+            </summary>
+        </member>
+        <member name="M:TankBattleV2.Player.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Méthode s'effectuant a chaque tic, permet de bouger le joueur, le faire tirer, et poser des protections
+            </summary>
+            <param name="gameTime"></param>
+        </member>
+        <member name="M:TankBattleV2.Player.Draw(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Méthode dessinant le joueur et différents objets.
+            </summary>
+            <param name="gameTime"></param>
+        </member>
+        <member name="M:TankBattleV2.Player.MovePlayer">
+            <summary>
+            Méthode vérifiant si le joueur appuie sur une touche pour avancer, et le faire avancer si oui.
+            </summary>
+        </member>
+        <member name="M:TankBattleV2.Player.Shoot(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Méthode permettant au joueur de tirer, recharger etc...
+            </summary>
+            <param name="gameTime"></param>
+        </member>
+        <member name="M:TankBattleV2.Player.Protection(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Méthode permettant de poser des protections.
+            </summary>
+            <param name="gameTime"></param>
+        </member>
+        <member name="T:TankBattleV2.Protection">
+            <summary>
+            Cette classe contient la logique pour poser et dessiner une protection
+            </summary>
+        </member>
+        <member name="M:TankBattleV2.Protection.#ctor(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Rectangle)">
+            <summary>
+            Constructeur de la protection
+            </summary>
+            <param name="position">Définis la position de la protection</param>
+            <param name="hitBox">Hitbox de la protection.</param>
+        </member>
+        <member name="M:TankBattleV2.Protection.Initialize">
+            <summary>
+            Méthode qui s'effectue lors de la création de la protection
+            </summary>
+        </member>
+        <member name="M:TankBattleV2.Protection.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Méthode qui s'effectue à chaque tics.
+            </summary>
+            <param name="gameTime"></param>
+        </member>
+        <member name="M:TankBattleV2.Protection.Draw(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Méthode dessinant la protection.
+            </summary>
+            <param name="gameTime"></param>
+        </member>
+        <member name="T:TankBattleV2.Tank">
+            <summary>
+            Classe qui contient toute la logique du tank, en comprenant les déplacements, tir, vie etc...
+            </summary>
+        </member>
+        <member name="P:TankBattleV2.Tank.Velocity">
+            <summary>
+            Propriété vélocité issue de l'interface IMovable
+            </summary>
+        </member>
+        <member name="P:TankBattleV2.Tank.Speed">
+            <summary>
+            Propriété de la vitesse issue de l'interface IMovable
+            </summary>
+        </member>
+        <member name="P:TankBattleV2.Tank.TimeSinceLastShot">
+            <summary>
+            Temps définissant le temps entre le dernier tir, issu de l'interface IShootable.
+            </summary>
+        </member>
+        <member name="P:TankBattleV2.Tank.TimeBetweenEveryShot">
+            <summary>
+            Temps requis minimum entre chaque tir, issu de l'interface IShootable.
+            </summary>
+        </member>
+        <member name="P:TankBattleV2.Tank.Direction">
+            <summary>
+            Propriété définissant la direction du projectile. Issu de l'interface IShootable.
+            </summary>
+        </member>
+        <member name="P:TankBattleV2.Tank.SpawnPoint">
+            <summary>
+            Propriété contenant le point d'apparition du Tank
+            </summary>
+        </member>
+        <member name="M:TankBattleV2.Tank.#ctor(Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Constructeur de la classe tank
+            </summary>
+            <param name="position">Position du tank.</param>
+        </member>
+        <member name="M:TankBattleV2.Tank.Initialize">
+            <summary>
+            Méthode qui s'effectue lors de la création du tank. S'occupe de choisir la position du tank selon un dictionnaire.
+            </summary>
+        </member>
+        <member name="M:TankBattleV2.Tank.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Méthode s'effectuant à chaque tic. S'occupe de le déplacer et de le faire tirer.
+            </summary>
+            <param name="gameTime"></param>
+        </member>
+        <member name="M:TankBattleV2.Tank.Draw(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Méthode dessinant le tank et ses différents attributs.
+            </summary>
+            <param name="gameTime"></param>
+        </member>
+        <member name="M:TankBattleV2.Tank.MoveToScene(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Permet de faire avancer le tank sur la scène.
+            </summary>
+            <param name="gameTime"></param>
+        </member>
+        <member name="M:TankBattleV2.Tank.Shoot(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Permet de faire tirer le tank.
+            </summary>
+            <param name="gameTime"></param>
+        </member>
+        <member name="T:TankBattleV2.EntityManager">
+            <summary>
+            Classe servant à gérér toutes les entités, créer, supprimer, initialiser, etc...
+            </summary>
+        </member>
+        <member name="F:TankBattleV2.EntityManager.Entities">
+            <summary>
+            Liste static contenant toutes les entités actuellement en vie de la partie.
+            </summary>
+        </member>
+        <member name="F:TankBattleV2.EntityManager.Protections">
+            <summary>
+            Liste de protections, contenant chaque protection encore en vie.
+            </summary>
+        </member>
+        <member name="F:TankBattleV2.EntityManager.Player">
+            <summary>
+            Instance unique du joueur.
+            </summary>
+        </member>
+        <member name="F:TankBattleV2.EntityManager.TankKilled">
+            <summary>
+            Nombre de tank éliminé. Permet de vérifier quand un joueur termine le niveau.
+            </summary>
+        </member>
+        <member name="F:TankBattleV2.EntityManager.LevelID">
+            <summary>
+            Correspond au niveau actuel.
+            </summary>
+        </member>
+        <member name="M:TankBattleV2.EntityManager.Add(TankBattleV2.Entity)">
+            <summary>
+            Permet d'ajouter à la liste une entité
+            </summary>
+            <param name="entity">Entité qui sera ajoutée à la liste.</param>
+        </member>
+        <member name="M:TankBattleV2.EntityManager.Remove(TankBattleV2.Entity)">
+            <summary>
+            Méthode permettant la suppresion d'une entité de la liste.
+            </summary>
+            <param name="entity">Entité qui sera supprimée.</param>
+        </member>
+        <member name="M:TankBattleV2.EntityManager.Initialize(System.Int32)">
+            <summary>
+            Méthode initialisant les nouvelles entitées.
+            </summary>
+            <param name="levelDifficulty"></param>
+        </member>
+        <member name="M:TankBattleV2.EntityManager.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Méthode effectuant les méthodes qui s'effectuent à chaque tics.
+            </summary>
+            <param name="gameTime"></param>
+        </member>
+        <member name="M:TankBattleV2.EntityManager.Draw(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Méthode dessinant chaque élement.
+            </summary>
+            <param name="gameTime"></param>
+        </member>
+        <member name="M:TankBattleV2.EntityManager.DeleteEntity">
+            <summary>
+            Méthode permettant de complètement supprimer l'entièrté du contenu de la liste des entités
+            </summary>
+        </member>
+        <member name="M:TankBattleV2.EntityManager.CheckCollisions">
+            <summary>
+            Méthode vérifiant s'il y a une collision avec d'autre entité, et d'effectuer des actions en conséquences.
+            </summary>
+        </member>
+        <member name="T:TankBattleV2.IEntity">
+            <summary>
+            Interface définissant les méthodes qu'une entité doit avoir.
+            </summary>
+        </member>
+        <member name="M:TankBattleV2.IEntity.Initialize">
+            <summary>
+            Méthode qui s'effectue lors de la création d'une entité
+            </summary>
+        </member>
+        <member name="M:TankBattleV2.IEntity.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Méthode s'effectuant à chaque tics, permettant de calculer, et/ou de faire des actions, etc...
+            </summary>
+            <param name="gameTime">Délai entre chaque tics.</param>
+        </member>
+        <member name="M:TankBattleV2.IEntity.Draw(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Méthode permettant de dessiner des élements.
+            </summary>
+            <param name="gameTime">Délai entre chaque tics.</param>
+        </member>
+        <member name="T:TankBattleV2.IMovable">
+            <summary>
+            Interface définissant les propriétés qu'une classe doit avoir lorsqu'elle à la capacité de se déplacer.
+            </summary>
+        </member>
+        <member name="P:TankBattleV2.IMovable.Velocity">
+            <summary>
+            Défini la vélocité de l'entité
+            </summary>
+        </member>
+        <member name="P:TankBattleV2.IMovable.Speed">
+            <summary>
+            Défini la vitesse de déplacement de l'entité
+            </summary>
+        </member>
+        <member name="T:TankBattleV2.IShootable">
+            <summary>
+            Interface définissant les propriétés qu'une classe doit avoir lorsque celle-ci a la capacité de tirer.
+            </summary>
+        </member>
+        <member name="P:TankBattleV2.IShootable.TimeSinceLastShot">
+            <summary>
+            Propriété définissant le temps écoulé entre le dernier tir
+            </summary>
+        </member>
+        <member name="P:TankBattleV2.IShootable.TimeBetweenEveryShot">
+            <summary>
+            Propriété définissant le temps requis entre chaque tir.
+            </summary>
+        </member>
+        <member name="P:TankBattleV2.IShootable.Direction">
+            <summary>
+            Propriété définissant la direction du missile.
+            </summary>
+        </member>
+        <member name="T:TankBattleV2.GameState">
+            <summary>
+            Défini l'état de la partie
+            </summary>
+        </member>
+        <member name="F:TankBattleV2.GameState.Menu">
+            <summary>
+            Le joueur se trouve dans le menu de départ.
+            </summary>
+        </member>
+        <member name="F:TankBattleV2.GameState.Playing">
+            <summary>
+            Le joueur se trouve dans la partie.
+            </summary>
+        </member>
+        <member name="F:TankBattleV2.GameState.Paused">
+            <summary>
+            Le joueur a mis pause à la partie.
+            </summary>
+        </member>
+        <member name="F:TankBattleV2.GameState.DeadScreen">
+            <summary>
+            Le joueur est mort.
+            </summary>
+        </member>
+        <member name="T:TankBattleV2.GameRoot">
+            <summary>
+            Racine du jeu, elle contrôle l'entièrté du jeu
+            </summary>
+        </member>
+        <member name="F:TankBattleV2.GameRoot._graphics">
+            <summary>
+            Gestion de la configuration d'affichage graphique du jeu.
+            </summary>
+        </member>
+        <member name="F:TankBattleV2.GameRoot.spriteBatch">
+            <summary>
+            Gestionnaire de rendu des éléments visuels à l'écran.
+            </summary>
+        </member>
+        <member name="F:TankBattleV2.GameRoot.spriteFont">
+            <summary>
+            Police utilisée pour afficher du texte dans le jeu.
+            </summary>
+        </member>
+        <member name="F:TankBattleV2.GameRoot.isScoreSave">
+            <summary>
+            Bool qui dit si oui ou non le score a été sauvegardé.
+            </summary>
+        </member>
+        <member name="P:TankBattleV2.GameRoot.Score">
+            <summary>
+            Propriété contenant le score actuelle de la partie.
+            </summary>
+        </member>
+        <member name="F:TankBattleV2.GameRoot.CurrentGameState">
+            <summary>
+            Propriété contenant l'état actuelle de la partie. Par défaut il arrive dans le menu.
+            </summary>
+        </member>
+        <member name="F:TankBattleV2.GameRoot.lvl">
+            <summary>
+            Instance du lvl, permettant de créer des niveaux a partir d'une difficulté prédéfinies.
+            </summary>
+        </member>
+        <member name="F:TankBattleV2.GameRoot.menu">
+            <summary>
+            Instance du menu, permettant de créer des interfaces.
+            </summary>
+        </member>
+        <member name="M:TankBattleV2.GameRoot.#ctor">
+            <summary>
+            Constructeur de Gameroot
+            </summary>
+        </member>
+        <member name="M:TankBattleV2.GameRoot.Initialize">
+            <summary>
+            Méthode s'effectuant 
+            </summary>
+        </member>
+        <member name="M:TankBattleV2.GameRoot.LoadContent">
+            <summary>
+            Méthode étant utilisée pour charger les assets et d'autre choses
+            </summary>
+        </member>
+        <member name="M:TankBattleV2.GameRoot.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Méthode s'effectuant à chaque tics, et est utilisée pour les calculs et actions.
+            </summary>
+            <param name="gameTime">Délai entre chaque utilisation de la méthode</param>
+        </member>
+        <member name="M:TankBattleV2.GameRoot.Draw(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Méthode servant à dessiner les différentes entités, éléments etc...
+            </summary>
+            <param name="gameTime">Délai entre chaque utilisation de la méthode</param>
+        </member>
+        <member name="M:TankBattleV2.GameRoot.GetBestScore">
+            <summary>
+            Permet de retourner le meilleur score du joueur
+            </summary>
+            <returns>Chaine de caractère</returns>
+        </member>
+        <member name="M:TankBattleV2.GameRoot.OnDeactivated(System.Object,System.EventArgs)">
+            <summary>
+            Méthode s'effectuant lorsque l'utilisateur quitte la fenêtre sans fermer le programme
+            </summary>
+            <param name="sender"></param>
+            <param name="a"></param>
+        </member>
+        <member name="T:TankBattleV2.Level">
+            <summary>
+            Classe permettant la création de niveau. (Initialisement des entités, etc...).
+            </summary>
+        </member>
+        <member name="M:TankBattleV2.Level.#ctor(System.Int32)">
+            <summary>
+            Constructeur du level.
+            </summary>
+            <param name="levelDifficulty"></param>
+        </member>
+        <member name="M:TankBattleV2.Level.LoadContent">
+            <summary>
+            Méthode permettant de créer les entités, en fonction du niveau défini au préalabe.
+            </summary>
+        </member>
+        <member name="M:TankBattleV2.Level.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Méthode s'occupant d'update chaque entité
+            </summary>
+            <param name="gameTime"></param>
+        </member>
+        <member name="T:TankBattleV2.Config">
+            <summary>
+            Classe concernant la configuration de l'écran.
+            </summary>
+        </member>
+        <member name="F:TankBattleV2.Config.WINDOW_WIDTH">
+            <summary>
+            Propriété retournant la largeur de l'écran.
+            </summary>
+        </member>
+        <member name="F:TankBattleV2.Config.WINDOW_HEIGHT">
+            <summary>
+            Propriété retournant la hauteur de l'écran.
+            </summary>
+        </member>
+        <member name="F:TankBattleV2.Config.SAVE_PATH_TANKBATTLE">
+            <summary>
+            String contenant le path du dossier TankBattle
+            </summary>
+        </member>
+        <member name="F:TankBattleV2.Config.SAVE_PATH_DATA">
+            <summary>
+            Path du dossier contenant toutes les données du jeu
+            </summary>
+        </member>
+        <member name="F:TankBattleV2.Config.SAVE_PATH_DATA_SCORE">
+            <summary>
+            Path du fichier contenant tout les scores du joueur.
+            </summary>
+        </member>
+        <member name="T:TankBattleV2.GameSettings">
+            <summary>
+            Classe concernant les paramètres de la partie.
+            </summary>
+        </member>
+        <member name="F:TankBattleV2.GameSettings.Map">
+            <summary>
+            Concerne la texture de la map
+            </summary>
+        </member>
+        <member name="F:TankBattleV2.GameSettings.Difficulty">
+            <summary>
+            Concerne la difficulté du niveau, (nombre de tank).
+            </summary>
+        </member>
+        <member name="F:TankBattleV2.GameSettings.InfiniteMode">
+            <summary>
+            Défini si un tank réaparait lorsqu'un meurt.
+            </summary>
+        </member>
+        <member name="T:TankBattleV2.Visuals">
+            <summary>
+            Classe permettant de charger les aspects visuels 
+            </summary>
+        </member>
+        <member name="M:TankBattleV2.Visuals.LoadTextures(Microsoft.Xna.Framework.Content.ContentManager)">
+            <summary>
+            Méthode s'occupant de charger les textures.
+            </summary>
+            <param name="content"></param>
+        </member>
+        <member name="T:TankBattleV2.Buttons">
+            <summary>
+            Classe permettant la création de bouton.
+            </summary>
+        </member>
+        <member name="P:TankBattleV2.Buttons.Button">
+            <summary>
+            Rectangle définissant la surface du bouton.
+            </summary>
+        </member>
+        <member name="M:TankBattleV2.Buttons.#ctor(System.Int32,System.Int32,System.Collections.Generic.List{TankBattleV2.Action},Microsoft.Xna.Framework.Graphics.SpriteFont)">
+            <summary>
+            COnstructeur de la classe bouton.
+            </summary>
+            <param name="height">Hauteur du bouton.</param>
+            <param name="padding">Espace</param>
+            <param name="buttonActionTitle">Nom du bouton</param>
+            <param name="spriteFont">Font d'écriture</param>
+        </member>
+        <member name="M:TankBattleV2.Buttons.Initialize">
+            <summary>
+            Méthode s'effectuant lors de la création et s'occupant de créer les divers bouton.
+            </summary>
+        </member>
+        <member name="T:TankBattleV2.Action">
+            <summary>
+            Enumère les différentes action qu'un bouton peut effectuer.
+            </summary>
+        </member>
+        <member name="F:TankBattleV2.Action.Resume">
+            <summary>
+            Permet de revenir à la partie.
+            </summary>
+        </member>
+        <member name="F:TankBattleV2.Action.Start">
+            <summary>
+            Permet de lancer la partie.
+            </summary>
+        </member>
+        <member name="F:TankBattleV2.Action.Exit">
+            <summary>
+            Permet de quitter le jeu.
+            </summary>
+        </member>
+        <member name="F:TankBattleV2.Action.Restart">
+            <summary>
+            Permet de relancer une partie lorsque le joueur meurt.
+            </summary>
+        </member>
+        <member name="T:TankBattleV2.Menu">
+            <summary>
+            Classe menu permettant la création d'une interface avec différents boutons, avec des actions précises.
+            </summary>
+        </member>
+        <member name="F:TankBattleV2.Menu.Buttons">
+            <summary>
+            Dictionnaire contenant tout les boutons, avec un bool attribué regardant si le curseur se trouve dessus (isHover).
+            </summary>
+        </member>
+        <member name="M:TankBattleV2.Menu.#ctor(System.Collections.Generic.List{TankBattleV2.Action},Microsoft.Xna.Framework.Graphics.SpriteFont)">
+            <summary>
+            Constructeur de la classe Menu
+            </summary>
+            <param name="buttonActionTitle">Liste d'action contenant donc chaque "Boutons"</param>
+            <param name="sprifeFont">Font d'écriture</param>
+        </member>
+        <member name="M:TankBattleV2.Menu.Initialize">
+            <summary>
+            Méthode s'effectuant au lancement et créant les boutons du menu.
+            </summary>
+        </member>
+        <member name="M:TankBattleV2.Menu.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Méthode vérifiant si à chaque tics, le joueur n'a pas survolé et ou cliquer sur le bouton.
+            </summary>
+            <param name="gameTime"></param>
+        </member>
+        <member name="M:TankBattleV2.Menu.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+            <summary>
+            Permet de dessiner les boutons.
+            </summary>
+            <param name="spriteBatch"></param>
+        </member>
+        <member name="M:TankBattleV2.Menu.OnClick(TankBattleV2.Action)">
+            <summary>
+            Méthode s'occupant de l'action a effectuer lorsque l'utilisateur clique sur un bouton.
+            </summary>
+            <param name="action">Action du clic</param>
+        </member>
+        <member name="T:EntityConfig.Player">
+            <summary>
+            Classe définissant les différents attributs du joueur.
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Player.Texture">
+            <summary>
+            Propriété contenant la texture 2D du joueur.
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Player.HealthPointTexture">
+            <summary>
+            Propriété contenant la texture représentant la vie restante du joueur.
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Player.Position">
+            <summary>
+            Défini la position du joueur.
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Player.HealthPoint">
+            <summary>
+            Propriété définissant le nombre de point de vie que l'entité possède.
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Player.HealthPointSpritePosition">
+            <summary>
+            Propriété définissant la position de la texture affichant les points de vie du joueur.
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Player.Scale">
+            <summary>
+            Propriété définissant l'échelle d'affichage du joueur.
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Player.HitBox">
+            <summary>
+            Propriété définissant la zone de collision du joueur.
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Player.Speed">
+            <summary>
+            Propriété définissant la vitesse de déplacement du joueur.
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Player.AmmoCapacity">
+            <summary>
+            Propriété définissant le nombre de munition que le joueur possède dans son arme.
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Player.TimeForReloading">
+            <summary>
+            Propriété définissant le temps requis pour recharger son arme.
+            </summary>
+        </member>
+        <member name="T:EntityConfig.Bullet">
+            <summary>
+            Classe définissant les différents attributs de la munition du joueur.
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Bullet.Texture">
+            <summary>
+            Propriété définissant la texture de la munition
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Bullet.IconTexture">
+            <summary>
+            Propriété définissant l'icone de la munition.
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Bullet.HealthPoint">
+            <summary>
+            Propriété définissant le nombre de point de vie de la munition.
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Bullet.Scale">
+            <summary>
+            Propriété définissant l'échelle d'affichage de la munition.
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Bullet.HitBox">
+            <summary>
+            Propriété définissant la zone de collision pour la munition.
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Bullet.Speed">
+            <summary>
+            Propriété définissant la vitesse de déplacement de la munition.
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Bullet.CoolDownShoot">
+            <summary>
+            Propriété définissant le temps requis entre chaque tour.
+            </summary>
+        </member>
+        <member name="T:EntityConfig.Tank">
+            <summary>
+            Classe définissant les différents attributs du tank.
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Tank.Texture">
+            <summary>
+            Propriété définissant la texture du Tank.
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Tank.LifeBarTextures">
+            <summary>
+            Tableau contenant les différentes textures des points de vie du tank.
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Tank.Position">
+            <summary>
+            Propriété définissant la position X et Y du tank.
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Tank.LIMITE_POSITION_Y">
+            <summary>
+            Propriété définissant la limite jusque ou le tank peut avancer sur l'axe Y.
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Tank.HealthPoint">
+            <summary>
+            Propriété définissant le nombre de point de vie du tank.
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Tank.HealthPointSpritePosition">
+            <summary>
+            Propriété définissant la position de la texture affichant les points de vie du tank.
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Tank.LifeBarScale">
+            <summary>
+            Propriété définissant l'échelle d'affichage de la bar de point de vie du tank.
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Tank.Scale">
+            <summary>
+            Propriété définissant l'échelle d'affichage du tank.
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Tank.HitBox">
+            <summary>
+            Propriété définissant la zone de collision du tank.
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Tank.Speed">
+            <summary>
+            Propriété définissant la vitesse de déplacement du tank.
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Tank.spawnPoints">
+            <summary>
+            Dictionnaire contenant une position d'apparition, ainsi qu'un booléen disant si oui ou non la position est occupée.
+            </summary>
+        </member>
+        <member name="M:EntityConfig.Tank.SetDefaultSpawnPoints">
+            <summary>
+            Méthode permettant d'initialiser et/ou de réinitialiser le contenu du dictionnaire.
+            </summary>
+        </member>
+        <member name="T:EntityConfig.Shell">
+            <summary>
+            Classe définissant les différents attributs du missile du tank.
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Shell.Texture">
+            <summary>
+            Propriété définissant la texture de la munition du tank.
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Shell.HealthPoint">
+            <summary>
+            Propriété définissant le nombre de point de vie de la munition du tank.
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Shell.Scale">
+            <summary>
+            Propriété définissant l'échelle d'affichage de la munition du tank.
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Shell.HitBox">
+            <summary>
+            Propriété définissant la zone de collision de la munition du tank.
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Shell.Speed">
+            <summary>
+            Propriété définissant la vitesse de déplacement de la munition.
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Shell.CoolDownShoot">
+            <summary>
+            Propriété définissant le temps d'attente entre chaque tir du tank.
+            </summary>
+        </member>
+        <member name="T:EntityConfig.Protection">
+            <summary>
+            Classe définissant les différents attributs d'une protection..
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Protection.Texture">
+            <summary>
+            Propriété définissant la texture d'affichage de la protection.
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Protection.HealthPoint">
+            <summary>
+            Propriété définissant le nombre de point de vie de la protection.
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Protection.Scale">
+            <summary>
+            Propriété définissant l'échelle d'affichage de la protection.
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Protection.HitBox">
+            <summary>
+            Propriété définissant la zone de collision de la protection.
+            </summary>
+        </member>
+        <member name="F:EntityConfig.Protection.CoolDownProtectionPose">
+            <summary>
+            Propriété définissant le temps d'attente entre le posement de chaque protection.
+            </summary>
+        </member>
+        <member name="T:GlobalHelpers.Input">
+            <summary>
+            Classe permettant à l'utilisateur d'obtenir certaines infromations sur les entrées du clavier et de la souris..
+            </summary>
+        </member>
+        <member name="M:GlobalHelpers.Input.GetMovementDirection">
+            <summary>
+            Méthode donnant la direction X du joueur. Soit gauche, soit droite.
+            </summary>
+            <returns>Retourn un vecteur, modifié uniquement sur l'axe X</returns>
+        </member>
+        <member name="M:GlobalHelpers.Input.GetMousePosition">
+            <summary>
+            Méthode retournant la position du curseur.
+            </summary>
+            <returns>Un vecteur 2.</returns>
+        </member>
+        <member name="M:GlobalHelpers.Input.GetMouseState">
+            <summary>
+            Méthode donnant l'état actuelle de la souris.
+            </summary>
+            <returns>Un état de la souris.</returns>
+        </member>
+        <member name="M:GlobalHelpers.Input.isLeftClicking">
+            <summary>
+            Méthode retournant si oui ou non, le joueur est entrain de cliquer (gauche).
+            </summary>
+            <returns>True si oui, et False si non.</returns>
+        </member>
+        <member name="M:GlobalHelpers.Input.isShooting">
+            <summary>
+            Méthode retournant si oui ou non, le joueur est en train de tirer.
+            </summary>
+            <returns>True si oui, et False si non.</returns>
+        </member>
+        <member name="P:GlobalHelpers.Input.isPlacingProtection">
+            <summary>
+            Propriété définissant si oui ou non le joueur est en train de poser une protection avec le clic droit.
+            </summary>
+        </member>
+        <member name="M:GlobalHelpers.Input.isReloading">
+            <summary>
+            Propriété définissant si oui ou non le joueur est en train de recharger en appuyant sur 'R'.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:GlobalHelpers.Random">
+            <summary>
+            Classe permettant d'utiliser l'aléatoire.
+            </summary>
+        </member>
+        <member name="M:GlobalHelpers.Random.Next(System.Int32,System.Int32)">
+            <summary>
+            Méthode générant une valeur aléatoire comprise entre deux valeurs.
+            </summary>
+            <param name="minValue">Valeur minimale</param>
+            <param name="maxValue">Valeur maximale</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
