@@ -82,6 +82,9 @@ namespace TankBattleV2
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+
+            
+            Deactivated += OnDeactivated;
         }
         
         /// <summary>
@@ -240,6 +243,15 @@ namespace TankBattleV2
                 catch { }
             }
             return HighestScore.ToString();
+        }
+        /// <summary>
+        /// Méthode s'effectuant lorsque l'utilisateur quitte la fenêtre sans fermer le programme
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="a"></param>
+        protected override void OnDeactivated(object sender, EventArgs a)
+        {
+            CurrentGameState = GameState.Paused;
         }
     }
 }
