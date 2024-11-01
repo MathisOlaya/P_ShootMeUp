@@ -31,7 +31,8 @@ namespace TankBattleV2
         /// <param name="position">Position de départ de la munition</param>
         /// <param name="direction">Direction de la munition</param>
         /// <param name="texture">Texture de la munition</param>
-        
+        /// <param name="scale">Echelle de la munition</param>
+
         public Bullet(Vector2 position, Vector2 direction, Texture2D texture, float scale) : base(position)
         {
             Texture = texture;
